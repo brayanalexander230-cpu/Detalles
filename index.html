@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mí niña hermosa 💛</title>
+    <title>Para mi niña hermosa💛</title>
     <style>
         * {
             margin: 0;
@@ -13,208 +13,146 @@
 
         body {
             background: #ff0066;
-            padding: 25px 15px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: Arial, sans-serif;
         }
 
-        .titulo {
-            color: white;
-            text-align: center;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 5px #000;
-        }
-
+        /* Tarjeta principal */
         .tarjeta {
             background: #f5f0e1;
-            padding: 25px;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .texto {
-            font-size: 1.4rem;
-            color: #222;
-            line-height: 2;
-            margin-bottom: 25px;
-        }
-
-        .arbol {
-            width: 100%;
-            height: 320px;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
             position: relative;
-            margin: 20px 0;
         }
 
-        .semilla {
+        /* Título superior */
+        .titulo-superior {
             position: absolute;
-            bottom: 0;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #8b4513;
-            border-radius: 50% 50% 30% 30%;
-            opacity: 0;
-            animation: semilla 0.5s forwards;
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
-        .tronco {
+        /* Texto de la tarjeta */
+        .texto-izq {
             position: absolute;
-            bottom: 0;
+        top: 80px;
+        left: 30px;
+        width: 250px;
+        color: #222;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        }
+
+        /* Árbol corazón de girasoles */
+        .arbol-corazon {
+            position: absolute;
+            right: 30px;
+            top: 60px;
+            width: 280px;
+            height: 250px;
+        }
+
+        /* Imagen del corazón de girasoles (usamos una imagen base para que quede igual) */
+        .corazon-img {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/9QZ7X8y.png'); /* Imagen igual al ejemplo */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Contador de tiempo */
+        .contador-tiempo {
+            position: absolute;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 18px;
-            height: 130px;
-            background: #8b4513;
-            border-radius: 10px 10px 0 0;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            opacity: 0;
-            animation: tronco 1.5s forwards 0.8s;
+            color: #d4af37;
+            font-size: 1.3rem;
+            font-weight: bold;
         }
 
-        .rama-izq, .rama-der {
+        /* Texto "Mi amor por ti comenzó hace..." */
+        .texto-tiempo {
             position: absolute;
-            bottom: 110px;
-            width: 15px;
-            height: 90px;
-            background: #8b4513;
-            opacity: 0;
-            transform: scale(0);
-            transform-origin: bottom;
+            bottom: 60px;
+            left: 30px;
+            color: #222;
+            font-size: 1.2rem;
         }
 
-        .rama-izq {
-            left: 40%;
-            transform: rotate(-35deg);
-            border-radius: 50px 0 0 50px;
-            animation: rama 1.2s forwards 2.3s;
+        /* Efecto de fondo con corazones */
+        .fondo-corazones {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/5RjK7QH.png');
+            background-size: 50px;
+            opacity: 0.2;
+            z-index: -1;
         }
 
-        .rama-der {
-            right: 40%;
-            transform: rotate(35deg);
-            border-radius: 0 50px 50px 0;
-            animation: rama 1.2s forwards 2.3s;
-        }
-
-        .corazon {
+        /* Pie de página "ALEX DEV" */
+        .pie-pagina {
             position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 240px;
-            height: 210px;
-            opacity: 0;
-            animation: corazon 0.5s forwards 3.5s;
-            clip-path: path('M120,30 C160,0 240,40 240,90 C240,150 180,210 120,210 C60,210 0,150 0,90 C0,40 80,0 120,30 Z');
+            top: 10px;
+            right: 30px;
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="fondo-corazones"></div>
+    <div class="tarjeta">
+        <div class="pie-pagina">ALEX DEV</div>
+        <div class="titulo-superior">Flores Amarillas para el amor de mi vida:</div>
+        <div class="texto-izq">
+            Flores Amarillas para el<br>
+            amor de mi vida:<br><br>
+            Si pudiera elegir un<br>
+            lugar seguro,<br>
+            sería a tu lado.<br><br>
+            Cuanto más tiempo estoy<br>
+            contigo más te amo.
+        </div>
+        <div class="texto-tiempo">Mi amor por ti comenzó hace...</div>
+        <div class="arbol-corazon">
+            <div class="corazon-img"></div>
+        </div>
+        <div class="contador-tiempo" id="tiempo">365 días 00 horas 00 minutos 00 segundos</div>
+    </div>
+
+    <script>
+        // Fecha de inicio (CAMBIA ESTA FECHA POR LA DE USTEDES)
+        const fechaInicio = new Date('2017-02-10');
+        
+        function actualizarTiempo() {
+            const ahora = new Date();
+            const diferencia = ahora - fechaInicio;
+            
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById('tiempo').textContent = `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
         }
 
-        .girasol {
-            position: absolute;
-            font-size: 7px;
-            opacity: 0;
-            transform: scale(0);
-            animation: girasol 0.5s forwards;
-        }
-
-        /* 400 girasoles */
-        .girasol:nth-child(1) {top:5%;left:50%;animation-delay:4s;}
-        .girasol:nth-child(2) {top:8%;left:45%;animation-delay:4.1s;}
-        .girasol:nth-child(3) {top:8%;left:55%;animation-delay:4.1s;}
-        .girasol:nth-child(4) {top:10%;left:40%;animation-delay:4.2s;}
-        .girasol:nth-child(5) {top:10%;left:60%;animation-delay:4.2s;}
-        .girasol:nth-child(6) {top:12%;left:35%;animation-delay:4.3s;}
-        .girasol:nth-child(7) {top:12%;left:65%;animation-delay:4.3s;}
-        .girasol:nth-child(8) {top:15%;left:30%;animation-delay:4.4s;}
-        .girasol:nth-child(9) {top:15%;left:70%;animation-delay:4.4s;}
-        .girasol:nth-child(10){top:18%;left:25%;animation-delay:4.5s;}
-        .girasol:nth-child(11){top:18%;left:75%;animation-delay:4.5s;}
-        .girasol:nth-child(12){top:20%;left:20%;animation-delay:4.6s;}
-        .girasol:nth-child(13){top:20%;left:80%;animation-delay:4.6s;}
-        .girasol:nth-child(14){top:22%;left:15%;animation-delay:4.7s;}
-        .girasol:nth-child(15){top:22%;left:85%;animation-delay:4.7s;}
-        .girasol:nth-child(16){top:25%;left:10%;animation-delay:4.8s;}
-        .girasol:nth-child(17){top:25%;left:90%;animation-delay:4.8s;}
-        .girasol:nth-child(18){top:28%;left:5%;animation-delay:4.9s;}
-        .girasol:nth-child(19){top:28%;left:95%;animation-delay:4.9s;}
-        .girasol:nth-child(20){top:30%;left:0%;animation-delay:5s;}
-        .girasol:nth-child(21){top:30%;left:100%;animation-delay:5s;}
-        .girasol:nth-child(22){top:32%;left:5%;animation-delay:5.1s;}
-        .girasol:nth-child(23){top:32%;left:95%;animation-delay:5.1s;}
-        .girasol:nth-child(24){top:35%;left:10%;animation-delay:5.2s;}
-        .girasol:nth-child(25){top:35%;left:90%;animation-delay:5.2s;}
-        .girasol:nth-child(26){top:38%;left:15%;animation-delay:5.3s;}
-        .girasol:nth-child(27){top:38%;left:85%;animation-delay:5.3s;}
-        .girasol:nth-child(28){top:40%;left:20%;animation-delay:5.4s;}
-        .girasol:nth-child(29){top:40%;left:80%;animation-delay:5.4s;}
-        .girasol:nth-child(30){top:42%;left:25%;animation-delay:5.5s;}
-        .girasol:nth-child(31){top:42%;left:75%;animation-delay:5.5s;}
-        .girasol:nth-child(32){top:45%;left:30%;animation-delay:5.6s;}
-        .girasol:nth-child(33){top:45%;left:70%;animation-delay:5.6s;}
-        .girasol:nth-child(34){top:48%;left:35%;animation-delay:5.7s;}
-        .girasol:nth-child(35){top:48%;left:65%;animation-delay:5.7s;}
-        .girasol:nth-child(36){top:50%;left:40%;animation-delay:5.8s;}
-        .girasol:nth-child(37){top:50%;left:60%;animation-delay:5.8s;}
-        .girasol:nth-child(38){top:52%;left:45%;animation-delay:5.9s;}
-        .girasol:nth-child(39){top:52%;left:55%;animation-delay:5.9s;}
-        .girasol:nth-child(40){top:55%;left:50%;animation-delay:6s;}
-        .girasol:nth-child(41){top:58%;left:30%;animation-delay:6.1s;}
-        .girasol:nth-child(42){top:58%;left:70%;animation-delay:6.1s;}
-        .girasol:nth-child(43){top:60%;left:35%;animation-delay:6.2s;}
-        .girasol:nth-child(44){top:60%;left:65%;animation-delay:6.2s;}
-        .girasol:nth-child(45){top:62%;left:45%;animation-delay:6.3s;}
-        .girasol:nth-child(46){top:62%;left:55%;animation-delay:6.3s;}
-        .girasol:nth-child(47){top:65%;left:50%;animation-delay:6.4s;}
-        .girasol:nth-child(48){top:68%;left:40%;animation-delay:6.5s;}
-        .girasol:nth-child(49){top:68%;left:60%;animation-delay:6.5s;}
-        .girasol:nth-child(50){top:70%;left:50%;animation-delay:6.6s;}
-        .girasol:nth-child(51){top:72%;left:45%;animation-delay:6.7s;}
-        .girasol:nth-child(52){top:72%;left:55%;animation-delay:6.7s;}
-        .girasol:nth-child(53){top:75%;left:50%;animation-delay:6.8s;}
-        .girasol:nth-child(54){top:78%;left:45%;animation-delay:6.9s;}
-        .girasol:nth-child(55){top:78%;left:55%;animation-delay:6.9s;}
-        .girasol:nth-child(56){top:80%;left:50%;animation-delay:7s;}
-        .girasol:nth-child(57){top:82%;left:45%;animation-delay:7.1s;}
-        .girasol:nth-child(58){top:82%;left:55%;animation-delay:7.1s;}
-        .girasol:nth-child(59){top:85%;left:50%;animation-delay:7.2s;}
-        .girasol:nth-child(60){top:88%;left:50%;animation-delay:7.3s;}
-        .girasol:nth-child(61){top:5%;left:50%;animation-delay:4s;}
-        .girasol:nth-child(62){top:12%;left:40%;animation-delay:4.1s;}
-        .girasol:nth-child(63){top:12%;left:60%;animation-delay:4.1s;}
-        .girasol:nth-child(64){top:15%;left:35%;animation-delay:4.2s;}
-        .girasol:nth-child(65){top:15%;left:65%;animation-delay:4.2s;}
-        .girasol:nth-child(66){top:18%;left:30%;animation-delay:4.3s;}
-        .girasol:nth-child(67){top:18%;left:70%;animation-delay:4.3s;}
-        .girasol:nth-child(68){top:20%;left:25%;animation-delay:4.4s;}
-        .girasol:nth-child(69){top:20%;left:75%;animation-delay:4.4s;}
-        .girasol:nth-child(70){top:22%;left:20%;animation-delay:4.5s;}
-        .girasol:nth-child(71){top:22%;left:80%;animation-delay:4.5s;}
-        .girasol:nth-child(72){top:25%;left:15%;animation-delay:4.6s;}
-        .girasol:nth-child(73){top:25%;left:85%;animation-delay:4.6s;}
-        .girasol:nth-child(74){top:28%;left:10%;animation-delay:4.7s;}
-        .girasol:nth-child(75){top:28%;left:90%;animation-delay:4.7s;}
-        .girasol:nth-child(76){top:30%;left:5%;animation-delay:4.8s;}
-        .girasol:nth-child(77){top:30%;left:95%;animation-delay:4.8s;}
-        .girasol:nth-child(78){top:32%;left:10%;animation-delay:4.9s;}
-        .girasol:nth-child(79){top:32%;left:90%;animation-delay:4.9s;}
-        .girasol:nth-child(80){top:35%;left:5%;animation-delay:5s;}
-        .girasol:nth-child(81){top:35%;left:95%;animation-delay:5s;}
-        .girasol:nth-child(82){top:38%;left:0%;animation-delay:5.1s;}
-        .girasol:nth-child(83){top:38%;left:100%;animation-delay:5.1s;}
-        .girasol:nth-child(84){top:40%;left:5%;animation-delay:5.2s;}
-        .girasol:nth-child(85){top:40%;left:95%;animation-delay:5.2s;}
-        .girasol:nth-child(86){top:42%;left:0%;animation-delay:5.3s;}
-        .girasol:nth-child(87){top:42%;left:100%;animation-delay:5.3s;}
-        .girasol:nth-child(88){top:45%;left:5%;animation-delay:5.4s;}
-        .girasol:nth-child(89){top:45%;left:95%;animation-delay:5.4s;}
-        .girasol:nth-child(90){top:48%;left:10%;animation-delay:5.5s;}
-        .girasol:nth-child(91){top:48%;left:90%;animation-delay:5.5s;}
-        .girasol:nth-child(92){top:50%;left:15%;animation-delay:5.6s;}
-        .girasol:nth-child(93){top:50%;left:85%;animation-delay:5.6s;}
-        .girasol:nth-child(94){top:52%;left:20%;animation-delay:5.7s;}
-        .girasol:nth-child(95){top:52%;left:80%;animation-delay:5.7s;}
-        .girasol:nth-child(96){top:55%;left:25%;animation-delay:5.8s;}
-        .girasol:nth-child(97){top:55%;left:75%;animation-delay:5.
+        // Actualizar cada segundo
+        setInterval(actualizarTiempo, 1000);
+        actualizarTiempo();
+    </script>
+</body>
+</html>
