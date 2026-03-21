@@ -3,191 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas para mi niña</title>
+    <title>Flores Amarillas para ti</title>
     <style>
-        :root {
-            --fondo-pantalla: #ff0066;
-            --fondo-texto: #f5f0e1;
-            --color-texto: #222;
-            --color-contador: #d4af37;
-            --color-tronco: #8b4513;
-            --color-flores: #ffd700;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Estilos básicos */
         body {
-            background: var(--fondo-pantalla);
-            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
-            background-size: 20px 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            background: #ff0066; /* Fondo rosa intenso */
+            margin: 0;
+            padding: 30px 15px; /* Espacio arriba para el título */
+            font-family: Arial, sans-serif;
         }
 
-        .contenedor-principal {
-            position: relative;
-            width: 95%;
-            max-width: 500px;
-            background: var(--fondo-texto);
-            padding: 25px 20px;
+        /* Contenedor principal */
+        .tarjeta {
+            background: #f5f0e1; /* Fondo crema */
+            padding: 20px;
             border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
         }
 
-        .titulo-dev {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Título visible y bien posicionado */
+        .titulo {
             color: white;
-            font-size: 1.2rem;
+            text-align: center;
+            font-size: 1.3rem;
             font-weight: bold;
-            text-shadow: 0 0 8px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px black;
         }
 
-        .texto-dedicatorio {
-            width: 100%;
-            color: var(--color-texto);
+        /* Texto dedicatorio */
+        .texto {
             font-size: 1.5rem;
+            color: #222;
             line-height: 1.8;
             margin-bottom: 20px;
-            opacity: 0;
-            animation: aparecerTexto 1s ease forwards 1s;
         }
 
-        .contenedor-animacion-arbol {
-            width: 70%;
-            height: 280px;
+        /* Contenedor de la animación */
+        .animacion-arbol {
+            width: 100%;
+            height: 250px;
             position: relative;
-            margin-bottom: 15px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
         }
 
+        /* Semilla */
         .semilla {
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
             width: 20px;
             height: 20px;
-            background: var(--color-tronco);
+            background: #8b4513;
             border-radius: 50% 50% 30% 30%;
             opacity: 0;
-            animation: aparecerSemilla 0.5s ease forwards;
+            animation: semilla 0.5s forwards;
         }
 
+        /* Tronco */
         .tronco {
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleY(0);
-            transform-origin: bottom;
             width: 15px;
             height: 90px;
-            background: var(--color-tronco);
+            background: #8b4513;
             border-radius: 10px 10px 0 0;
-            animation: crecerTronco 1.5s ease forwards 0.8s;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            animation: tronco 1.5s forwards 0.8s;
         }
 
+        /* Ramas */
         .rama-izq, .rama-der {
             position: absolute;
-            background: var(--color-tronco);
+            background: #8b4513;
+            transform: scale(0);
             transform-origin: bottom;
-            scale: 0;
         }
 
         .rama-izq {
             bottom: 70px;
-            left: 35%;
+            left: 40%;
             width: 12px;
-            height: 80px;
+            height: 70px;
             border-radius: 50px 0 0 50px;
             transform: rotate(-40deg);
-            animation: crecerRamas 1.2s ease forwards 2.3s;
+            animation: ramas 1.2s forwards 2.3s;
         }
 
         .rama-der {
             bottom: 70px;
-            right: 35%;
+            right: 40%;
             width: 12px;
-            height: 80px;
+            height: 70px;
             border-radius: 0 50px 50px 0;
             transform: rotate(40deg);
-            animation: crecerRamas 1.2s ease forwards 2.3s;
+            animation: ramas 1.2s forwards 2.3s;
         }
 
-        /* Corazón bien definido y repleto */
-        .corazon-flores {
+        /* CORAZÓN BONITO Y REPLETO DE FLORES */
+        .corazon {
             position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%) scale(0);
-            width: 150px;
-            height: 140px;
+            top: 20px;
+            width: 140px;
+            height: 130px;
+            background: #ffd700; /* Color amarillo dorado */
+            clip-path: path('M70,15 C90,0 125,10 125,40 C125,70 90,105 70,125 C50,105 15,70 15,40 C15,10 50,0 70,15 Z');
             opacity: 0;
-            animation: aparecerCorazon 1.5s ease forwards 3.5s;
-            clip-path: path('M75,20 C95,0 130,15 130,45 C130,75 95,110 75,130 C55,110 20,75 20,45 C20,15 55,0 75,20 Z');
-            background: var(--color-flores);
-            background-image: radial-gradient(circle, #fff 2px, transparent 2px);
-            background-size: 10px 10px;
+            transform: scale(0);
+            animation: corazon 1.5s forwards 3.5s;
+            /* Detalle de flores pequeñas */
+            background-image: radial-gradient(circle, #fff 1.5px, transparent 1.5px);
+            background-size: 8px 8px;
         }
 
-        /* Detalle de flores pequeñas extra */
-        .flor-detalle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #fff;
-            border-radius: 50%;
-            opacity: 0;
-            animation: aparecerFlor 0.3s ease forwards;
-        }
-
-        .flor-detalle:nth-child(1) { top: 30%; left: 45%; animation-delay: 4s; }
-        .flor-detalle:nth-child(2) { top: 30%; left: 55%; animation-delay: 4s; }
-        .flor-detalle:nth-child(3) { top: 40%; left: 35%; animation-delay: 4.1s; }
-        .flor-detalle:nth-child(4) { top: 40%; left: 65%; animation-delay: 4.1s; }
-        .flor-detalle:nth-child(5) { top: 50%; left: 40%; animation-delay: 4.2s; }
-        .flor-detalle:nth-child(6) { top: 50%; left: 60%; animation-delay: 4.2s; }
-        .flor-detalle:nth-child(7) { top: 60%; left: 45%; animation-delay: 4.3s; }
-        .flor-detalle:nth-child(8) { top: 60%; left: 55%; animation-delay: 4.3s; }
-        .flor-detalle:nth-child(9) { top: 25%; left: 50%; animation-delay: 4.4s; }
-        .flor-detalle:nth-child(10) { top: 70%; left: 50%; animation-delay: 4.4s; }
-
-        .contador-amor {
-            width: 100%;
+        /* Contador visible y bien posicionado */
+        .contador {
             font-size: 1.2rem;
             font-weight: bold;
-            color: var(--color-contador);
+            color: #d4af37;
             text-align: center;
-            border-top: 2px solid var(--color-contador);
+            border-top: 2px solid #d4af37;
             padding-top: 10px;
+            margin-top: 15px;
             opacity: 0;
-            animation: aparecerTexto 1s ease forwards 5s;
+            animation: aparecer 1s forwards 5s;
         }
 
-        @keyframes aparecerSemilla { to { opacity: 1; } }
-        @keyframes crecerTronco { to { transform: translateX(-50%) scaleY(1); } }
-        @keyframes crecerRamas { to { scale: 1; } }
-        @keyframes aparecerCorazon { to { transform: translateX(-50%) scale(1); opacity: 1; } }
-        @keyframes aparecerFlor { to { opacity: 1; } }
-        @keyframes aparecerTexto { to { opacity: 1; } }
+        /* Keyframes de animación */
+        @keyframes semilla { to { opacity: 1; } }
+        @keyframes tronco { to { transform: scaleY(1); } }
+        @keyframes ramas { to { transform: rotate(-40deg) scale(1); } }
+        @keyframes ramas { to { transform: rotate(40deg) scale(1); } }
+        @keyframes corazon { to { transform: scale(1); opacity: 1; } }
+        @keyframes aparecer { to { opacity: 1; } }
     </style>
 </head>
 <body>
-    <div class="contenedor-principal">
-        <div class="titulo-dev">Para mi niña hermosa</div>
-        <div class="texto-dedicatorio">
+    <!-- Título visible -->
+    <div class="titulo">Para mi niña hermosa</div>
+
+    <!-- Tarjeta principal -->
+    <div class="tarjeta">
+        <div class="texto">
             Flores Amarillas para el<br>
             amor de mi vida:<br><br>
             Si pudiera elegir un<br>
@@ -199,33 +160,24 @@
             Mi amor por ti comenzó hace...
         </div>
 
-        <div class="contenedor-animacion-arbol">
+        <!-- Animación del árbol -->
+        <div class="animacion-arbol">
             <div class="semilla"></div>
             <div class="tronco"></div>
             <div class="rama-izq"></div>
             <div class="rama-der"></div>
-            <div class="corazon-flores">
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-                <div class="flor-detalle"></div>
-            </div>
+            <div class="corazon"></div>
         </div>
 
-        <div class="contador-amor" id="contador"></div>
+        <!-- Contador de tiempo -->
+        <div class="contador" id="tiempo"></div>
     </div>
 
     <script>
-        // CAMBIA ESTA FECHA POR LA DE TU RELACIÓN
-        const fechaInicio = new Date('2017-05-18T00:00:00');
+        // CAMBIA ESTA FECHA POR LA DE TU RELACIÓN (AAAA-MM-DD)
+        const fechaInicio = new Date('2018-07-18T00:00:00');
 
-        function actualizarContador() {
+        function calcularTiempo() {
             const ahora = new Date();
             const diferencia = ahora - fechaInicio;
 
@@ -234,12 +186,13 @@
             const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-            document.getElementById('contador').textContent = 
+            document.getElementById('tiempo').textContent = 
                 `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
         }
 
-        setInterval(actualizarContador, 1000);
-        actualizarContador();
+        // Actualizar cada segundo
+        setInterval(calcularTiempo, 1000);
+        calcularTiempo();
     </script>
 </body>
 </html>
