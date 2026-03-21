@@ -3,123 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas para ti</title>
+    <title>Flores Amarillas para mi niña hermosa</title>
     <style>
-        /* Variables personalizadas */
         :root {
-            --letter: #f5f0e1; /* Color de fondo del recuadro */
-            --letter-love: auto; /* Altura automática */
-            --color-texto: #333; /* Color del texto */
-            --fondo-pantalla: #e91e63; /* Fondo rosa intenso */
+            --fondo-pantalla: #ff0066; /* Rosa intenso como TikTok */
+            --fondo-texto: #f5f0e1; /* Crema */
+            --color-texto: #222; /* Negro oscuro */
+            --color-contador: #d4af37; /* Dorado */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
             background: var(--fondo-pantalla);
-            background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 15px;
             font-family: 'Arial', sans-serif;
         }
 
-        /* Contenedor principal */
-        .Flores_Amarillas {
+        /* Contenedor principal como en el TikTok */
+        .contenedor-principal {
             position: relative;
-            width: 90%;
-            max-width: 800px;
-            font-size: 2rem;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            height: var(--letter-love);
-            background: var(--letter);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            width: 95%;
+            max-width: 500px; /* Ancho similar a móvil */
+            background: var(--fondo-texto);
+            padding: 25px 20px;
+            border-radius: 10px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-direction: column; /* Texto arriba, imagen abajo */
             align-items: center;
         }
 
-        .texto-izquierda {
-            width: 50%;
-            color: var(--color-texto);
-            line-height: 1.6;
-        }
-
-        .imagen-derecha {
-            width: 45%;
-            text-align: center;
-        }
-
-        .arbol-corazon {
-            max-width: 100%;
-            height: auto;
-            filter: brightness(1.1);
-        }
-
-        .contador {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #d4af37; /* Color dorado */
-            border-top: 2px solid #d4af37;
-            padding-top: 10px;
-        }
-
-        /* Título superior */
         .titulo-dev {
             position: absolute;
-            top: -40px;
+            top: -30px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+            text-shadow: 0 0 8px rgba(0,0,0,0.3);
+        }
+
+        .texto-dedicatorio {
+            width: 100%;
+            color: var(--color-texto);
+            font-size: 1.5rem; /* Tamaño de texto grande como en TikTok */
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .imagen-arbol {
+            width: 60%; /* Tamaño del árbol como en el ejemplo */
+            margin-bottom: 15px;
+        }
+
+        .contador-amor {
+            width: 100%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-contador);
+            text-align: center;
+            border-top: 2px solid var(--color-contador);
+            padding-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="Flores_Amarillas">
-        <div class="titulo-dev">Para mi niña hermosa</div>
-        <div class="texto-izquierda">
-            Flores Amarillas para el amor de mi vida:<br><br>
-            Si pudiera elegir un lugar seguro, sería a tu lado.<br>
-            Cuanto más tiempo estoy contigo, más mi corazón se llena de alegría.<br><br>
-            Mi amor por ti comenzó hace...<br>
-            <div class="contador" id="contadorAmor"></div>
+    <div class="contenedor-principal">
+        <div class="titulo-dev">Para la mejor niña de mi vida</div>
+        <div class="texto-dedicatorio">
+            Flores Amarillas para el<br>
+            amor de mi vida:<br><br>
+            Si pudiera elegir un<br>
+            lugar seguro,<br>
+            sería a tu lado.<br><br>
+            Cuanto más tiempo estoy<br>
+            contigo, más mi corazón<br>
+            se llena de amor.<br><br>
+            Mi amor por ti comenzó hace...
         </div>
-        <div class="imagen-derecha">
-            <!-- Imagen de árbol en forma de corazón con flores amarillas -->
-            <img src="https://cdn-icons-png.flaticon.com/512/100/100903.png" alt="Árbol en forma de corazón con flores amarillas" class="arbol-corazon">
-        </div>
+        <!-- Imagen de árbol en corazón con flores amarillas igual al TikTok -->
+        <img src="https://cdn-icons-png.flaticon.com/512/709/709399.png" alt="Árbol en forma de corazón con flores amarillas" class="imagen-arbol">
+        <div class="contador-amor" id="contador"></div>
     </div>
 
     <script>
-        // Fecha de inicio (CAMBIA ESTA FECHA POR LA DE TU RELACIÓN)
-        const fechaInicio = new Date('2018-05-21T24:32:53'); // Año, mes, día
+        // CAMBIA ESTA FECHA POR LA DE TU RELACIÓN (AAAA-MM-DD)
+        const fechaInicio = new Date('2018-05-18T00:00:00');
 
         function actualizarContador() {
             const ahora = new Date();
             const diferencia = ahora - fechaInicio;
 
-            // Cálculos de tiempo
             const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
             const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-            // Mostrar en pantalla
-            document.getElementById('contadorAmor').textContent = 
+            document.getElementById('contador').textContent = 
                 `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
         }
 
-        // Actualizar cada segundo
         setInterval(actualizarContador, 1000);
-        // Ejecutar la primera vez
         actualizarContador();
     </script>
 </body>
