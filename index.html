@@ -3,257 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Dev 💛</title>
+    <title>Para mí niña hermosa 💛</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             background: #ff0066;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 30px;
             font-family: Arial, sans-serif;
-            overflow: hidden;
         }
 
-        /* Fondo con corazones animados */
-        .fondo {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+        .titulo {
+            color: white;
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px black;
         }
 
-        .corazon-fondo {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(45deg);
-            animation: flotar 8s infinite ease-in-out;
-        }
-
-        .corazon-fondo::before, .corazon-fondo::after {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: inherit;
-            border-radius: 50%;
-        }
-
-        .corazon-fondo::before { top: -15px; left: 0; }
-        .corazon-fondo::after { top: 0; left: -15px; }
-
-        @keyframes flotar {
-            0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.2; }
-            50% { transform: rotate(45deg) translateY(-20px); opacity: 0.4; }
-        }
-
-        /* Tarjeta principal */
         .tarjeta {
             background: #f5f0e1;
-            padding: 40px 30px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 600px;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
 
-        /* Título superior */
-        .titulo-superior {
-            position: absolute;
-            top: 30px;
-            left: 30px;
+        .texto {
+            font-size: 1.2rem;
             color: #222;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-
-        /* Texto izquierdo */
-        .texto-izq {
-            position: absolute;
-            top: 100px;
-            left: 30px;
-            color: #222;
-            font-size: 1rem;
             line-height: 1.8;
-            width: 220px;
+            margin-bottom: 30px;
         }
 
-        /* Pie de texto */
-        .pie-texto {
-            position: absolute;
-            top: 250px;
-            left: 30px;
-            color: #222;
-            font-size: 1.1rem;
-            font-weight: bold;
+        .arbol-animado {
+            width: 250px;
+            height: 230px;
+            margin: 0 auto 30px auto;
+            position: relative;
         }
 
-        /* Árbol corazón de girasoles */
-        .arbol {
-            position: absolute;
-            right: 20px;
-            top: 40px;
-            width: 280px;
-            height: 250px;
-        }
-
-        /* Tronco */
         .tronco {
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 15px;
-            height: 40px;
+            height: 80px;
             background: #8b4513;
             border-radius: 5px 5px 0 0;
         }
 
-        /* Corazón de girasoles */
-        .corazon {
+        .ramas {
             position: absolute;
-            bottom: 35px;
+            bottom: 70px;
             left: 50%;
             transform: translateX(-50%);
-            width: 220px;
-            height: 200px;
-            clip-path: path('M110,30 C150,0 220,40 220,90 C220,150 160,200 110,200 C60,200 0,150 0,90 C0,40 70,0 110,30 Z');
-            background: #ffd700;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: space-around;
-            justify-content: space-around;
-            padding: 10px;
+            width: 200px;
+            height: 160px;
         }
 
-        /* Girasoles pequeños */
         .girasol {
-            width: 12px;
-            height: 12px;
-            background: #ffcc00;
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .girasol::before {
-            content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 5px;
-            height: 5px;
-            background: #8b4513;
-            border-radius: 50%;
+            font-size: 8px;
+            color: #ffd700;
+            text-shadow: 0 0 2px black;
+            opacity: 0;
+            animation: aparecer 0.5s forwards;
         }
 
-        /* Texto tiempo */
-        .texto-tiempo {
-            position: absolute;
-            bottom: 40px;
-            left: 30px;
-            color: #222;
-            font-size: 1.1rem;
+        /* Posiciones de girasoles que formaban el corazón bien */
+        .girasol:nth-child(1) {top:10%;left:50%;animation-delay:4s;}
+        .girasol:nth-child(2) {top:15%;left:45%;animation-delay:4.1s;}
+        .girasol:nth-child(3) {top:15%;left:55%;animation-delay:4.1s;}
+        .girasol:nth-child(4) {top:20%;left:40%;animation-delay:4.2s;}
+        .girasol:nth-child(5) {top:20%;left:60%;animation-delay:4.2s;}
+        .girasol:nth-child(6) {top:25%;left:35%;animation-delay:4.3s;}
+        .girasol:nth-child(7) {top:25%;left:65%;animation-delay:4.3s;}
+        .girasol:nth-child(8) {top:30%;left:30%;animation-delay:4.4s;}
+        .girasol:nth-child(9) {top:30%;left:70%;animation-delay:4.4s;}
+        .girasol:nth-child(10){top:35%;left:25%;animation-delay:4.5s;}
+        .girasol:nth-child(11){top:35%;left:75%;animation-delay:4.5s;}
+        .girasol:nth-child(12){top:40%;left:20%;animation-delay:4.6s;}
+        .girasol:nth-child(13){top:40%;left:80%;animation-delay:4.6s;}
+        .girasol:nth-child(14){top:45%;left:15%;animation-delay:4.7s;}
+        .girasol:nth-child(15){top:45%;left:85%;animation-delay:4.7s;}
+        .girasol:nth-child(16){top:50%;left:20%;animation-delay:4.8s;}
+        .girasol:nth-child(17){top:50%;left:80%;animation-delay:4.8s;}
+        .girasol:nth-child(18){top:55%;left:25%;animation-delay:4.9s;}
+        .girasol:nth-child(19){top:55%;left:75%;animation-delay:4.9s;}
+        .girasol:nth-child(20){top:60%;left:30%;animation-delay:5s;}
+        .girasol:nth-child(21){top:60%;left:70%;animation-delay:5s;}
+        .girasol:nth-child(22){top:65%;left:35%;animation-delay:5.1s;}
+        .girasol:nth-child(23){top:65%;left:65%;animation-delay:5.1s;}
+        .girasol:nth-child(24){top:70%;left:45%;animation-delay:5.2s;}
+        .girasol:nth-child(25){top:70%;left:55%;animation-delay:5.2s;}
+        .girasol:nth-child(26){top:75%;left:50%;animation-delay:5.3s;}
+
+        @keyframes aparecer {
+            to { opacity: 1; }
         }
 
-        /* Contador */
         .contador {
-            position: absolute;
-            bottom: 15px;
-            left: 30px;
-            color: #d4af37;
-            font-size: 1.2rem;
+            text-align: center;
+            color: #ffd700;
+            font-size: 1.3rem;
             font-weight: bold;
+            margin-top: 20px;
         }
 
-        /* Título superior derecho */
-        .alex-dev {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #333;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        /* Animación girasoles */
-        @keyframes parpadear {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .girasol { animation: parpadear 2s infinite; }
-        .girasol:nth-child(odd) { animation-delay: 0.5s; }
-
-        /* Crear corazones de fondo */
-        @for $i from 1 to 30 {
-            .corazon-fondo:nth-child(#{$i}) {
-                left: #{random(100)}%;
-                top: #{random(100)}%;
-                animation-delay: #{random(10)}s;
-            }
+        /* Animaciones del árbol */
+        @keyframes aparecer {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="fondo">
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
-    </div>
-
+    <div class="titulo">Para mí niña hermosa 💛</div>
+    
     <div class="tarjeta">
-        <div class="alex-dev">ALEX DEV</div>
-        <div class="titulo-superior">Flores Amarillas para el<br>amor de mi vida:</div>
-        
-        <div class="texto-izq">
-            Si pudiera elegir un<br>
-            lugar seguro,<br>
+        <div class="texto">
+            Si pudiera elegir un lugar seguro,<br>
             sería a tu lado.<br><br>
-            Cuanto más tiempo estoy<br>
-            contigo más te amo.
+            Cuanto más tiempo estoy contigo,<br>
+            más te amo.
         </div>
-        <div class="pie-texto">— I Love You!</div>
 
-        <div class="arbol">
+        <div class="arbol-animado">
             <div class="tronco"></div>
-            <div class="corazon">
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+            <div class="ramas">
+                <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
+        <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
+        <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
+        <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
+        <div class="girasol">🌻</div>
             </div>
         </div>
 
-        <div class="texto-tiempo">Mi amor por ti comenzó hace...</div>
-        <div class="contador" id="tiempo">3326 días 20 horas 10 minutos 38 segundos</div>
+        <div class="contador" id="tiempo"></div>
     </div>
 
     <script>
-        // Fecha de inicio (CAMBIA ESTA FECHA POR LA DE USTEDES)
-        const fechaInicio = new Date('2017-02-10');
+        // Fecha de inicio (cámbiala por la de USTEDES)
+        const fechaInicio = new Date('2014-02-10');
         
         function actualizarTiempo() {
             const ahora = new Date();
@@ -264,7 +156,7 @@
             const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
             const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-            document.getElementById('tiempo').textContent = `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
+            document.getElementById('tiempo').textContent = `Mi amor por ti comenzó hace ${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
         }
 
         setInterval(actualizarTiempo, 1000);
