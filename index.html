@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi niña hermosa💛</title>
+    <title>Alex Dev 💛</title>
     <style>
         * {
             margin: 0;
@@ -18,120 +18,237 @@
             justify-content: center;
             align-items: center;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
-        /* Tarjeta principal */
-        .tarjeta {
-            background: #f5f0e1;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 600px;
-            position: relative;
-        }
-
-        /* Título superior */
-        .titulo-superior {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #333;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        /* Texto de la tarjeta */
-        .texto-izq {
-            position: absolute;
-        top: 80px;
-        left: 30px;
-        width: 250px;
-        color: #222;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        }
-
-        /* Árbol corazón de girasoles */
-        .arbol-corazon {
-            position: absolute;
-            right: 30px;
-            top: 60px;
-            width: 280px;
-            height: 250px;
-        }
-
-        /* Imagen del corazón de girasoles (usamos una imagen base para que quede igual) */
-        .corazon-img {
-            width: 100%;
-            height: 100%;
-            background-image: url('https://i.imgur.com/9QZ7X8y.png'); /* Imagen igual al ejemplo */
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* Contador de tiempo */
-        .contador-tiempo {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #d4af37;
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        /* Texto "Mi amor por ti comenzó hace..." */
-        .texto-tiempo {
-            position: absolute;
-            bottom: 60px;
-            left: 30px;
-            color: #222;
-            font-size: 1.2rem;
-        }
-
-        /* Efecto de fondo con corazones */
-        .fondo-corazones {
+        /* Fondo con corazones animados */
+        .fondo {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.imgur.com/5RjK7QH.png');
-            background-size: 50px;
-            opacity: 0.2;
             z-index: -1;
         }
 
-        /* Pie de página "ALEX DEV" */
-        .pie-pagina {
+        .corazon-fondo {
             position: absolute;
-            top: 10px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            animation: flotar 8s infinite ease-in-out;
+        }
+
+        .corazon-fondo::before, .corazon-fondo::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        .corazon-fondo::before { top: -15px; left: 0; }
+        .corazon-fondo::after { top: 0; left: -15px; }
+
+        @keyframes flotar {
+            0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.2; }
+            50% { transform: rotate(45deg) translateY(-20px); opacity: 0.4; }
+        }
+
+        /* Tarjeta principal */
+        .tarjeta {
+            background: #f5f0e1;
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        /* Título superior */
+        .titulo-superior {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: #222;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Texto izquierdo */
+        .texto-izq {
+            position: absolute;
+            top: 100px;
+            left: 30px;
+            color: #222;
+            font-size: 1rem;
+            line-height: 1.8;
+            width: 220px;
+        }
+
+        /* Pie de texto */
+        .pie-texto {
+            position: absolute;
+            top: 250px;
+            left: 30px;
+            color: #222;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* Árbol corazón de girasoles */
+        .arbol {
+            position: absolute;
+            right: 20px;
+            top: 40px;
+            width: 280px;
+            height: 250px;
+        }
+
+        /* Tronco */
+        .tronco {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 40px;
+            background: #8b4513;
+            border-radius: 5px 5px 0 0;
+        }
+
+        /* Corazón de girasoles */
+        .corazon {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            height: 200px;
+            clip-path: path('M110,30 C150,0 220,40 220,90 C220,150 160,200 110,200 C60,200 0,150 0,90 C0,40 70,0 110,30 Z');
+            background: #ffd700;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        /* Girasoles pequeños */
+        .girasol {
+            width: 12px;
+            height: 12px;
+            background: #ffcc00;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .girasol::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 5px;
+            height: 5px;
+            background: #8b4513;
+            border-radius: 50%;
+        }
+
+        /* Texto tiempo */
+        .texto-tiempo {
+            position: absolute;
+            bottom: 40px;
+            left: 30px;
+            color: #222;
+            font-size: 1.1rem;
+        }
+
+        /* Contador */
+        .contador {
+            position: absolute;
+            bottom: 15px;
+            left: 30px;
+            color: #d4af37;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Título superior derecho */
+        .alex-dev {
+            position: absolute;
+            top: 20px;
             right: 30px;
             color: #333;
             font-size: 1.5rem;
             font-weight: bold;
         }
+
+        /* Animación girasoles */
+        @keyframes parpadear {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .girasol { animation: parpadear 2s infinite; }
+        .girasol:nth-child(odd) { animation-delay: 0.5s; }
+
+        /* Crear corazones de fondo */
+        @for $i from 1 to 30 {
+            .corazon-fondo:nth-child(#{$i}) {
+                left: #{random(100)}%;
+                top: #{random(100)}%;
+                animation-delay: #{random(10)}s;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="fondo-corazones"></div>
+    <div class="fondo">
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+        <div class="corazon-fondo"></div><div class="corazon-fondo"></div><div class="corazon-fondo"></div>
+    </div>
+
     <div class="tarjeta">
-        <div class="pie-pagina">ALEX DEV</div>
-        <div class="titulo-superior">Flores Amarillas para el amor de mi vida:</div>
+        <div class="alex-dev">ALEX DEV</div>
+        <div class="titulo-superior">Flores Amarillas para el<br>amor de mi vida:</div>
+        
         <div class="texto-izq">
-            Flores Amarillas para el<br>
-            amor de mi vida:<br><br>
             Si pudiera elegir un<br>
             lugar seguro,<br>
             sería a tu lado.<br><br>
             Cuanto más tiempo estoy<br>
             contigo más te amo.
         </div>
-        <div class="texto-tiempo">Mi amor por ti comenzó hace...</div>
-        <div class="arbol-corazon">
-            <div class="corazon-img"></div>
+        <div class="pie-texto">— I Love You!</div>
+
+        <div class="arbol">
+            <div class="tronco"></div>
+            <div class="corazon">
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
+            </div>
         </div>
-        <div class="contador-tiempo" id="tiempo">365 días 00 horas 00 minutos 00 segundos</div>
+
+        <div class="texto-tiempo">Mi amor por ti comenzó hace...</div>
+        <div class="contador" id="tiempo">3326 días 20 horas 10 minutos 38 segundos</div>
     </div>
 
     <script>
@@ -150,7 +267,6 @@
             document.getElementById('tiempo').textContent = `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
         }
 
-        // Actualizar cada segundo
         setInterval(actualizarTiempo, 1000);
         actualizarTiempo();
     </script>
