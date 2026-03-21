@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas para ti</title>
+    <title>Sorpresa para mi amor 💛</title> <!-- Título cambiado para forzar actualización -->
     <style>
         body {
             background: #ff0066;
@@ -58,7 +58,7 @@
             animation: semilla 0.5s forwards;
         }
 
-        /* Tronco y ramas bien posicionadas */
+        /* Tronco y ramas en forma de "V" */
         .tronco {
             position: absolute;
             bottom: 0;
@@ -73,31 +73,31 @@
 
         .rama-izq {
             position: absolute;
-            bottom: 70px;
-            left: 42%;
+            bottom: 75px; /* Más arriba para juntar */
+            left: 47%; /* Más cerca del centro */
             width: 12px;
-            height: 70px;
+            height: 60px; /* Más corta */
             background: #8b4513;
             border-radius: 50px 0 0 50px;
-            transform: rotate(-35deg) scale(0);
+            transform: rotate(-25deg) scale(0);
             transform-origin: bottom;
-            animation: ramas 1.2s forwards 2.3s;
+            animation: ramasIzq 1.2s forwards 2.3s;
         }
 
         .rama-der {
             position: absolute;
-            bottom: 70px;
-            right: 42%;
+            bottom: 75px; /* Más arriba para juntar */
+            right: 47%; /* Más cerca del centro */
             width: 12px;
-            height: 70px;
+            height: 60px; /* Más corta */
             background: #8b4513;
             border-radius: 0 50px 50px 0;
-            transform: rotate(35deg) scale(0);
+            transform: rotate(25deg) scale(0);
             transform-origin: bottom;
-            animation: ramas 1.2s forwards 2.3s;
+            animation: ramasDer 1.2s forwards 2.3s;
         }
 
-        /* Contenedor del corazón de girasoles */
+        /* Contenedor del corazón */
         .corazon-contenedor {
             position: absolute;
             top: 20px;
@@ -107,43 +107,43 @@
             animation: aparecerContenedor 0.5s forwards 3.5s;
         }
 
-        /* Girasol individual (emoji como base) */
+        /* Girasoles que aparecen AL AZAR */
         .girasol {
             position: absolute;
-            font-size: 12px; /* Tamaño de los girasoles */
+            font-size: 12px;
             opacity: 0;
             transform: scale(0);
             animation: crecerGirasol 0.5s forwards;
         }
 
-        /* Posicionar cada girasol para formar el corazón */
-        .girasol:nth-child(1) { top: 40%; left: 50%; animation-delay: 4s; }
-        .girasol:nth-child(2) { top: 35%; left: 45%; animation-delay: 4.1s; }
+        /* Posiciones del corazón + delays aleatorios */
+        .girasol:nth-child(1) { top: 40%; left: 50%; animation-delay: 4.2s; }
+        .girasol:nth-child(2) { top: 35%; left: 45%; animation-delay: 4.7s; }
         .girasol:nth-child(3) { top: 35%; left: 55%; animation-delay: 4.1s; }
-        .girasol:nth-child(4) { top: 30%; left: 40%; animation-delay: 4.2s; }
-        .girasol:nth-child(5) { top: 30%; left: 60%; animation-delay: 4.2s; }
-        .girasol:nth-child(6) { top: 25%; left: 35%; animation-delay: 4.3s; }
-        .girasol:nth-child(7) { top: 25%; left: 65%; animation-delay: 4.3s; }
+        .girasol:nth-child(4) { top: 30%; left: 40%; animation-delay: 4.9s; }
+        .girasol:nth-child(5) { top: 30%; left: 60%; animation-delay: 4.3s; }
+        .girasol:nth-child(6) { top: 25%; left: 35%; animation-delay: 4.5s; }
+        .girasol:nth-child(7) { top: 25%; left: 65%; animation-delay: 4.8s; }
         .girasol:nth-child(8) { top: 20%; left: 40%; animation-delay: 4.4s; }
-        .girasol:nth-child(9) { top: 20%; left: 60%; animation-delay: 4.4s; }
-        .girasol:nth-child(10) { top: 15%; left: 45%; animation-delay: 4.5s; }
+        .girasol:nth-child(9) { top: 20%; left: 60%; animation-delay: 4.6s; }
+        .girasol:nth-child(10) { top: 15%; left: 45%; animation-delay: 4.0s; }
         .girasol:nth-child(11) { top: 15%; left: 55%; animation-delay: 4.5s; }
-        .girasol:nth-child(12) { top: 10%; left: 50%; animation-delay: 4.6s; }
-        .girasol:nth-child(13) { top: 45%; left: 35%; animation-delay: 4.2s; }
-        .girasol:nth-child(14) { top: 45%; left: 65%; animation-delay: 4.2s; }
-        .girasol:nth-child(15) { top: 50%; left: 30%; animation-delay: 4.3s; }
-        .girasol:nth-child(16) { top: 50%; left: 70%; animation-delay: 4.3s; }
-        .girasol:nth-child(17) { top: 55%; left: 35%; animation-delay: 4.4s; }
-        .girasol:nth-child(18) { top: 55%; left: 65%; animation-delay: 4.4s; }
-        .girasol:nth-child(19) { top: 60%; left: 40%; animation-delay: 4.5s; }
-        .girasol:nth-child(20) { top: 60%; left: 60%; animation-delay: 4.5s; }
-        .girasol:nth-child(21) { top: 65%; left: 45%; animation-delay: 4.6s; }
-        .girasol:nth-child(22) { top: 65%; left: 55%; animation-delay: 4.6s; }
-        .girasol:nth-child(23) { top: 70%; left: 50%; animation-delay: 4.7s; }
-        .girasol:nth-child(24) { top: 25%; left: 50%; animation-delay: 4.3s; }
-        .girasol:nth-child(25) { top: 35%; left: 50%; animation-delay: 4.1s; }
+        .girasol:nth-child(12) { top: 10%; left: 50%; animation-delay: 4.8s; }
+        .girasol:nth-child(13) { top: 45%; left: 35%; animation-delay: 4.3s; }
+        .girasol:nth-child(14) { top: 45%; left: 65%; animation-delay: 4.6s; }
+        .girasol:nth-child(15) { top: 50%; left: 30%; animation-delay: 4.1s; }
+        .girasol:nth-child(16) { top: 50%; left: 70%; animation-delay: 4.9s; }
+        .girasol:nth-child(17) { top: 55%; left: 35%; animation-delay: 4.7s; }
+        .girasol:nth-child(18) { top: 55%; left: 65%; animation-delay: 4.2s; }
+        .girasol:nth-child(19) { top: 60%; left: 40%; animation-delay: 4.4s; }
+        .girasol:nth-child(20) { top: 60%; left: 60%; animation-delay: 4.0s; }
+        .girasol:nth-child(21) { top: 65%; left: 45%; animation-delay: 4.8s; }
+        .girasol:nth-child(22) { top: 65%; left: 55%; animation-delay: 4.3s; }
+        .girasol:nth-child(23) { top: 70%; left: 50%; animation-delay: 4.6s; }
+        .girasol:nth-child(24) { top: 25%; left: 50%; animation-delay: 4.1s; }
+        .girasol:nth-child(25) { top: 35%; left: 50%; animation-delay: 4.9s; }
         .girasol:nth-child(26) { top: 45%; left: 50%; animation-delay: 4.2s; }
-        .girasol:nth-child(27) { top: 55%; left: 50%; animation-delay: 4.4s; }
+        .girasol:nth-child(27) { top: 55%; left: 50%; animation-delay: 4.7s; }
 
         .contador {
             font-size: 1.2rem;
@@ -157,18 +157,18 @@
             animation: aparecer 1s forwards 5.5s;
         }
 
-        /* Keyframes */
+        /* Keyframes específicos para cada rama */
         @keyframes semilla { to { opacity: 1; } }
         @keyframes tronco { to { transform: scaleY(1); } }
-        @keyframes ramas { to { transform: rotate(-35deg) scale(1); } }
-        @keyframes ramas { to { transform: rotate(35deg) scale(1); } }
+        @keyframes ramasIzq { to { transform: rotate(-25deg) scale(1); } }
+        @keyframes ramasDer { to { transform: rotate(25deg) scale(1); } }
         @keyframes aparecerContenedor { to { opacity: 1; } }
         @keyframes crecerGirasol { to { transform: scale(1); opacity: 1; } }
         @keyframes aparecer { to { opacity: 1; } }
     </style>
 </head>
 <body>
-    <div class="titulo">Para mi niña hermosa</div>
+    <div class="titulo">Para mi niña hermosa/div>
 
     <div class="tarjeta">
         <div class="texto">
@@ -179,7 +179,7 @@
             sería a tu lado.<br><br>
             Cuanto más tiempo estoy<br>
             contigo, mi corazón<br>
-            se llena más de amor.<br><br>
+            se llena de amor.<br><br>
             Mi amor por ti comenzó hace...
         </div>
 
@@ -189,7 +189,7 @@
             <div class="rama-izq"></div>
             <div class="rama-der"></div>
             
-            <!-- Corazón formado por girasoles -->
+            <!-- Corazón de girasoles con aparición aleatoria -->
             <div class="corazon-contenedor">
                 <div class="girasol">🌻</div>
                 <div class="girasol">🌻</div>
@@ -225,7 +225,7 @@
     </div>
 
     <script>
-        const fechaInicio = new Date('2017-02-12T00:00:00');
+        const fechaInicio = new Date('2017-02-15T00:00:00');
 
         function calcularTiempo() {
             const ahora = new Date();
