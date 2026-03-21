@@ -20,15 +20,15 @@
             text-align: center;
         }
 
-        /* --- LA GRAN ANIMACIÓN DEL ÁRBOL --- */
+        /* --- CONTENEDOR DEL ÁRBOL --- */
         .tree-container {
             position: relative;
-            width: 300px; 
-            height: 300px;
+            width: 320px; 
+            height: 320px;
             margin-bottom: 20px;
         }
 
-        /* 1. Semilla/Punto de Crecimiento */
+        /* 1. Semilla */
         .seed {
             position: absolute;
             width: 20px;
@@ -41,21 +41,21 @@
             animation: seedToTrunk 1.5s ease-out forwards;
         }
 
-        /* 2. Tronco Creciendo */
+        /* 2. Tronco Grueso y Oscuro */
         .trunk {
             position: absolute;
-            width: 10px;
-            background: #5d4037;
+            width: 12px;
+            background: #3E2723;
             bottom: 0;
-            left: calc(50% - 5px);
-            border-radius: 5px;
+            left: calc(50% - 6px);
+            border-radius: 6px;
             height: 0;
             opacity: 0;
             z-index: 5;
-            animation: growTrunk 2s ease-out 1.5s forwards;
+            animation: growTrunk 1.8s ease-out 1.5s forwards;
         }
 
-        /* 3. Cluster de girasoles - CORAZÓN PERFECTO Y TUPIDO */
+        /* 3. Cluster de Girasoles - CORAZÓN PERFECTO */
         .flower-cluster {
             position: absolute;
             width: 100%;
@@ -63,97 +63,78 @@
             top: 0;
             left: 0;
             opacity: 0;
-            animation: showFlowers 1s ease-in 3.5s forwards;
+            animation: showFlowers 1s ease-in 3.3s forwards;
         }
 
+        /* Girasol con pétalos definidos */
         .flower {
             position: absolute;
-            width: 15px;
-            height: 15px;
-            background: #ffeb3b; 
+            width: 16px;
+            height: 16px;
+            background: #FFEB3B;
             border-radius: 50%;
-            box-shadow: inset 0 0 2px rgba(0,0,0,0.4);
-            animation: flowerPop 0.5s ease-out forwards;
+            box-shadow: 0 0 6px #FFD700;
             opacity: 0;
+            animation: flowerPop 0.4s ease-out forwards;
         }
         
+        /* Centro café oscuro */
         .flower::after {
             content: '';
             position: absolute;
-            top: 4px;
-            left: 4px;
-            width: 7px;
-            height: 7px;
-            background: #3e2723;
+            top: 3px;
+            left: 3px;
+            width: 10px;
+            height: 10px;
+            background: #3E2723;
             border-radius: 50%;
         }
 
-        /* --- POSICIONES DE +60 GIRASOLES PARA CORAZÓN PERFECTO --- */
-        /* PARTE SUPERIOR DEL CORAZÓN */
-        .f01 { top: 15%; left: 50%; animation-delay: 3.5s; }
-        .f02 { top: 18%; left: 45%; animation-delay: 3.55s; }
-        .f03 { top: 18%; left: 55%; animation-delay: 3.55s; }
-        .f04 { top: 20%; left: 40%; animation-delay: 3.6s; }
-        .f05 { top: 20%; left: 60%; animation-delay: 3.6s; }
-        .f06 { top: 22%; left: 35%; animation-delay: 3.65s; }
-        .f07 { top: 22%; left: 65%; animation-delay: 3.65s; }
-        .f08 { top: 25%; left: 30%; animation-delay: 3.7s; }
-        .f09 { top: 25%; left: 70%; animation-delay: 3.7s; }
-        /* LATERAL IZQUIERDO */
-        .f10 { top: 30%; left: 35%; animation-delay: 3.75s; }
-        .f11 { top: 35%; left: 32%; animation-delay: 3.8s; }
-        .f12 { top: 40%; left: 30%; animation-delay: 3.85s; }
-        .f13 { top: 45%; left: 28%; animation-delay: 3.9s; }
-        .f14 { top: 50%; left: 27%; animation-delay: 3.95s; }
-        .f15 { top: 55%; left: 30%; animation-delay: 4s; }
-        .f16 { top: 60%; left: 33%; animation-delay: 4.05s; }
-        .f17 { top: 65%; left: 37%; animation-delay: 4.1s; }
-        .f18 { top: 70%; left: 42%; animation-delay: 4.15s; }
-        /* LATERAL DERECHO */
-        .f19 { top: 30%; left: 65%; animation-delay: 3.75s; }
-        .f20 { top: 35%; left: 68%; animation-delay: 3.8s; }
-        .f21 { top: 40%; left: 70%; animation-delay: 3.85s; }
-        .f22 { top: 45%; left: 72%; animation-delay: 3.9s; }
-        .f23 { top: 50%; left: 73%; animation-delay: 3.95s; }
-        .f24 { top: 55%; left: 70%; animation-delay: 4s; }
-        .f25 { top: 60%; left: 67%; animation-delay: 4.05s; }
-        .f26 { top: 65%; left: 63%; animation-delay: 4.1s; }
-        .f27 { top: 70%; left: 58%; animation-delay: 4.15s; }
-        /* CENTRO DEL CORAZÓN */
-        .f28 { top: 28%; left: 50%; animation-delay: 3.6s; }
-        .f29 { top: 32%; left: 50%; animation-delay: 3.7s; }
-        .f30 { top: 36%; left: 50%; animation-delay: 3.8s; }
-        .f31 { top: 40%; left: 50%; animation-delay: 3.85s; }
-        .f32 { top: 44%; left: 50%; animation-delay: 3.9s; }
-        .f33 { top: 48%; left: 50%; animation-delay: 3.95s; }
-        .f34 { top: 52%; left: 50%; animation-delay: 4s; }
-        .f35 { top: 56%; left: 50%; animation-delay: 4.05s; }
-        .f36 { top: 60%; left: 50%; animation-delay: 4.1s; }
-        .f37 { top: 64%; left: 50%; animation-delay: 4.15s; }
-        .f38 { top: 68%; left: 50%; animation-delay: 4.2s; }
-        /* RELLENO EXTRA PARA TUPIDEZ */
-        .f39 { top: 25%; left: 45%; animation-delay: 3.7s; }
-        .f40 { top: 25%; left: 55%; animation-delay: 3.7s; }
-        .f41 { top: 30%; left: 45%; animation-delay: 3.8s; }
-        .f42 { top: 30%; left: 55%; animation-delay: 3.8s; }
-        .f43 { top: 35%; left: 45%; animation-delay: 3.9s; }
-        .f44 { top: 35%; left: 55%; animation-delay: 3.9s; }
-        .f45 { top: 40%; left: 45%; animation-delay: 4s; }
-        .f46 { top: 40%; left: 55%; animation-delay: 4s; }
-        .f47 { top: 45%; left: 45%; animation-delay: 4.05s; }
-        .f48 { top: 45%; left: 55%; animation-delay: 4.05s; }
-        .f49 { top: 50%; left: 45%; animation-delay: 4.1s; }
-        .f50 { top: 50%; left: 55%; animation-delay: 4.1s; }
-        .f51 { top: 55%; left: 45%; animation-delay: 4.15s; }
-        .f52 { top: 55%; left: 55%; animation-delay: 4.15s; }
-        .f53 { top: 60%; left: 45%; animation-delay: 4.2s; }
-        .f54 { top: 60%; left: 55%; animation-delay: 4.2s; }
-        .f55 { top: 65%; left: 45%; animation-delay: 4.25s; }
-        .f56 { top: 65%; left: 55%; animation-delay: 4.25s; }
-        .f57 { top: 22%; left: 42%; animation-delay: 3.6s; }
-        .f58 { top: 22%; left: 58%; animation-delay: 3.6s; }
-        .f59 { top: 32%; left: 45%; animation-delay: 3.85s; }
-        .f60 { top: 32%; left: 55%; animation-delay: 3.85s; }
+        /* --- POSICIONES PARA CORAZÓN PERFECTO --- */
+        /* Parte Superior del Corazón */
+        .f01 { top: 18%; left: 50%; animation-delay: 3.3s; }
+        .f02 { top: 22%; left: 42%; animation-delay: 3.4s; }
+        .f03 { top: 22%; left: 58%; animation-delay: 3.4s; }
+        .f04 { top: 25%; left: 38%; animation-delay: 3.5s; }
+        .f05 { top: 25%; left: 62%; animation-delay: 3.5s; }
+        .f06 { top: 28%; left: 35%; animation-delay: 3.6s; }
+        .f07 { top: 28%; left: 65%; animation-delay: 3.6s; }
+        
+        /* Mitad del Corazón */
+        .f08 { top: 32%; left: 32%; animation-delay: 3.7s; }
+        .f09 { top: 32%; left: 68%; animation-delay: 3.7s; }
+        .f10 { top: 36%; left: 30%; animation-delay: 3.8s; }
+        .f11 { top: 36%; left: 70%; animation-delay: 3.8s; }
+        .f12 { top: 40%; left: 28%; animation-delay: 3.9s; }
+        .f13 { top: 40%; left: 72%; animation-delay: 3.9s; }
+        .f14 { top: 45%; left: 30%; animation-delay: 4s; }
+        .f15 { top: 45%; left: 70%; animation-delay: 4s; }
+        .f16 { top: 50%; left: 33%; animation-delay: 4.1s; }
+        .f17 { top: 50%; left: 67%; animation-delay: 4.1s; }
+        .f18 { top: 55%; left: 37%; animation-delay: 4.2s; }
+        .f19 { top: 55%; left: 63%; animation-delay: 4.2s; }
+        .f20 { top: 60%; left: 42%; animation-delay: 4.3s; }
+        .f21 { top: 60%; left: 58%; animation-delay: 4.3s; }
+        .f22 { top: 65%; left: 50%; animation-delay: 4.4s; }
+        
+        /* Relleno Interno del Corazón */
+        .f23 { top: 30%; left: 50%; animation-delay: 3.6s; }
+        .f24 { top: 35%; left: 50%; animation-delay: 3.7s; }
+        .f25 { top: 40%; left: 50%; animation-delay: 3.8s; }
+        .f26 { top: 45%; left: 50%; animation-delay: 3.9s; }
+        .f27 { top: 50%; left: 50%; animation-delay: 4s; }
+        .f28 { top: 55%; left: 50%; animation-delay: 4.1s; }
+        .f29 { top: 25%; left: 50%; animation-delay: 3.5s; }
+        .f30 { top: 32%; left: 45%; animation-delay: 3.7s; }
+        .f31 { top: 32%; left: 55%; animation-delay: 3.7s; }
+        .f32 { top: 38%; left: 45%; animation-delay: 3.8s; }
+        .f33 { top: 38%; left: 55%; animation-delay: 3.8s; }
+        .f34 { top: 42%; left: 45%; animation-delay: 3.9s; }
+        .f35 { top: 42%; left: 55%; animation-delay: 3.9s; }
+        .f36 { top: 48%; left: 45%; animation-delay: 4s; }
+        .f37 { top: 48%; left: 55%; animation-delay: 4s; }
+        .f38 { top: 52%; left: 45%; animation-delay: 4.1s; }
+        .f39 { top: 52%; left: 55%; animation-delay: 4.1s; }
 
         /* --- KEYFRAMES --- */
         @keyframes seedToTrunk {
@@ -165,51 +146,49 @@
         @keyframes growTrunk {
             0% { height: 0; opacity: 0; }
             20% { opacity: 1; }
-            100% { height: 150px; opacity: 1; }
+            100% { height: 140px; opacity: 1; }
         }
 
         @keyframes showFlowers {
-            0% { opacity: 0; transform: scale(0.8); }
+            0% { opacity: 0; transform: scale(0.9); }
             100% { opacity: 1; transform: scale(1); }
         }
 
         @keyframes flowerPop {
             0% { transform: scale(0); opacity: 0; }
-            80% { transform: scale(1.2); opacity: 1; }
+            80% { transform: scale(1.1); opacity: 1; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- TARJETA DE TEXTO (IGUAL QUE ESTÁ) --- */
+        /* --- TARJETA DE TEXTO --- */
         .text-card {
-            background-color: rgba(255, 255, 255, 0.05); 
-            border: 2px solid #ffd700;
+            background-color: rgba(0,0,0,0.6);
+            border: 2px solid #FFD700;
             border-radius: 15px;
             padding: 20px;
             width: 90%;
-            max-width: 400px;
-            box-shadow: 0 0 15px rgba(255, 215, 59, 0.5);
+            max-width: 420px;
+            box-shadow: 0 0 20px rgba(255,215,0,0.4);
         }
 
         h1 {
-            color: #ffeb3b;
-            font-size: 1.4rem;
-            margin-top: 0;
-            margin-bottom: 10px;
+            color: #FFEB3B;
+            font-size: 1.6rem;
+            margin: 0 0 10px 0;
         }
 
         p {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 1rem;
+            line-height: 1.6;
             margin: 5px 0;
         }
 
         .heart {
-            color: #ff4081;
+            color: #FF4081;
             font-weight: bold;
             margin-top: 15px;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
-
     </style>
 </head>
 <body>
@@ -226,11 +205,7 @@
             <div class="flower f21"></div><div class="flower f22"></div><div class="flower f23"></div><div class="flower f24"></div><div class="flower f25"></div>
             <div class="flower f26"></div><div class="flower f27"></div><div class="flower f28"></div><div class="flower f29"></div><div class="flower f30"></div>
             <div class="flower f31"></div><div class="flower f32"></div><div class="flower f33"></div><div class="flower f34"></div><div class="flower f35"></div>
-            <div class="flower f36"></div><div class="flower f37"></div><div class="flower f38"></div><div class="flower f39"></div><div class="flower f40"></div>
-            <div class="flower f41"></div><div class="flower f42"></div><div class="flower f43"></div><div class="flower f44"></div><div class="flower f45"></div>
-            <div class="flower f46"></div><div class="flower f47"></div><div class="flower f48"></div><div class="flower f49"></div><div class="flower f50"></div>
-            <div class="flower f51"></div><div class="flower f52"></div><div class="flower f53"></div><div class="flower f54"></div><div class="flower f55"></div>
-            <div class="flower f56"></div><div class="flower f57"></div><div class="flower f58"></div><div class="flower f59"></div><div class="flower f60"></div>
+            <div class="flower f36"></div><div class="flower f37"></div><div class="flower f38"></div><div class="flower f39"></div>
         </div>
     </div>
 
