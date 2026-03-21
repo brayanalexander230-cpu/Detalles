@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para mi Niña</title>
     <style>
-        :root {
-            --fondo: #000;
-            --amarillo: #ffeb3b;
-            --rosa: #ff4081;
-        }
-
+        /* --- ESTILOS (CSS) --- */
+        
+        /* 1. Fondo negro y centrado */
         body {
-            background-color: var(--fondo);
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,20 +21,23 @@
             text-align: center;
         }
 
+        /* 2. Contenedor principal de la tarjeta */
         .container {
-            position: relative;
-            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* El Girasol Animado */
+        /* 3. La Flor Animada (Style.css style) */
         .flower {
             position: relative;
-            width: 150px;
+            width: 150px; /* Tamaño del girasol */
             height: 150px;
-            margin: 0 auto 20px;
-            animation: float 3s ease-in-out infinite;
+            margin-bottom: 30px; /* Espacio con el texto */
+            animation: float 3s ease-in-out infinite; /* Flota suavemente */
         }
 
+        /* El centro marrón de la flor */
         .center {
             position: absolute;
             top: 50%;
@@ -50,49 +50,77 @@
             z-index: 2;
         }
 
+        /* Pétalos */
         .petal {
             position: absolute;
             top: 50%;
             left: 50%;
             width: 20px;
             height: 60px;
-            background: var(--amarillo);
+            background: #ffeb3b; /* Amarillo vibrante */
             border-radius: 50%;
             transform-origin: bottom center;
-            animation: bloom 2s ease-out forwards;
+            opacity: 0;
+            animation: bloom 2s ease-out forwards; /* Los pétalos "florecen" */
         }
 
         /* Generar pétalos en círculo */
-        .p1 { transform: translate(-50%, -100%) rotate(0deg); }
-        .p2 { transform: translate(-50%, -100%) rotate(45deg); }
-        .p3 { transform: translate(-50%, -100%) rotate(90deg); }
-        .p4 { transform: translate(-50%, -100%) rotate(135deg); }
-        .p5 { transform: translate(-50%, -100%) rotate(180deg); }
-        .p6 { transform: translate(-50%, -100%) rotate(225deg); }
-        .p7 { transform: translate(-50%, -100%) rotate(270deg); }
-        .p8 { transform: translate(-50%, -100%) rotate(315deg); }
+        .p1 { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0.2s; }
+        .p2 { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.4s; }
+        .p3 { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.6s; }
+        .p4 { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 0.8s; }
+        .p5 { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1s; }
+        .p6 { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.2s; }
+        .p7 { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 1.4s; }
+        .p8 { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 1.6s; }
 
-        /* Texto Estilo Programador */
-        .mensaje {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+        /* 4. Tarjeta de texto (Style.css style) */
+        .text-card {
+            background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente */
+            border: 1px solid #ffd740; /* Borde amarillo brillante */
             border-radius: 15px;
-            border: 1px solid var(--amarillo);
-            box-shadow: 0 0 20px rgba(255, 235, 59, 0.2);
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            opacity: 0;
+            animation: showText 1.5s ease-out 2.5s forwards; /* Aparece al final */
+            box-shadow: 0 0 15px rgba(255, 215, 64, 0.2);
         }
 
-        h1 { color: var(--amarillo); font-size: 1.5rem; }
-        p { font-size: 1rem; line-height: 1.5; }
-        .heart { color: var(--rosa); font-size: 1.2rem; }
+        h1 {
+            color: #ffeb3b;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
+        p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Corazón rosa (como en la imagen) */
+        .heart {
+            color: #ff4081; /* Rosa intenso */
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* 5. Keyframes (Las animaciones) */
         @keyframes bloom {
-            0% { transform: translate(-50%, -100%) scale(0); }
-            100% { transform: translate(-50%, -100%) scale(1); }
+            0% { transform: translate(-50%, -100%) scale(0); opacity: 0; }
+            100% { transform: translate(-50%, -100%) scale(1); opacity: 1; }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes showText {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -101,21 +129,19 @@
     <div class="container">
         <div class="flower">
             <div class="center"></div>
-            <div class="petal p1"></div>
-            <div class="petal p2"></div>
-            <div class="petal p3"></div>
-            <div class="petal p4"></div>
-            <div class="petal p5"></div>
-            <div class="petal p6"></div>
-            <div class="petal p7"></div>
-            <div class="petal p8"></div>
+            <div class="petal p1"></div><div class="petal p2"></div>
+            <div class="petal p3"></div><div class="petal p4"></div>
+            <div class="petal p5"></div><div class="petal p6"></div>
+            <div class="petal p7"></div><div class="petal p8"></div>
         </div>
 
-        <div class="mensaje">
+        <div class="text-card">
             <h1>Flores Amarillas para ti</h1>
-            <p>Si pudiera elegir un lugar seguro,<br>sería siempre a tu lado.</p>
+            <p>Si pudiera elegir un lugar seguro,</p>
+            <p>sería siempre a tu lado.</p>
+            <div style="height: 10px;"></div>
             <p>Porque te mereces lo más lindo del mundo.</p>
-            <div class="heart">❤ Te Amo ❤</div>
+            <p class="heart">❤ Te Amo ❤</p>
         </div>
     </div>
 
