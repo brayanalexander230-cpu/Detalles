@@ -3,177 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mí niña hermosa 💛</title>
+    <title>Para mi Niña</title>
     <style>
+        :root {
+            --fondo: #000;
+            --amarillo: #ffeb3b;
+            --rosa: #ff4081;
+        }
+
         body {
-            background: #ff0066;
-            padding: 20px;
-            font-family: Arial, sans-serif;
+            background-color: var(--fondo);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            color: white;
+            text-align: center;
         }
 
-        .tarjeta {
-            background: #f5f0e1;
-            padding: 25px;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: 0 auto;
+        .container {
             position: relative;
+            z-index: 10;
         }
 
-        .texto {
-            font-size: 1.3rem;
-            color: #222;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-shadow: 0 0 1px rgba(0,0,0,0.2);
-        }
-
-        .arbol-animado {
-            width: 220px;
-            height: 250px;
-            margin: 0 auto 30px auto;
+        /* El Girasol Animado */
+        .flower {
             position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .tronco {
+        .center {
             position: absolute;
-            bottom: 0;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 18px;
-            height: 100px;
-            background: #8b4513;
-            border-radius: 5px 5px 0 0;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #5d4037;
+            border-radius: 50%;
+            z-index: 2;
         }
 
-        .ramas {
+        .petal {
             position: absolute;
-            bottom: 90px;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 180px;
-            /* Forma de corazón como guía para los girasoles */
-            clip-path: path('M100,30 C140,0 200,40 200,90 C200,150 140,180 100,180 C60,180 0,150 0,90 C0,40 60,0 100,30 Z');
+            width: 20px;
+            height: 60px;
+            background: var(--amarillo);
+            border-radius: 50%;
+            transform-origin: bottom center;
+            animation: bloom 2s ease-out forwards;
         }
 
-        .girasol {
-            position: absolute;
-            font-size: 9px;
-            opacity: 0;
-            transform: scale(0);
-            animation: aparecer 0.5s forwards;
+        /* Generar pétalos en círculo */
+        .p1 { transform: translate(-50%, -100%) rotate(0deg); }
+        .p2 { transform: translate(-50%, -100%) rotate(45deg); }
+        .p3 { transform: translate(-50%, -100%) rotate(90deg); }
+        .p4 { transform: translate(-50%, -100%) rotate(135deg); }
+        .p5 { transform: translate(-50%, -100%) rotate(180deg); }
+        .p6 { transform: translate(-50%, -100%) rotate(225deg); }
+        .p7 { transform: translate(-50%, -100%) rotate(270deg); }
+        .p8 { transform: translate(-50%, -100%) rotate(315deg); }
+
+        /* Texto Estilo Programador */
+        .mensaje {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--amarillo);
+            box-shadow: 0 0 20px rgba(255, 235, 59, 0.2);
         }
 
-        /* POSICIONES DE 120 GIRASOLES PARA QUE QUEDEN TUPIDOS */
-        .girasol:nth-child(1) {top:5%;left:50%;animation-delay:3s;}
-        .girasol:nth-child(2) {top:8%;left:45%;animation-delay:3.1s;}
-        .girasol:nth-child(3) {top:8%;left:55%;animation-delay:3.1s;}
-        .girasol:nth-child(4) {top:10%;left:40%;animation-delay:3.2s;}
-        .girasol:nth-child(5) {top:10%;left:60%;animation-delay:3.2s;}
-        .girasol:nth-child(6) {top:12%;left:35%;animation-delay:3.3s;}
-        .girasol:nth-child(7) {top:12%;left:65%;animation-delay:3.3s;}
-        .girasol:nth-child(8) {top:15%;left:30%;animation-delay:3.4s;}
-        .girasol:nth-child(9) {top:15%;left:70%;animation-delay:3.4s;}
-        .girasol:nth-child(10){top:18%;left:25%;animation-delay:3.5s;}
-        .girasol:nth-child(11){top:18%;left:75%;animation-delay:3.5s;}
-        .girasol:nth-child(12){top:20%;left:20%;animation-delay:3.6s;}
-        .girasol:nth-child(13){top:20%;left:80%;animation-delay:3.6s;}
-        .girasol:nth-child(14){top:22%;left:50%;animation-delay:3.7s;}
-        .girasol:nth-child(15){top:25%;left:45%;animation-delay:3.8s;}
-        .girasol:nth-child(16){top:25%;left:55%;animation-delay:3.8s;}
-        .girasol:nth-child(17){top:28%;left:40%;animation-delay:3.9s;}
-        .girasol:nth-child(18){top:28%;left:60%;animation-delay:3.9s;}
-        .girasol:nth-child(19){top:30%;left:35%;animation-delay:4s;}
-        .girasol:nth-child(20){top:30%;left:65%;animation-delay:4s;}
-        .girasol:nth-child(21){top:32%;left:30%;animation-delay:4.1s;}
-        .girasol:nth-child(22){top:32%;left:70%;animation-delay:4.1s;}
-        .girasol:nth-child(23){top:35%;left:25%;animation-delay:4.2s;}
-        .girasol:nth-child(24){top:35%;left:75%;animation-delay:4.2s;}
-        .girasol:nth-child(25){top:38%;left:50%;animation-delay:4.3s;}
-        .girasol:nth-child(26){top:40%;left:45%;animation-delay:4.4s;}
-        .girasol:nth-child(27){top:40%;left:55%;animation-delay:4.4s;}
-        .girasol:nth-child(28){top:42%;left:40%;animation-delay:4.5s;}
-        .girasol:nth-child(29){top:42%;left:60%;animation-delay:4.5s;}
-        .girasol:nth-child(30){top:45%;left:35%;animation-delay:4.6s;}
-        .girasol:nth-child(31){top:45%;left:65%;animation-delay:4.6s;}
-        .girasol:nth-child(32){top:48%;left:30%;animation-delay:4.7s;}
-        .girasol:nth-child(33){top:48%;left:70%;animation-delay:4.7s;}
-        .girasol:nth-child(34){top:50%;left:25%;animation-delay:4.8s;}
-        .girasol:nth-child(35){top:50%;left:75%;animation-delay:4.8s;}
-        .girasol:nth-child(36){top:52%;left:50%;animation-delay:4.9s;}
-        .girasol:nth-child(37){top:55%;left:45%;animation-delay:5s;}
-        .girasol:nth-child(38){top:55%;left:55%;animation-delay:5s;}
-        .girasol:nth-child(39){top:58%;left:40%;animation-delay:5.1s;}
-        .girasol:nth-child(40){top:58%;left:60%;animation-delay:5.1s;}
-        .girasol:nth-child(41){top:60%;left:35%;animation-delay:5.2s;}
-        .girasol:nth-child(42){top:60%;left:65%;animation-delay:5.2s;}
-        .girasol:nth-child(43){top:62%;left:30%;animation-delay:5.3s;}
-        .girasol:nth-child(44){top:62%;left:70%;animation-delay:5.3s;}
-        .girasol:nth-child(45){top:65%;left:50%;animation-delay:5.4s;}
-        .girasol:nth-child(46){top:68%;left:45%;animation-delay:5.5s;}
-        .girasol:nth-child(47){top:68%;left:55%;animation-delay:5.5s;}
-        .girasol:nth-child(48){top:70%;left:40%;animation-delay:5.6s;}
-        .girasol:nth-child(49){top:70%;left:60%;animation-delay:5.6s;}
-        .girasol:nth-child(50){top:72%;left:35%;animation-delay:5.7s;}
-        .girasol:nth-child(51){top:72%;left:65%;animation-delay:5.7s;}
-        .girasol:nth-child(52){top:75%;left:30%;animation-delay:5.8s;}
-        .girasol:nth-child(53){top:75%;left:70%;animation-delay:5.8s;}
-        .girasol:nth-child(54){top:78%;left:50%;animation-delay:5.9s;}
-        .girasol:nth-child(55){top:80%;left:45%;animation-delay:6s;}
-        .girasol:nth-child(56){top:80%;left:55%;animation-delay:6s;}
-        .girasol:nth-child(57){top:82%;left:40%;animation-delay:6.1s;}
-        .girasol:nth-child(58){top:82%;left:60%;animation-delay:6.1s;}
-        .girasol:nth-child(59){top:85%;left:35%;animation-delay:6.2s;}
-        .girasol:nth-child(60){top:85%;left:65%;animation-delay:6.2s;}
-        .girasol:nth-child(61){top:10%;left:50%;animation-delay:3.1s;}
-        .girasol:nth-child(62){top:15%;left:50%;animation-delay:3.4s;}
-        .girasol:nth-child(63){top:20%;left:50%;animation-delay:3.6s;}
-        .girasol:nth-child(64){top:25%;left:50%;animation-delay:3.8s;}
-        .girasol:nth-child(65){top:30%;left:50%;animation-delay:4s;}
-        .girasol:nth-child(66){top:35%;left:50%;animation-delay:4.2s;}
-        .girasol:nth-child(67){top:40%;left:50%;animation-delay:4.4s;}
-        .girasol:nth-child(68){top:45%;left:50%;animation-delay:4.6s;}
-        .girasol:nth-child(69){top:50%;left:50%;animation-delay:4.8s;}
-        .girasol:nth-child(70){top:55%;left:50%;animation-delay:5s;}
-        .girasol:nth-child(71){top:60%;left:50%;animation-delay:5.2s;}
-        .girasol:nth-child(72){top:65%;left:50%;animation-delay:5.4s;}
-        .girasol:nth-child(73){top:70%;left:50%;animation-delay:5.6s;}
-        .girasol:nth-child(74){top:75%;left:50%;animation-delay:5.8s;}
-        .girasol:nth-child(75){top:80%;left:50%;animation-delay:6s;}
-        .girasol:nth-child(76){top:12%;left:45%;animation-delay:3.3s;}
-        .girasol:nth-child(77){top:12%;left:55%;animation-delay:3.3s;}
-        .girasol:nth-child(78){top:18%;left:45%;animation-delay:3.5s;}
-        .girasol:nth-child(79){top:18%;left:55%;animation-delay:3.5s;}
-        .girasol:nth-child(80){top:22%;left:45%;animation-delay:3.7s;}
-        .girasol:nth-child(81){top:22%;left:55%;animation-delay:3.7s;}
-        .girasol:nth-child(82){top:28%;left:45%;animation-delay:3.9s;}
-        .girasol:nth-child(83){top:28%;left:55%;animation-delay:3.9s;}
-        .girasol:nth-child(84){top:32%;left:45%;animation-delay:4.1s;}
-        .girasol:nth-child(85){top:32%;left:55%;animation-delay:4.1s;}
-        .girasol:nth-child(86){top:38%;left:45%;animation-delay:4.3s;}
-        .girasol:nth-child(87){top:38%;left:55%;animation-delay:4.3s;}
-        .girasol:nth-child(88){top:42%;left:45%;animation-delay:4.5s;}
-        .girasol:nth-child(89){top:42%;left:55%;animation-delay:4.5s;}
-        .girasol:nth-child(90){top:48%;left:45%;animation-delay:4.7s;}
-        .girasol:nth-child(91){top:48%;left:55%;animation-delay:4.7s;}
-        .girasol:nth-child(92){top:52%;left:45%;animation-delay:4.9s;}
-        .girasol:nth-child(93){top:52%;left:55%;animation-delay:4.9s;}
-        .girasol:nth-child(94){top:58%;left:45%;animation-delay:5.1s;}
-        .girasol:nth-child(95){top:58%;left:55%;animation-delay:5.1s;}
-        .girasol:nth-child(96){top:62%;left:45%;animation-delay:5.3s;}
-        .girasol:nth-child(97){top:62%;left:55%;animation-delay:5.3s;}
-        .girasol:nth-child(98){top:68%;left:45%;animation-delay:5.5s;}
-        .girasol:nth-child(99){top:68%;left:55%;animation-delay:5.5s;}
-        .girasol:nth-child(100){top:72%;left:45%;animation-delay:5.7s;}
-        .girasol:nth-child(101){top:72%;left:55%;animation-delay:5.7s;}
-        .girasol:nth-child(102){top:78%;left:45%;animation-delay:5.9s;}
-        .girasol:nth-child(103){top:78%;left:55%;animation-delay:5.9s;}
-        .girasol:nth-child(104){top:82%;left:45%;animation-delay:6.1s;}
-        .girasol:nth-child(105){top:82%;left:55%;animation-delay:6.1s;}
-        .girasol:nth-child(106){top:85%;left:45%;animation-delay:6.2s;}
-        .girasol:nth-child(107){top:85%;left:55%;animation-delay:6.2s;}
-        .girasol:nth-child(108){top:15%;left:45%;animation-delay:3.4s;}
-        .girasol:nth-child(109){top:15%;left:55%;animation-delay:3.4s;}
-        .girasol:nth-child(110){top:2
+        h1 { color: var(--amarillo); font-size: 1.5rem; }
+        p { font-size: 1rem; line-height: 1.5; }
+        .heart { color: var(--rosa); font-size: 1.2rem; }
+
+        @keyframes bloom {
+            0% { transform: translate(-50%, -100%) scale(0); }
+            100% { transform: translate(-50%, -100%) scale(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="flower">
+            <div class="center"></div>
+            <div class="petal p1"></div>
+            <div class="petal p2"></div>
+            <div class="petal p3"></div>
+            <div class="petal p4"></div>
+            <div class="petal p5"></div>
+            <div class="petal p6"></div>
+            <div class="petal p7"></div>
+            <div class="petal p8"></div>
+        </div>
+
+        <div class="mensaje">
+            <h1>Flores Amarillas para ti</h1>
+            <p>Si pudiera elegir un lugar seguro,<br>sería siempre a tu lado.</p>
+            <p>Porque te mereces lo más lindo del mundo.</p>
+            <div class="heart">❤ Te Amo ❤</div>
+        </div>
+    </div>
+
+</body>
+</html>
