@@ -41,7 +41,7 @@
             animation: seedToTrunk 1.5s ease-out forwards;
         }
 
-        /* 2. Tronco Creciendo (Ajustado para centrar el corazón) */
+        /* 2. Tronco Creciendo */
         .trunk {
             position: absolute;
             width: 10px;
@@ -52,11 +52,10 @@
             height: 0;
             opacity: 0;
             z-index: 5;
-            /* Ajustamos la altura para que el corazón quede encima */
             animation: growTrunk 2s ease-out 1.5s forwards;
         }
 
-        /* 3. El Cluster de Flores (CENTRADO EN EL TRONCO) */
+        /* 3. Cluster de girasoles - CORAZÓN PERFECTO Y TUPIDO */
         .flower-cluster {
             position: absolute;
             width: 100%;
@@ -64,12 +63,9 @@
             top: 0;
             left: 0;
             opacity: 0;
-            /* Posicionamos el cluster para que su centro coincida con el tronco */
-            transform: translateX(0);
             animation: showFlowers 1s ease-in 3.5s forwards;
         }
 
-        /* Definición de una flor individual */
         .flower {
             position: absolute;
             width: 15px;
@@ -81,7 +77,6 @@
             opacity: 0;
         }
         
-        /* Centro marrón del girasol */
         .flower::after {
             content: '';
             position: absolute;
@@ -93,51 +88,83 @@
             border-radius: 50%;
         }
 
-        /* GENERADOR DE POSICIONES AJUSTADAS PARA CORAZÓN CENTRADO EN EL TRONCO */
-        .f01 { top: 30%; left: 50%; animation-delay: 3.5s; }
-        .f02 { top: 25%; left: 45%; animation-delay: 3.55s; }
-        .f03 { top: 22%; left: 50%; animation-delay: 3.6s; }
-        .f04 { top: 25%; left: 55%; animation-delay: 3.65s; }
-        .f05 { top: 30%; left: 60%; animation-delay: 3.7s; }
-        .f06 { top: 38%; left: 63%; animation-delay: 3.75s; }
-        .f07 { top: 48%; left: 61%; animation-delay: 3.8s; }
-        .f08 { top: 58%; left: 56%; animation-delay: 3.85s; }
-        .f09 { top: 68%; left: 50%; animation-delay: 3.9s; }
-        .f10 { top: 58%; left: 44%; animation-delay: 3.95s; }
-        .f11 { top: 48%; left: 39%; animation-delay: 4.0s; }
-        .f12 { top: 38%; left: 37%; animation-delay: 4.05s; }
-        
-        /* Relleno ajustado */
-        .f13 { top: 35%; left: 50%; animation-delay: 4.1s; }
-        .f14 { top: 42%; left: 45%; animation-delay: 4.15s; }
-        .f15 { top: 42%; left: 55%; animation-delay: 4.2s; }
-        .f16 { top: 50%; left: 50%; animation-delay: 4.25s; }
-        .f17 { top: 32%; left: 45%; animation-delay: 4.3s; }
-        .f18 { top: 32%; left: 55%; animation-delay: 4.35s; }
-        .f19 { top: 40%; left: 45%; animation-delay: 4.4s; }
-        .f20 { top: 40%; left: 55%; animation-delay: 4.45s; }
-        .f21 { top: 28%; left: 45%; animation-delay: 4.5s; }
-        .f22 { top: 28%; left: 55%; animation-delay: 4.55s; }
-        .f23 { top: 35%; left: 40%; animation-delay: 4.6s; }
-        .f24 { top: 35%; left: 60%; animation-delay: 4.65s; }
-        .f25 { top: 45%; left: 40%; animation-delay: 4.7s; }
-        .f26 { top: 45%; left: 60%; animation-delay: 4.75s; }
-        .f27 { top: 52%; left: 45%; animation-delay: 4.8s; }
-        .f28 { top: 52%; left: 55%; animation-delay: 4.85s; }
-        .f29 { top: 60%; left: 45%; animation-delay: 4.9s; }
-        .f30 { top: 60%; left: 55%; animation-delay: 4.95s; }
+        /* --- POSICIONES DE +60 GIRASOLES PARA CORAZÓN PERFECTO --- */
+        /* PARTE SUPERIOR DEL CORAZÓN */
+        .f01 { top: 15%; left: 50%; animation-delay: 3.5s; }
+        .f02 { top: 18%; left: 45%; animation-delay: 3.55s; }
+        .f03 { top: 18%; left: 55%; animation-delay: 3.55s; }
+        .f04 { top: 20%; left: 40%; animation-delay: 3.6s; }
+        .f05 { top: 20%; left: 60%; animation-delay: 3.6s; }
+        .f06 { top: 22%; left: 35%; animation-delay: 3.65s; }
+        .f07 { top: 22%; left: 65%; animation-delay: 3.65s; }
+        .f08 { top: 25%; left: 30%; animation-delay: 3.7s; }
+        .f09 { top: 25%; left: 70%; animation-delay: 3.7s; }
+        /* LATERAL IZQUIERDO */
+        .f10 { top: 30%; left: 35%; animation-delay: 3.75s; }
+        .f11 { top: 35%; left: 32%; animation-delay: 3.8s; }
+        .f12 { top: 40%; left: 30%; animation-delay: 3.85s; }
+        .f13 { top: 45%; left: 28%; animation-delay: 3.9s; }
+        .f14 { top: 50%; left: 27%; animation-delay: 3.95s; }
+        .f15 { top: 55%; left: 30%; animation-delay: 4s; }
+        .f16 { top: 60%; left: 33%; animation-delay: 4.05s; }
+        .f17 { top: 65%; left: 37%; animation-delay: 4.1s; }
+        .f18 { top: 70%; left: 42%; animation-delay: 4.15s; }
+        /* LATERAL DERECHO */
+        .f19 { top: 30%; left: 65%; animation-delay: 3.75s; }
+        .f20 { top: 35%; left: 68%; animation-delay: 3.8s; }
+        .f21 { top: 40%; left: 70%; animation-delay: 3.85s; }
+        .f22 { top: 45%; left: 72%; animation-delay: 3.9s; }
+        .f23 { top: 50%; left: 73%; animation-delay: 3.95s; }
+        .f24 { top: 55%; left: 70%; animation-delay: 4s; }
+        .f25 { top: 60%; left: 67%; animation-delay: 4.05s; }
+        .f26 { top: 65%; left: 63%; animation-delay: 4.1s; }
+        .f27 { top: 70%; left: 58%; animation-delay: 4.15s; }
+        /* CENTRO DEL CORAZÓN */
+        .f28 { top: 28%; left: 50%; animation-delay: 3.6s; }
+        .f29 { top: 32%; left: 50%; animation-delay: 3.7s; }
+        .f30 { top: 36%; left: 50%; animation-delay: 3.8s; }
+        .f31 { top: 40%; left: 50%; animation-delay: 3.85s; }
+        .f32 { top: 44%; left: 50%; animation-delay: 3.9s; }
+        .f33 { top: 48%; left: 50%; animation-delay: 3.95s; }
+        .f34 { top: 52%; left: 50%; animation-delay: 4s; }
+        .f35 { top: 56%; left: 50%; animation-delay: 4.05s; }
+        .f36 { top: 60%; left: 50%; animation-delay: 4.1s; }
+        .f37 { top: 64%; left: 50%; animation-delay: 4.15s; }
+        .f38 { top: 68%; left: 50%; animation-delay: 4.2s; }
+        /* RELLENO EXTRA PARA TUPIDEZ */
+        .f39 { top: 25%; left: 45%; animation-delay: 3.7s; }
+        .f40 { top: 25%; left: 55%; animation-delay: 3.7s; }
+        .f41 { top: 30%; left: 45%; animation-delay: 3.8s; }
+        .f42 { top: 30%; left: 55%; animation-delay: 3.8s; }
+        .f43 { top: 35%; left: 45%; animation-delay: 3.9s; }
+        .f44 { top: 35%; left: 55%; animation-delay: 3.9s; }
+        .f45 { top: 40%; left: 45%; animation-delay: 4s; }
+        .f46 { top: 40%; left: 55%; animation-delay: 4s; }
+        .f47 { top: 45%; left: 45%; animation-delay: 4.05s; }
+        .f48 { top: 45%; left: 55%; animation-delay: 4.05s; }
+        .f49 { top: 50%; left: 45%; animation-delay: 4.1s; }
+        .f50 { top: 50%; left: 55%; animation-delay: 4.1s; }
+        .f51 { top: 55%; left: 45%; animation-delay: 4.15s; }
+        .f52 { top: 55%; left: 55%; animation-delay: 4.15s; }
+        .f53 { top: 60%; left: 45%; animation-delay: 4.2s; }
+        .f54 { top: 60%; left: 55%; animation-delay: 4.2s; }
+        .f55 { top: 65%; left: 45%; animation-delay: 4.25s; }
+        .f56 { top: 65%; left: 55%; animation-delay: 4.25s; }
+        .f57 { top: 22%; left: 42%; animation-delay: 3.6s; }
+        .f58 { top: 22%; left: 58%; animation-delay: 3.6s; }
+        .f59 { top: 32%; left: 45%; animation-delay: 3.85s; }
+        .f60 { top: 32%; left: 55%; animation-delay: 3.85s; }
 
-        /* --- KEYFRAMES AJUSTADOS --- */
+        /* --- KEYFRAMES --- */
         @keyframes seedToTrunk {
             0% { transform: scale(1); opacity: 1; }
-            80% { transform: scale(0.5); opacity: 1; }
+            80% { transform: scale(0.5); opacity: 0.5; }
             100% { transform: scale(0); opacity: 0; }
         }
 
         @keyframes growTrunk {
             0% { height: 0; opacity: 0; }
             20% { opacity: 1; }
-            /* Altura ajustada para que el tronco termine justo debajo del centro del corazón */
             100% { height: 150px; opacity: 1; }
         }
 
@@ -152,19 +179,15 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- TARJETA DE TEXTO --- */
+        /* --- TARJETA DE TEXTO (IGUAL QUE ESTÁ) --- */
         .text-card {
             background-color: rgba(255, 255, 255, 0.05); 
-            border: 1px solid #ffd740; 
+            border: 2px solid #ffd700;
             border-radius: 15px;
             padding: 20px;
             width: 90%;
             max-width: 400px;
-            opacity: 0;
-            animation: showText 1.5s ease-out 5s forwards;
-            box-shadow: 0 0 15px rgba(255, 215, 64, 0.2);
-            position: relative;
-            z-index: 1;
+            box-shadow: 0 0 15px rgba(255, 215, 59, 0.5);
         }
 
         h1 {
@@ -177,19 +200,16 @@
         p {
             font-size: 0.9rem;
             line-height: 1.5;
-            margin: 0;
+            margin: 5px 0;
         }
 
         .heart {
-            color: #ff4081; 
-            margin-top: 15px;
+            color: #ff4081;
             font-weight: bold;
+            margin-top: 15px;
+            font-size: 1rem;
         }
 
-        @keyframes showText {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body>
@@ -205,6 +225,12 @@
             <div class="flower f16"></div><div class="flower f17"></div><div class="flower f18"></div><div class="flower f19"></div><div class="flower f20"></div>
             <div class="flower f21"></div><div class="flower f22"></div><div class="flower f23"></div><div class="flower f24"></div><div class="flower f25"></div>
             <div class="flower f26"></div><div class="flower f27"></div><div class="flower f28"></div><div class="flower f29"></div><div class="flower f30"></div>
+            <div class="flower f31"></div><div class="flower f32"></div><div class="flower f33"></div><div class="flower f34"></div><div class="flower f35"></div>
+            <div class="flower f36"></div><div class="flower f37"></div><div class="flower f38"></div><div class="flower f39"></div><div class="flower f40"></div>
+            <div class="flower f41"></div><div class="flower f42"></div><div class="flower f43"></div><div class="flower f44"></div><div class="flower f45"></div>
+            <div class="flower f46"></div><div class="flower f47"></div><div class="flower f48"></div><div class="flower f49"></div><div class="flower f50"></div>
+            <div class="flower f51"></div><div class="flower f52"></div><div class="flower f53"></div><div class="flower f54"></div><div class="flower f55"></div>
+            <div class="flower f56"></div><div class="flower f57"></div><div class="flower f58"></div><div class="flower f59"></div><div class="flower f60"></div>
         </div>
     </div>
 
@@ -212,7 +238,6 @@
         <h1>Flores Amarillas para ti</h1>
         <p>Si pudiera elegir un lugar seguro,</p>
         <p>sería siempre a tu lado.</p>
-        <div style="height: 10px;"></div>
         <p>Porque te mereces lo más lindo del mundo.</p>
         <p class="heart">❤ Te Amo ❤</p>
     </div>
