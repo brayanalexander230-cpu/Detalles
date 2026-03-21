@@ -5,25 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flores Amarillas para ti</title>
     <style>
-        /* Estilos básicos */
         body {
-            background: #ff0066; /* Fondo rosa intenso */
+            background: #ff0066;
             margin: 0;
-            padding: 30px 15px; /* Espacio arriba para el título */
+            padding: 30px 15px;
             font-family: Arial, sans-serif;
         }
 
-        /* Contenedor principal */
-        .tarjeta {
-            background: #f5f0e1; /* Fondo crema */
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        /* Título visible y bien posicionado */
         .titulo {
             color: white;
             text-align: center;
@@ -33,7 +21,15 @@
             text-shadow: 0 0 5px black;
         }
 
-        /* Texto dedicatorio */
+        .tarjeta {
+            background: #f5f0e1;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
         .texto {
             font-size: 1.5rem;
             color: #222;
@@ -41,10 +37,9 @@
             margin-bottom: 20px;
         }
 
-        /* Contenedor de la animación */
         .animacion-arbol {
             width: 100%;
-            height: 250px;
+            height: 280px;
             position: relative;
             margin: 20px 0;
             display: flex;
@@ -63,7 +58,7 @@
             animation: semilla 0.5s forwards;
         }
 
-        /* Tronco */
+        /* Tronco y ramas bien posicionadas */
         .tronco {
             position: absolute;
             bottom: 0;
@@ -76,51 +71,80 @@
             animation: tronco 1.5s forwards 0.8s;
         }
 
-        /* Ramas */
-        .rama-izq, .rama-der {
-            position: absolute;
-            background: #8b4513;
-            transform: scale(0);
-            transform-origin: bottom;
-        }
-
         .rama-izq {
+            position: absolute;
             bottom: 70px;
-            left: 40%;
+            left: 42%;
             width: 12px;
             height: 70px;
+            background: #8b4513;
             border-radius: 50px 0 0 50px;
-            transform: rotate(-40deg);
+            transform: rotate(-35deg) scale(0);
+            transform-origin: bottom;
             animation: ramas 1.2s forwards 2.3s;
         }
 
         .rama-der {
+            position: absolute;
             bottom: 70px;
-            right: 40%;
+            right: 42%;
             width: 12px;
             height: 70px;
+            background: #8b4513;
             border-radius: 0 50px 50px 0;
-            transform: rotate(40deg);
+            transform: rotate(35deg) scale(0);
+            transform-origin: bottom;
             animation: ramas 1.2s forwards 2.3s;
         }
 
-        /* CORAZÓN BONITO Y REPLETO DE FLORES */
-        .corazon {
+        /* Contenedor del corazón de girasoles */
+        .corazon-contenedor {
             position: absolute;
             top: 20px;
-            width: 140px;
-            height: 130px;
-            background: #ffd700; /* Color amarillo dorado */
-            clip-path: path('M70,15 C90,0 125,10 125,40 C125,70 90,105 70,125 C50,105 15,70 15,40 C15,10 50,0 70,15 Z');
+            width: 160px;
+            height: 150px;
             opacity: 0;
-            transform: scale(0);
-            animation: corazon 1.5s forwards 3.5s;
-            /* Detalle de flores pequeñas */
-            background-image: radial-gradient(circle, #fff 1.5px, transparent 1.5px);
-            background-size: 8px 8px;
+            animation: aparecerContenedor 0.5s forwards 3.5s;
         }
 
-        /* Contador visible y bien posicionado */
+        /* Girasol individual (emoji como base) */
+        .girasol {
+            position: absolute;
+            font-size: 12px; /* Tamaño de los girasoles */
+            opacity: 0;
+            transform: scale(0);
+            animation: crecerGirasol 0.5s forwards;
+        }
+
+        /* Posicionar cada girasol para formar el corazón */
+        .girasol:nth-child(1) { top: 40%; left: 50%; animation-delay: 4s; }
+        .girasol:nth-child(2) { top: 35%; left: 45%; animation-delay: 4.1s; }
+        .girasol:nth-child(3) { top: 35%; left: 55%; animation-delay: 4.1s; }
+        .girasol:nth-child(4) { top: 30%; left: 40%; animation-delay: 4.2s; }
+        .girasol:nth-child(5) { top: 30%; left: 60%; animation-delay: 4.2s; }
+        .girasol:nth-child(6) { top: 25%; left: 35%; animation-delay: 4.3s; }
+        .girasol:nth-child(7) { top: 25%; left: 65%; animation-delay: 4.3s; }
+        .girasol:nth-child(8) { top: 20%; left: 40%; animation-delay: 4.4s; }
+        .girasol:nth-child(9) { top: 20%; left: 60%; animation-delay: 4.4s; }
+        .girasol:nth-child(10) { top: 15%; left: 45%; animation-delay: 4.5s; }
+        .girasol:nth-child(11) { top: 15%; left: 55%; animation-delay: 4.5s; }
+        .girasol:nth-child(12) { top: 10%; left: 50%; animation-delay: 4.6s; }
+        .girasol:nth-child(13) { top: 45%; left: 35%; animation-delay: 4.2s; }
+        .girasol:nth-child(14) { top: 45%; left: 65%; animation-delay: 4.2s; }
+        .girasol:nth-child(15) { top: 50%; left: 30%; animation-delay: 4.3s; }
+        .girasol:nth-child(16) { top: 50%; left: 70%; animation-delay: 4.3s; }
+        .girasol:nth-child(17) { top: 55%; left: 35%; animation-delay: 4.4s; }
+        .girasol:nth-child(18) { top: 55%; left: 65%; animation-delay: 4.4s; }
+        .girasol:nth-child(19) { top: 60%; left: 40%; animation-delay: 4.5s; }
+        .girasol:nth-child(20) { top: 60%; left: 60%; animation-delay: 4.5s; }
+        .girasol:nth-child(21) { top: 65%; left: 45%; animation-delay: 4.6s; }
+        .girasol:nth-child(22) { top: 65%; left: 55%; animation-delay: 4.6s; }
+        .girasol:nth-child(23) { top: 70%; left: 50%; animation-delay: 4.7s; }
+        .girasol:nth-child(24) { top: 25%; left: 50%; animation-delay: 4.3s; }
+        .girasol:nth-child(25) { top: 35%; left: 50%; animation-delay: 4.1s; }
+        .girasol:nth-child(26) { top: 45%; left: 50%; animation-delay: 4.2s; }
+        .girasol:nth-child(27) { top: 55%; left: 50%; animation-delay: 4.4s; }
+
         .contador {
             font-size: 1.2rem;
             font-weight: bold;
@@ -130,23 +154,22 @@
             padding-top: 10px;
             margin-top: 15px;
             opacity: 0;
-            animation: aparecer 1s forwards 5s;
+            animation: aparecer 1s forwards 5.5s;
         }
 
-        /* Keyframes de animación */
+        /* Keyframes */
         @keyframes semilla { to { opacity: 1; } }
         @keyframes tronco { to { transform: scaleY(1); } }
-        @keyframes ramas { to { transform: rotate(-40deg) scale(1); } }
-        @keyframes ramas { to { transform: rotate(40deg) scale(1); } }
-        @keyframes corazon { to { transform: scale(1); opacity: 1; } }
+        @keyframes ramas { to { transform: rotate(-35deg) scale(1); } }
+        @keyframes ramas { to { transform: rotate(35deg) scale(1); } }
+        @keyframes aparecerContenedor { to { opacity: 1; } }
+        @keyframes crecerGirasol { to { transform: scale(1); opacity: 1; } }
         @keyframes aparecer { to { opacity: 1; } }
     </style>
 </head>
 <body>
-    <!-- Título visible -->
     <div class="titulo">Para mi niña hermosa</div>
 
-    <!-- Tarjeta principal -->
     <div class="tarjeta">
         <div class="texto">
             Flores Amarillas para el<br>
@@ -155,27 +178,54 @@
             lugar seguro,<br>
             sería a tu lado.<br><br>
             Cuanto más tiempo estoy<br>
-            contigo, más mi corazón<br>
-            se llena de amor.<br><br>
+            contigo, mi corazón<br>
+            se llena más de amor.<br><br>
             Mi amor por ti comenzó hace...
         </div>
 
-        <!-- Animación del árbol -->
         <div class="animacion-arbol">
             <div class="semilla"></div>
             <div class="tronco"></div>
             <div class="rama-izq"></div>
             <div class="rama-der"></div>
-            <div class="corazon"></div>
+            
+            <!-- Corazón formado por girasoles -->
+            <div class="corazon-contenedor">
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+                <div class="girasol">🌻</div>
+            </div>
         </div>
 
-        <!-- Contador de tiempo -->
         <div class="contador" id="tiempo"></div>
     </div>
 
     <script>
-        // CAMBIA ESTA FECHA POR LA DE TU RELACIÓN (AAAA-MM-DD)
-        const fechaInicio = new Date('2018-07-18T00:00:00');
+        const fechaInicio = new Date('2017-02-12T00:00:00');
 
         function calcularTiempo() {
             const ahora = new Date();
@@ -190,7 +240,6 @@
                 `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
         }
 
-        // Actualizar cada segundo
         setInterval(calcularTiempo, 1000);
         calcularTiempo();
     </script>
