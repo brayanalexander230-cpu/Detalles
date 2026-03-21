@@ -3,231 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi Niña</title>
+    <title>Flores Amarillas</title>
     <style>
-        /* --- ESTILOS DE FONDO --- */
         body {
             background-color: #000;
             display: flex;
             flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-        overflow: hidden;
-        color: white;
-        text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            color: white;
         }
 
-        /* --- CONTENEDOR DEL ÁRBOL --- */
         .tree-container {
             position: relative;
-            width: 380px; /* Ancho ajustado para la forma ancha del corazón */
-            height: 350px;
-            margin-bottom: 20px;
+            width: 300px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
 
-        /* 1. Semilla */
-        .seed {
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            background: #5d4037; 
-            border-radius: 50%;
-            bottom: 0;
-            left: calc(50% - 11px);
-            z-index: 10;
-            animation: seedToTrunk 1.5s ease-out forwards;
-        }
-
-        /* 2. Tronco ajustado a la nueva forma */
+        /* Tronco creciendo */
         .trunk {
             position: absolute;
-            width: 14px;
-            background: #3E2723; /* Color más oscuro como en la imagen */
-            bottom: 0;
-            left: calc(50% - 7px);
-            border-radius: 7px;
+            width: 12px;
+            background: #3E2723;
+            border-radius: 6px;
+            bottom: 50px; /* Ajuste para que no tape el texto */
             height: 0;
-            opacity: 0;
-            z-index: 5;
-            animation: growTrunk 2s ease-out 1.5s forwards;
+            animation: growTrunk 1.5s ease-out forwards;
+            z-index: 2;
         }
 
-        /* 3. Cluster de girasoles con FORMA EXACTA DE LA IMAGEN DE CORAZÓN */
-        .flower-cluster {
+        /* Contenedor de las flores */
+        #heart-cluster {
             position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
+            bottom: 180px; /* Se posiciona justo donde termina el tronco */
             left: 0;
-            opacity: 0;
-            animation: showFlowers 1s ease-in 3.5s forwards;
+            display: none;
         }
 
         .flower {
             position: absolute;
-            width: 18px;
-            height: 18px;
-            background: #FFEB3B; /* Amarillo brillante */
+            width: 16px;
+            height: 16px;
+            background: #FFEB3B;
             border-radius: 50%;
-            box-shadow: 0 0 4px #FFD700;
-            animation: flowerPop 0.5s ease-out forwards;
+            box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
             opacity: 0;
+            animation: flowerPop 0.6s ease-out forwards;
         }
-        
-        /* Centro marrón oscuro de los girasoles */
+
+        /* Centro del girasol */
         .flower::after {
             content: '';
             position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 12px;
-        height: 12px;
-        background: #3E2723;
-        border-radius: 50%;
-        }
-
-        /* --- POSICIONES PARA FORMA DE CORAZÓN COMO EN LA IMAGEN --- */
-        /* Parte superior puntiaguda del corazón */
-        .f01 { top: 15%; left: 50%; animation-delay: 3.5s; }
-        .f02 { top: 18%; left: 42%; animation-delay: 3.55s; }
-        .f03 { top: 18%; left: 58%; animation-delay: 3.55s; }
-        .f04 { top: 20%; left: 38%; animation-delay: 3.6s; }
-        .f05 { top: 20%; left: 62%; animation-delay: 3.6s; }
-        /* Laterales superiores del corazón */
-        .f06 { top: 25%; left: 35%; animation-delay: 3.65s; }
-        .f07 { top: 25%; left: 65%; animation-delay: 3.65s; }
-        .f08 { top: 30%; left: 32%; animation-delay: 3.7s; }
-        .f09 { top: 30%; left: 68%; animation-delay: 3.7s; }
-        .f10 { top: 35%; left: 30%; animation-delay: 3.75s; }
-        .f11 { top: 35%; left: 70%; animation-delay: 3.75s; }
-        /* Laterales medios del corazón */
-        .f12 { top: 40%; left: 28%; animation-delay: 3.8s; }
-        .f13 { top: 40%; left: 72%; animation-delay: 3.8s; }
-        .f14 { top: 45%; left: 27%; animation-delay: 3.85s; }
-        .f15 { top: 45%; left: 73%; animation-delay: 3.85s; }
-        .f16 { top: 50%; left: 28%; animation-delay: 3.9s; }
-        .f17 { top: 50%; left: 72%; animation-delay: 3.9s; }
-        .f18 { top: 55%; left: 30%; animation-delay: 3.95s; }
-        .f19 { top: 55%; left: 70%; animation-delay: 3.95s; }
-        .f20 { top: 60%; left: 33%; animation-delay: 4s; }
-        .f21 { top: 60%; left: 67%; animation-delay: 4s; }
-        .f22 { top: 65%; left: 37%; animation-delay: 4.05s; }
-        .f23 { top: 65%; left: 63%; animation-delay: 4.05s; }
-        .f24 { top: 70%; left: 40%; animation-delay: 4.1s; }
-        .f25 { top: 70%; left: 60%; animation-delay: 4.1s; }
-        /* Parte inferior ancha del corazón */
-        .f26 { top: 75%; left: 43%; animation-delay: 4.15s; }
-        .f27 { top: 75%; left: 57%; animation-delay: 4.15s; }
-        .f28 { top: 80%; left: 47%; animation-delay: 4.2s; }
-        .f29 { top: 80%; left: 53%; animation-delay: 4.2s; }
-        /* Relleno interno del corazón para que quede tupido */
-        .f30 { top: 22%; left: 50%; animation-delay: 3.6s; }
-        .f31 { top: 25%; left: 50%; animation-delay: 3.65s; }
-        .f32 { top: 30%; left: 50%; animation-delay: 3.7s; }
-        .f33 { top: 35%; left: 50%; animation-delay: 3.75s; }
-        .f34 { top: 40%; left: 50%; animation-delay: 3.8s; }
-        .f35 { top: 45%; left: 50%; animation-delay: 3.85s; }
-        .f36 { top: 50%; left: 50%; animation-delay: 3.9s; }
-        .f37 { top: 55%; left: 50%; animation-delay: 3.95s; }
-        .f38 { top: 60%; left: 50%; animation-delay: 4s; }
-        .f39 { top: 65%; left: 50%; animation-delay: 4.05s; }
-        .f40 { top: 70%; left: 50%; animation-delay: 4.1s; }
-        .f41 { top: 75%; left: 50%; animation-delay: 4.15s; }
-        /* Relleno lateral izquierdo */
-        .f42 { top: 28%; left: 45%; animation-delay: 3.65s; }
-        .f43 { top: 32%; left: 42%; animation-delay: 3.7s; }
-        .f44 { top: 36%; left: 40%; animation-delay: 3.75s; }
-        .f45 { top: 40%; left: 38%; animation-delay: 3.8s; }
-        .f46 { top: 45%; left: 38%; animation-delay: 3.85s; }
-        .f47 { top: 50%; left: 38%; animation-delay: 3.9s; }
-        .f48 { top: 55%; left: 40%; animation-delay: 3.95s; }
-        .f49 { top: 60%; left: 42%; animation-delay: 4s; }
-        .f50 { top: 65%; left: 45%; animation-delay: 4.05s; }
-        /* Relleno lateral derecho */
-        .f51 { top: 28%; left: 55%; animation-delay: 3.65s; }
-        .f52 { top: 32%; left: 58%; animation-delay: 3.7s; }
-        .f53 { top: 36%; left: 60%; animation-delay: 3.75s; }
-        .f54 { top: 40%; left: 62%; animation-delay: 3.8s; }
-        .f55 { top: 45%; left: 62%; animation-delay: 3.85s; }
-        .f56 { top: 50%; left: 62%; animation-delay: 3.9s; }
-        .f57 { top: 55%; left: 60%; animation-delay: 3.95s; }
-        .f58 { top: 60%; left: 58%; animation-delay: 4s; }
-        .f59 { top: 65%; left: 55%; animation-delay: 4.05s; }
-
-        /* --- KEYFRAMES --- */
-        @keyframes seedToTrunk {
-            0% { transform: scale(1); opacity: 1; }
-            80% { transform: scale(0.5); opacity: 0.5; }
-            100% { transform: scale(0); opacity: 0; }
+            top: 4px;
+            left: 4px;
+            width: 8px;
+            height: 8px;
+            background: #3E2723;
+            border-radius: 50%;
         }
 
         @keyframes growTrunk {
-            0% { height: 0; opacity: 0; }
-            20% { opacity: 1; }
-            100% { height: 180px; opacity: 1; } /* Altura ajustada a la nueva forma */
-        }
-
-        @keyframes showFlowers {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
+            to { height: 150px; }
         }
 
         @keyframes flowerPop {
             0% { transform: scale(0); opacity: 0; }
-            80% { transform: scale(1.2); opacity: 1; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- TARJETA DE TEXTO (IGUAL QUE ESTABA) --- */
         .text-card {
-            background-color: rgba(0,0,0,0.4);
-            border: 2px solid #FFD700;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #ffd740;
             border-radius: 15px;
             padding: 20px;
-            width: 90%;
-            max-width: 450px;
-            }
-
-        h1 {
-            color: #FFEB3B;
-            font-size: 1.6rem;
-            margin: 0 0 10px 0;
+            width: 85%;
+            max-width: 400px;
+            opacity: 0;
+            animation: showText 1s ease-out 4s forwards;
+            margin-top: 20px;
         }
 
-        p {
-            font-size: 1rem;
-        line-height: 1.6;
-        margin: 5px 0;
+        @keyframes showText {
+            to { opacity: 1; transform: translateY(-10px); }
         }
 
-        .heart {
-            color: #FF4081;
-            font-weight: bold;
-            margin-top: 15px;
-        }
+        h1 { color: #FFEB3B; font-size: 1.3rem; margin-bottom: 5px; }
+        p { font-size: 0.9rem; margin: 5px 0; }
+        .heart-icon { color: #ff4081; font-weight: bold; }
     </style>
 </head>
 <body>
+
     <div class="tree-container">
-        <div class="seed"></div>
         <div class="trunk"></div>
-        <div class="flower-cluster">
-            <div class="flower f01"></div><div class="flower f02"></div><div class="flower f03"></div><div class="flower f04"></div><div class="flower f05"></div>
-        <div class="flower f06"></div><div class="flower f07"></div><div class="flower f08"></div><div class="flower f09"></div><div class="flower f10"></div>
-        <div class="flower f11"></div><div class="flower f12"></div><div class="flower f13"></div><div class="flower f14"></div><div class="flower f15"></div>
-        <div class="flower f16"></div><div class="flower f17"></div><div class="flower f18"></div><div class="flower f19"></div><div class="flower f20"></div>
-        <div class="flower f21"></div><div class="flower f22"></div><div class="flower f23"></div><div class="flower f24"></div><div class="flower f25"></div>
-        <div class="flower f26"></div><div class="flower f27"></div><div class="flower f28"></div><div class="flower f29"></div><div class="flower f30"></div>
-        <div class="flower f31"></div><div class="flower f32"></div><div class="flower f33"></div><div class="flower f34"></div><div class="flower f35"></div>
-        <div class="flower f36"></div><div class="flower f37"></div><div class="flower f38"></div><div class="flower f39"></div><div class="flower f40"></div>
-        <div class="flower f41"></div><div class="flower f42"></div><div class="flower f43"></div><div class="flower f44"></div><div class="flower f45"></div>
-        <div class="flower f46"></div><div class="flower f47"></div><div class="flower f48"></div><div class="flower f49"></div><div class="flower f50"></div>
-        <div class="flower f51"></div><div class="flower f52"></div><div class="flower f53"></div><div class="flower f54"></div><div class="flower f55"></div>
-        <div class="flower f56"></div><div class="flower f57"></div><div class="flower f58"></div><div class="flower f59"></div>
-        </div>
+        <div id="heart-cluster"></div>
     </div>
 
     <div class="text-card">
@@ -235,7 +114,42 @@
         <p>Si pudiera elegir un lugar seguro,</p>
         <p>sería siempre a tu lado.</p>
         <p>Porque te mereces lo más lindo del mundo.</p>
-        <p class="heart">❤ Te Amo ❤</p>
+        <p class="heart-icon">❤ Te Amo ❤</p>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cluster = document.getElementById('heart-cluster');
+            const totalFlowers = 250; // ¡Muchos girasoles para que sea tupido!
+            
+            // Fórmula del corazón: x = 16sin^3(t), y = 13cos(t) - 5cos(2t) - 2cos(3t) - cos(4t)
+            for (let i = 0; i < totalFlowers; i++) {
+                const t = Math.random() * 2 * Math.PI;
+                const r = Math.sqrt(Math.random()); // Distribución interna para rellenar el corazón
+                
+                const x = r * 16 * Math.pow(Math.sin(t), 3);
+                const y = r * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+
+                const flower = document.createElement('div');
+                flower.className = 'flower';
+                
+                // Centrado y escalado
+                const scale = 7; 
+                flower.style.left = `calc(50% + ${x * scale}px)`;
+                flower.style.bottom = `${y * scale}px`;
+                
+                // Animación en cascada (aparecen de abajo hacia arriba)
+                const delay = 1.5 + (Math.random() * 2);
+                flower.style.animationDelay = `${delay}s`;
+
+                cluster.appendChild(flower);
+            }
+
+            // Mostrar flores tras crecer el tronco
+            setTimeout(() => {
+                cluster.style.display = 'block';
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
