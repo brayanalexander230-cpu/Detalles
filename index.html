@@ -39,7 +39,7 @@
 
         .animacion-arbol {
             width: 100%;
-            height: 320px; /* Más alto para el corazón completo */
+            height: 320px;
             position: relative;
             margin: 20px 0;
             display: flex;
@@ -97,81 +97,87 @@
             animation: ramasDer 1.2s forwards 2.3s;
         }
 
-        /* Contenedor del corazón EXACTO como la imagen */
+        /* Contenedor del corazón REDONDO como la imagen */
         .corazon-contenedor {
             position: absolute;
             top: 10px;
-            width: 200px; /* Ancho ajustado */
-            height: 180px; /* Alto ajustado */
+            width: 200px;
+            height: 180px;
             opacity: 0;
             animation: aparecerContenedor 0.5s forwards 3.5s;
+            /* Forma de corazón como guía */
+            clip-path: path('M100,30 C130,0 200,20 200,60 C200,100 150,150 100,180 C50,150 0,100 0,60 C0,20 70,0 100,30 Z');
         }
 
-        /* Girasoles más pequeños y densos */
+        /* Girasoles pequeños y densos */
         .girasol {
             position: absolute;
-            font-size: 10px;
+            font-size: 9px;
             opacity: 0;
             transform: scale(0);
             animation: crecerGirasol 0.5s forwards;
         }
 
-        /* Posiciones EXACTAS para formar el corazón como la imagen */
-        /* Parte superior del corazón */
-        .girasol:nth-child(1) { top: 10%; left: 50%; animation-delay: 4.0s; }
-        .girasol:nth-child(2) { top: 15%; left: 45%; animation-delay: 4.1s; }
-        .girasol:nth-child(3) { top: 15%; left: 55%; animation-delay: 4.1s; }
-        .girasol:nth-child(4) { top: 20%; left: 40%; animation-delay: 4.2s; }
-        .girasol:nth-child(5) { top: 20%; left: 60%; animation-delay: 4.2s; }
-        .girasol:nth-child(6) { top: 20%; left: 50%; animation-delay: 4.3s; }
-        .girasol:nth-child(7) { top: 25%; left: 35%; animation-delay: 4.4s; }
-        .girasol:nth-child(8) { top: 25%; left: 65%; animation-delay: 4.4s; }
-        .girasol:nth-child(9) { top: 25%; left: 45%; animation-delay: 4.5s; }
-        .girasol:nth-child(10) { top: 25%; left: 55%; animation-delay: 4.5s; }
-        .girasol:nth-child(11) { top: 30%; left: 30%; animation-delay: 4.6s; }
-        .girasol:nth-child(12) { top: 30%; left: 70%; animation-delay: 4.6s; }
-        .girasol:nth-child(13) { top: 30%; left: 40%; animation-delay: 4.7s; }
-        .girasol:nth-child(14) { top: 30%; left: 60%; animation-delay: 4.7s; }
-        .girasol:nth-child(15) { top: 30%; left: 50%; animation-delay: 4.8s; }
+        /* Posiciones para corazón PERFECTO */
+        /* Parte superior izquierda */
+        .girasol:nth-child(1) { top: 15%; left: 40%; animation-delay: 4.0s; }
+        .girasol:nth-child(2) { top: 20%; left: 35%; animation-delay: 4.1s; }
+        .girasol:nth-child(3) { top: 25%; left: 30%; animation-delay: 4.2s; }
+        .girasol:nth-child(4) { top: 30%; left: 25%; animation-delay: 4.3s; }
+        .girasol:nth-child(5) { top: 35%; left: 20%; animation-delay: 4.4s; }
+        .girasol:nth-child(6) { top: 40%; left: 18%; animation-delay: 4.5s; }
+        .girasol:nth-child(7) { top: 45%; left: 20%; animation-delay: 4.6s; }
+        .girasol:nth-child(8) { top: 50%; left: 25%; animation-delay: 4.7s; }
+        .girasol:nth-child(9) { top: 55%; left: 30%; animation-delay: 4.8s; }
+        .girasol:nth-child(10) { top: 60%; left: 35%; animation-delay: 4.9s; }
 
-        /* Mitad del corazón */
-        .girasol:nth-child(16) { top: 35%; left: 25%; animation-delay: 4.3s; }
-        .girasol:nth-child(17) { top: 35%; left: 75%; animation-delay: 4.3s; }
-        .girasol:nth-child(18) { top: 35%; left: 35%; animation-delay: 4.4s; }
-        .girasol:nth-child(19) { top: 35%; left: 65%; animation-delay: 4.4s; }
-        .girasol:nth-child(20) { top: 35%; left: 45%; animation-delay: 4.5s; }
-        .girasol:nth-child(21) { top: 35%; left: 55%; animation-delay: 4.5s; }
-        .girasol:nth-child(22) { top: 40%; left: 30%; animation-delay: 4.6s; }
-        .girasol:nth-child(23) { top: 40%; left: 70%; animation-delay: 4.6s; }
-        .girasol:nth-child(24) { top: 40%; left: 40%; animation-delay: 4.7s; }
-        .girasol:nth-child(25) { top: 40%; left: 60%; animation-delay: 4.7s; }
-        .girasol:nth-child(26) { top: 40%; left: 50%; animation-delay: 4.8s; }
-        .girasol:nth-child(27) { top: 45%; left: 35%; animation-delay: 4.9s; }
-        .girasol:nth-child(28) { top: 45%; left: 65%; animation-delay: 4.9s; }
-        .girasol:nth-child(29) { top: 45%; left: 45%; animation-delay: 4.0s; }
-        .girasol:nth-child(30) { top: 45%; left: 55%; animation-delay: 4.0s; }
+        /* Parte superior derecha */
+        .girasol:nth-child(11) { top: 15%; left: 60%; animation-delay: 4.0s; }
+        .girasol:nth-child(12) { top: 20%; left: 65%; animation-delay: 4.1s; }
+        .girasol:nth-child(13) { top: 25%; left: 70%; animation-delay: 4.2s; }
+        .girasol:nth-child(14) { top: 30%; left: 75%; animation-delay: 4.3s; }
+        .girasol:nth-child(15) { top: 35%; left: 80%; animation-delay: 4.4s; }
+        .girasol:nth-child(16) { top: 40%; left: 82%; animation-delay: 4.5s; }
+        .girasol:nth-child(17) { top: 45%; left: 80%; animation-delay: 4.6s; }
+        .girasol:nth-child(18) { top: 50%; left: 75%; animation-delay: 4.7s; }
+        .girasol:nth-child(19) { top: 55%; left: 70%; animation-delay: 4.8s; }
+        .girasol:nth-child(20) { top: 60%; left: 65%; animation-delay: 4.9s; }
+
+        /* Centro del corazón */
+        .girasol:nth-child(21) { top: 10%; left: 50%; animation-delay: 4.0s; }
+        .girasol:nth-child(22) { top: 15%; left: 45%; animation-delay: 4.1s; }
+        .girasol:nth-child(23) { top: 15%; left: 55%; animation-delay: 4.1s; }
+        .girasol:nth-child(24) { top: 20%; left: 40%; animation-delay: 4.2s; }
+        .girasol:nth-child(25) { top: 20%; left: 60%; animation-delay: 4.2s; }
+        .girasol:nth-child(26) { top: 25%; left: 45%; animation-delay: 4.3s; }
+        .girasol:nth-child(27) { top: 25%; left: 55%; animation-delay: 4.3s; }
+        .girasol:nth-child(28) { top: 30%; left: 50%; animation-delay: 4.4s; }
+        .girasol:nth-child(29) { top: 35%; left: 45%; animation-delay: 4.5s; }
+        .girasol:nth-child(30) { top: 35%; left: 55%; animation-delay: 4.5s; }
+        .girasol:nth-child(31) { top: 40%; left: 40%; animation-delay: 4.6s; }
+        .girasol:nth-child(32) { top: 40%; left: 60%; animation-delay: 4.6s; }
+        .girasol:nth-child(33) { top: 45%; left: 50%; animation-delay: 4.7s; }
+        .girasol:nth-child(34) { top: 50%; left: 45%; animation-delay: 4.8s; }
+        .girasol:nth-child(35) { top: 50%; left: 55%; animation-delay: 4.8s; }
+        .girasol:nth-child(36) { top: 55%; left: 50%; animation-delay: 4.9s; }
 
         /* Parte inferior del corazón */
-        .girasol:nth-child(31) { top: 50%; left: 40%; animation-delay: 4.1s; }
-        .girasol:nth-child(32) { top: 50%; left: 60%; animation-delay: 4.1s; }
-        .girasol:nth-child(33) { top: 50%; left: 50%; animation-delay: 4.2s; }
-        .girasol:nth-child(34) { top: 55%; left: 45%; animation-delay: 4.3s; }
-        .girasol:nth-child(35) { top: 55%; left: 55%; animation-delay: 4.3s; }
-        .girasol:nth-child(36) { top: 60%; left: 50%; animation-delay: 4.4s; }
-        .girasol:nth-child(37) { top: 55%; left: 35%; animation-delay: 4.5s; }
-        .girasol:nth-child(38) { top: 55%; left: 65%; animation-delay: 4.5s; }
-        .girasol:nth-child(39) { top: 60%; left: 40%; animation-delay: 4.6s; }
-        .girasol:nth-child(40) { top: 60%; left: 60%; animation-delay: 4.6s; }
-        .girasol:nth-child(41) { top: 65%; left: 45%; animation-delay: 4.7s; }
-        .girasol:nth-child(42) { top: 65%; left: 55%; animation-delay: 4.7s; }
-        .girasol:nth-child(43) { top: 70%; left: 50%; animation-delay: 4.8s; }
-        .girasol:nth-child(44) { top: 65%; left: 35%; animation-delay: 4.9s; }
-        .girasol:nth-child(45) { top: 65%; left: 65%; animation-delay: 4.9s; }
-        .girasol:nth-child(46) { top: 70%; left: 40%; animation-delay: 4.0s; }
-        .girasol:nth-child(47) { top: 70%; left: 60%; animation-delay: 4.0s; }
-        .girasol:nth-child(48) { top: 75%; left: 45%; animation-delay: 4.1s; }
-        .girasol:nth-child(49) { top: 75%; left: 55%; animation-delay: 4.1s; }
-        .girasol:nth-child(50) { top: 80%; left: 50%; animation-delay: 4.2s; }
+        .girasol:nth-child(37) { top: 65%; left: 40%; animation-delay: 4.0s; }
+        .girasol:nth-child(38) { top: 65%; left: 60%; animation-delay: 4.0s; }
+        .girasol:nth-child(39) { top: 70%; left: 45%; animation-delay: 4.1s; }
+        .girasol:nth-child(40) { top: 70%; left: 55%; animation-delay: 4.1s; }
+        .girasol:nth-child(41) { top: 75%; left: 50%; animation-delay: 4.2s; }
+        .girasol:nth-child(42) { top: 80%; left: 45%; animation-delay: 4.3s; }
+        .girasol:nth-child(43) { top: 80%; left: 55%; animation-delay: 4.3s; }
+        .girasol:nth-child(44) { top: 85%; left: 50%; animation-delay: 4.4s; }
+        .girasol:nth-child(45) { top: 65%; left: 50%; animation-delay: 4.5s; }
+        .girasol:nth-child(46) { top: 75%; left: 40%; animation-delay: 4.6s; }
+        .girasol:nth-child(47) { top: 75%; left: 60%; animation-delay: 4.6s; }
+        .girasol:nth-child(48) { top: 80%; left: 35%; animation-delay: 4.7s; }
+        .girasol:nth-child(49) { top: 80%; left: 65%; animation-delay: 4.7s; }
+        .girasol:nth-child(50) { top: 85%; left: 45%; animation-delay: 4.8s; }
+        .girasol:nth-child(51) { top: 85%; left: 55%; animation-delay: 4.8s; }
+        .girasol:nth-child(52) { top: 90%; left: 50%; animation-delay: 4.9s; }
 
         .contador {
             font-size: 1.2rem;
@@ -217,7 +223,7 @@
             <div class="rama-izq"></div>
             <div class="rama-der"></div>
             
-            <!-- 50 girasoles para formar el corazón completo -->
+            <!-- 52 girasoles para corazón completo -->
             <div class="corazon-contenedor">
                 <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
                 <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
@@ -228,19 +234,4 @@
                 <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
                 <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
                 <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
-                <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div>
-            </div>
-        </div>
-
-        <div class="contador" id="tiempo"></div>
-    </div>
-
-    <script>
-        const fechaInicio = new Date('2017-02-10T00:00:00');
-
-        function calcularTiempo() {
-            const ahora = new Date();
-            const diferencia = ahora - fechaInicio;
-
-            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24))
+                <div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻</div><div class="girasol">🌻
