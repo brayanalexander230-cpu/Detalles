@@ -64,7 +64,7 @@
             animation: flowerPop 0.5s ease-out forwards;
         }
 
-        /* Centro marrón del girasol (como en la imagen 18.png) */
+        /* Centro marrón del girasol (como en image_20.png) */
         .flower-item::after {
             content: '';
             position: absolute;
@@ -92,7 +92,7 @@
             animation: showGlow 1.5s ease-out 3s forwards;
         }
 
-        /* --- TARJETA DE TEXTO (Estilo image_18.png) --- */
+        /* --- TARJETA DE TEXTO (Estilo image_20.png) --- */
         .text-card {
             background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente */
             border: 1px solid #ffd740; /* Borde amarillo brillante */
@@ -168,7 +168,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cluster = document.getElementById('heart-cluster');
-            const totalFlowers = 250; // ¡Añadiremos 250 girasoles para que sea denso!
+            const totalFlowers = 250; // ¡Añadiremos 250 girasoles!
 
             // Fórmula matemática para un corazón perfecto (Paramétrica)
             // t va de 0 a 2*PI
@@ -192,7 +192,7 @@
                 const offsetX = 50; // Centro horizontal (%)
                 const offsetY = 45; // Centro vertical (%)
                 
-                // Las matemáticas del corazón ponen (0,0) en el centro.
+                // point.y va de -17 (abajo) a 13 (arriba).
                 // Ajustamos para que (0,0) sea el centro inferior del contenedor.
                 // -point.y invierte el eje Y para que suba
                 flower.style.left = (point.x * scale + offsetX) + '%';
@@ -200,10 +200,9 @@
 
                 // Añadir retraso para la animación secuencial
                 // Las flores de abajo aparecen primero
-                // point.y va de -17 (abajo) a 13 (arriba)
-                const yDelay = (-point.y + 17) / 30; // Normalizar yDelay (más bajo -> menor retraso)
-                const calculatedDelay = 1.5 + yDelay * 2.5; // Multiplicador para la velocidad de floración
-                flower.style.animationDelay = calculatedDelay + 's'; // Retraso de floración
+                const yDelay = (-point.y + 17) / 30; // Normalizar yDelay
+                const calculatedDelay = 1.5 + yDelay * 2.5; // Multiplicador para la velocidad
+                flower.style.animationDelay = calculatedDelay + 's';
 
                 cluster.appendChild(flower);
             }
