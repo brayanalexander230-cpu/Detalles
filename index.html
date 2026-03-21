@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para mi Niña</title>
     <style>
-        /* --- ESTILOS (CSS) --- */
-        
-        /* 1. Fondo negro y centrado */
+        /* --- ESTILOS DE FONDO --- */
         body {
             background-color: #000;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -21,60 +20,140 @@
             text-align: center;
         }
 
-        /* 2. Contenedor principal de la tarjeta */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* 3. La Flor Animada (Style.css style) */
-        .flower {
+        /* --- LA GRAN ANIMACIÓN DEL ÁRBOL --- */
+        .tree-container {
             position: relative;
-            width: 150px; /* Tamaño del girasol */
-            height: 150px;
-            margin-bottom: 30px; /* Espacio con el texto */
-            animation: float 3s ease-in-out infinite; /* Flota suavemente */
+            width: 300px; /* Tamaño del área del árbol */
+            height: 300px;
+            margin-bottom: 20px;
         }
 
-        /* El centro marrón de la flor */
-        .center {
+        /* 1. Semilla/Punto de Crecimiento */
+        .seed {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: #5d4037;
-            border-radius: 50%;
-            z-index: 2;
-        }
-
-        /* Pétalos */
-        .petal {
-            position: absolute;
-            top: 50%;
-            left: 50%;
             width: 20px;
-            height: 60px;
-            background: #ffeb3b; /* Amarillo vibrante */
+            height: 20px;
+            background: #5d4037; /* Marrón semilla */
             border-radius: 50%;
-            transform-origin: bottom center;
-            opacity: 0;
-            animation: bloom 2s ease-out forwards; /* Los pétalos "florecen" */
+            bottom: 0;
+            left: calc(50% - 10px);
+            z-index: 10;
+            animation: seedToTrunk 1.5s ease-out forwards;
         }
 
-        /* Generar pétalos en círculo */
-        .p1 { transform: translate(-50%, -100%) rotate(0deg); animation-delay: 0.2s; }
-        .p2 { transform: translate(-50%, -100%) rotate(45deg); animation-delay: 0.4s; }
-        .p3 { transform: translate(-50%, -100%) rotate(90deg); animation-delay: 0.6s; }
-        .p4 { transform: translate(-50%, -100%) rotate(135deg); animation-delay: 0.8s; }
-        .p5 { transform: translate(-50%, -100%) rotate(180deg); animation-delay: 1s; }
-        .p6 { transform: translate(-50%, -100%) rotate(225deg); animation-delay: 1.2s; }
-        .p7 { transform: translate(-50%, -100%) rotate(270deg); animation-delay: 1.4s; }
-        .p8 { transform: translate(-50%, -100%) rotate(315deg); animation-delay: 1.6s; }
+        /* 2. Tronco Creciendo */
+        .trunk {
+            position: absolute;
+            width: 10px;
+            background: #5d4037;
+            bottom: 0;
+            left: calc(50% - 5px);
+            border-radius: 5px;
+            height: 0;
+            opacity: 0;
+            z-index: 5;
+            animation: growTrunk 2s ease-out 1.5s forwards;
+        }
 
-        /* 4. Tarjeta de texto (Style.css style) */
+        /* 3. El Cluster de Flores (cientos de girasoles) */
+        .flower-cluster {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            animation: showFlowers 1s ease-in 3.5s forwards; /* Aparecen después del tronco */
+        }
+
+        /* Definición de una flor individual */
+        .flower {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #ffeb3b; /* Amarillo */
+            border-radius: 50%;
+            box-shadow: inset 0 0 2px rgba(0,0,0,0.4);
+            animation: flowerPop 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* Centro marrón del girasol */
+        .flower::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 7px;
+            height: 7px;
+            background: #3e2723;
+            border-radius: 50%;
+        }
+
+        /* GENERADOR DE POSICIONES PARA EL CORAZÓN */
+        /* Esta parte es clave para formar el corazón de 'image_2.png' */
+        /* Usaré porcentajes para distribuir los puntos en forma de corazón */
+        
+        .f01 { top: 30%; left: 40%; animation-delay: 3.5s; }
+        .f02 { top: 25%; left: 45%; animation-delay: 3.55s; }
+        .f03 { top: 22%; left: 50%; animation-delay: 3.6s; }
+        .f04 { top: 25%; left: 55%; animation-delay: 3.65s; }
+        .f05 { top: 30%; left: 60%; animation-delay: 3.7s; }
+        .f06 { top: 38%; left: 63%; animation-delay: 3.75s; }
+        .f07 { top: 48%; left: 61%; animation-delay: 3.8s; }
+        .f08 { top: 58%; left: 56%; animation-delay: 3.85s; }
+        .f09 { top: 68%; left: 50%; animation-delay: 3.9s; }
+        .f10 { top: 58%; left: 44%; animation-delay: 3.95s; }
+        .f11 { top: 48%; left: 39%; animation-delay: 4.0s; }
+        .f12 { top: 38%; left: 37%; animation-delay: 4.05s; }
+        
+        /* Relleno */
+        .f13 { top: 35%; left: 50%; animation-delay: 4.1s; }
+        .f14 { top: 42%; left: 45%; animation-delay: 4.15s; }
+        .f15 { top: 42%; left: 55%; animation-delay: 4.2s; }
+        .f16 { top: 50%; left: 50%; animation-delay: 4.25s; }
+        .f17 { top: 32%; left: 44%; animation-delay: 4.3s; }
+        .f18 { top: 32%; left: 56%; animation-delay: 4.35s; }
+        .f19 { top: 40%; left: 40%; animation-delay: 4.4s; }
+        .f20 { top: 40%; left: 60%; animation-delay: 4.45s; }
+
+        /* Más flores para un efecto denso (puedes añadir más .flower .fXX) */
+        .f21 { top: 28%; left: 42%; animation-delay: 4.5s; }
+        .f22 { top: 28%; left: 58%; animation-delay: 4.55s; }
+        .f23 { top: 35%; left: 38%; animation-delay: 4.6s; }
+        .f24 { top: 35%; left: 62%; animation-delay: 4.65s; }
+        .f25 { top: 45%; left: 38%; animation-delay: 4.7s; }
+        .f26 { top: 45%; left: 62%; animation-delay: 4.75s; }
+        .f27 { top: 52%; left: 42%; animation-delay: 4.8s; }
+        .f28 { top: 52%; left: 58%; animation-delay: 4.85s; }
+        .f29 { top: 60%; left: 46%; animation-delay: 4.9s; }
+        .f30 { top: 60%; left: 54%; animation-delay: 4.95s; }
+
+        /* --- KEYFRAMES --- */
+        @keyframes seedToTrunk {
+            0% { transform: scale(1); opacity: 1; }
+            80% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        @keyframes growTrunk {
+            0% { height: 0; opacity: 0; }
+            20% { opacity: 1; }
+            100% { height: 200px; opacity: 1; }
+        }
+
+        @keyframes showFlowers {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes flowerPop {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- TARJETA DE TEXTO (Igual que image_4.png) --- */
         .text-card {
             background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente */
             border: 1px solid #ffd740; /* Borde amarillo brillante */
@@ -83,7 +162,7 @@
             width: 90%;
             max-width: 400px;
             opacity: 0;
-            animation: showText 1.5s ease-out 2.5s forwards; /* Aparece al final */
+            animation: showText 1.5s ease-out 5s forwards; /* Aparece al final de la floración */
             box-shadow: 0 0 15px rgba(255, 215, 64, 0.2);
         }
 
@@ -107,17 +186,6 @@
             font-weight: bold;
         }
 
-        /* 5. Keyframes (Las animaciones) */
-        @keyframes bloom {
-            0% { transform: translate(-50%, -100%) scale(0); opacity: 0; }
-            100% { transform: translate(-50%, -100%) scale(1); opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
         @keyframes showText {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -126,23 +194,27 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="flower">
-            <div class="center"></div>
-            <div class="petal p1"></div><div class="petal p2"></div>
-            <div class="petal p3"></div><div class="petal p4"></div>
-            <div class="petal p5"></div><div class="petal p6"></div>
-            <div class="petal p7"></div><div class="petal p8"></div>
+    <div class="tree-container">
+        <div class="seed"></div>
+        <div class="trunk"></div>
+        
+        <div class="flower-cluster">
+            <div class="flower f01"></div><div class="flower f02"></div><div class="flower f03"></div><div class="flower f04"></div><div class="flower f05"></div>
+            <div class="flower f06"></div><div class="flower f07"></div><div class="flower f08"></div><div class="flower f09"></div><div class="flower f10"></div>
+            <div class="flower f11"></div><div class="flower f12"></div><div class="flower f13"></div><div class="flower f14"></div><div class="flower f15"></div>
+            <div class="flower f16"></div><div class="flower f17"></div><div class="flower f18"></div><div class="flower f19"></div><div class="flower f20"></div>
+            <div class="flower f21"></div><div class="flower f22"></div><div class="flower f23"></div><div class="flower f24"></div><div class="flower f25"></div>
+            <div class="flower f26"></div><div class="flower f27"></div><div class="flower f28"></div><div class="flower f29"></div><div class="flower f30"></div>
         </div>
+    </div>
 
-        <div class="text-card">
-            <h1>Flores Amarillas para ti</h1>
-            <p>Si pudiera elegir un lugar seguro,</p>
-            <p>sería siempre a tu lado.</p>
-            <div style="height: 10px;"></div>
-            <p>Porque te mereces lo más lindo del mundo.</p>
-            <p class="heart">❤ Te Amo ❤</p>
-        </div>
+    <div class="text-card">
+        <h1>Flores Amarillas para ti</h1>
+        <p>Si pudiera elegir un lugar seguro,</p>
+        <p>sería siempre a tu lado.</p>
+        <div style="height: 10px;"></div>
+        <p>Porque te mereces lo más lindo del mundo.</p>
+        <p class="heart">❤ Te Amo ❤</p>
     </div>
 
 </body>
