@@ -91,9 +91,6 @@
         }
 
         /* GENERADOR DE POSICIONES PARA EL CORAZÓN */
-        /* Esta parte es clave para formar el corazón de 'image_2.png' */
-        /* Usaré porcentajes para distribuir los puntos en forma de corazón */
-        
         .f01 { top: 30%; left: 40%; animation-delay: 3.5s; }
         .f02 { top: 25%; left: 45%; animation-delay: 3.55s; }
         .f03 { top: 22%; left: 50%; animation-delay: 3.6s; }
@@ -117,7 +114,7 @@
         .f19 { top: 40%; left: 40%; animation-delay: 4.4s; }
         .f20 { top: 40%; left: 60%; animation-delay: 4.45s; }
 
-        /* Más flores para un efecto denso (puedes añadir más .flower .fXX) */
+        /* Más flores para un efecto denso */
         .f21 { top: 28%; left: 42%; animation-delay: 4.5s; }
         .f22 { top: 28%; left: 58%; animation-delay: 4.55s; }
         .f23 { top: 35%; left: 38%; animation-delay: 4.6s; }
@@ -153,7 +150,7 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- TARJETA DE TEXTO (Igual que image_4.png) --- */
+        /* --- TARJETA DE TEXTO --- */
         .text-card {
             background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente */
             border: 1px solid #ffd740; /* Borde amarillo brillante */
@@ -179,7 +176,7 @@
             margin: 0;
         }
 
-        /* Corazón rosa (como en la imagen) */
+        /* Corazón rosa */
         .heart {
             color: #ff4081; /* Rosa intenso */
             margin-top: 15px;
@@ -194,6 +191,7 @@
 </head>
 <body>
 
+    <!-- ANIMACIÓN DEL ÁRBOL EN LUGAR DEL PUNTO Y LÍNEA -->
     <div class="tree-container">
         <div class="seed"></div>
         <div class="trunk"></div>
