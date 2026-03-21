@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para mi Niña</title>
     <style>
-        /* --- ESTILOS GLOBAL --- */
+        /* --- ESTILOS GLOBAL (CSS) --- */
         body {
-            background-color: #000;
+            background-color: #000; /* Fondo negro */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -20,32 +20,29 @@
             text-align: center;
         }
 
-        /* CONTENEDOR DE LA ANIMACIÓN DEL ÁRBOL */
+        /* --- LA GRAN ANIMACIÓN DEL ÁRBOL --- */
         .tree-container {
             position: relative;
             width: 300px; /* Tamaño del área del árbol */
             height: 300px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
+            margin-bottom: 25px; /* Espacio con el texto */
         }
 
-        /* 1. Tronco (crece de abajo a arriba) */
+        /* Tronco (Ccrece de abajo a arriba) */
         .trunk {
             position: absolute;
             width: 10px;
-            background: #5d4037;
+            background: #5d4037; /* Marrón tronco */
             border-radius: 5px;
             bottom: 0;
             left: calc(50% - 5px);
             height: 0;
             opacity: 0;
+            z-index: 5;
             animation: growTrunk 1.5s ease-out forwards;
         }
 
-        /* 2. El Cluster de Flores (cientos de girasoles, tupido) */
-        /* Usaremos JS para posicionar las flores */
+        /* El contenedor que formará el corazón de flores */
         #heart-cluster {
             position: absolute;
             width: 100%;
@@ -55,7 +52,7 @@
             display: none; /* Se oculta hasta que el tronco crezca */
         }
 
-        /* ESTILO DE UNA FLOR INDIVIDUAL (PÉTALO) */
+        /* ESTILO DE UNA FLOR INDIVIDUAL (TUPIDO) */
         .flower-item {
             position: absolute;
             width: 15px; /* Tamaño del girasol */
@@ -67,7 +64,7 @@
             animation: flowerPop 0.5s ease-out forwards;
         }
 
-        /* Centro marrón del girasol (como en image_16.png) */
+        /* Centro marrón del girasol (como en la imagen 18.png) */
         .flower-item::after {
             content: '';
             position: absolute;
@@ -79,7 +76,23 @@
             border-radius: 50%;
         }
 
-        /* --- TARJETA DE TEXTO (Igual que image_16.png) --- */
+        /* Brillo de aureola dorada alrededor del corazón */
+        #heart-cluster::after {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(255, 235, 59, 0.4) 0%, rgba(255, 235, 59, 0) 70%);
+            border-radius: 50%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            animation: showGlow 1.5s ease-out 3s forwards;
+        }
+
+        /* --- TARJETA DE TEXTO (Estilo image_18.png) --- */
         .text-card {
             background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente */
             border: 1px solid #ffd740; /* Borde amarillo brillante */
@@ -128,6 +141,11 @@
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes showGlow {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -150,7 +168,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cluster = document.getElementById('heart-cluster');
-            const totalFlowers = 250; // ¡Añadiremos 250 girasoles!
+            const totalFlowers = 250; // ¡Añadiremos 250 girasoles para que sea denso!
 
             // Fórmula matemática para un corazón perfecto (Paramétrica)
             // t va de 0 a 2*PI
@@ -183,9 +201,9 @@
                 // Añadir retraso para la animación secuencial
                 // Las flores de abajo aparecen primero
                 // point.y va de -17 (abajo) a 13 (arriba)
-                const yDelay = (-point.y + 17) / 30; // Normalizar delay
+                const yDelay = (-point.y + 17) / 30; // Normalizar yDelay (más bajo -> menor retraso)
                 const calculatedDelay = 1.5 + yDelay * 2.5; // Multiplicador para la velocidad de floración
-                flower.style.animationDelay = calculatedDelay + 's';
+                flower.style.animationDelay = calculatedDelay + 's'; // Retraso de floración
 
                 cluster.appendChild(flower);
             }
