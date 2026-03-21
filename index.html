@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas para mi niña hermosa</title>
+    <title>Flores Amarillas para ti</title>
     <style>
         :root {
-            --fondo-pantalla: #ff0066; /* Rosa intenso como TikTok */
-            --fondo-texto: #f5f0e1; /* Crema */
-            --color-texto: #222; /* Negro oscuro */
-            --color-contador: #d4af37; /* Dorado */
+            --fondo-pantalla: #ff0066;
+            --fondo-texto: #f5f0e1;
+            --color-texto: #222;
+            --color-contador: #d4af37;
+            --color-tronco: #8b4513;
+            --color-flores: #ffd700;
         }
 
         * {
@@ -28,18 +30,18 @@
             align-items: center;
             padding: 15px;
             font-family: 'Arial', sans-serif;
+            overflow: hidden;
         }
 
-        /* Contenedor principal como en el TikTok */
         .contenedor-principal {
             position: relative;
             width: 95%;
-            max-width: 500px; /* Ancho similar a móvil */
+            max-width: 500px;
             background: var(--fondo-texto);
             padding: 25px 20px;
             border-radius: 10px;
             display: flex;
-            flex-direction: column; /* Texto arriba, imagen abajo */
+            flex-direction: column;
             align-items: center;
         }
 
@@ -57,15 +59,121 @@
         .texto-dedicatorio {
             width: 100%;
             color: var(--color-texto);
-            font-size: 1.5rem; /* Tamaño de texto grande como en TikTok */
+            font-size: 1.5rem;
             line-height: 1.8;
             margin-bottom: 20px;
+            opacity: 0;
+            animation: aparecerTexto 1s ease forwards 1s;
         }
 
-        .imagen-arbol {
-            width: 60%; /* Tamaño del árbol como en el ejemplo */
+        /* Contenedor de la animación del árbol */
+        .contenedor-animacion-arbol {
+            width: 60%;
+            height: 250px;
+            position: relative;
             margin-bottom: 15px;
         }
+
+        /* Elementos de la animación */
+        .semilla {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--color-tronco);
+            border-radius: 50% 50% 30% 30%;
+            opacity: 0;
+            animation: aparecerSemilla 0.5s ease forwards;
+        }
+
+        .tronco {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: bottom;
+            width: 15px;
+            height: 80px;
+            background: var(--color-tronco);
+            border-radius: 10px 10px 0 0;
+            animation: crecerTronco 1.5s ease forwards 0.8s;
+        }
+
+        .rama-izq, .rama-der {
+            position: absolute;
+            background: var(--color-tronco);
+            transform-origin: bottom;
+            scale: 0;
+        }
+
+        .rama-izq {
+            bottom: 60px;
+            left: 40%;
+            width: 10px;
+            height: 60px;
+            border-radius: 50px 0 0 50px;
+            transform: rotate(-30deg);
+            animation: crecerRamas 1.2s ease forwards 2.3s;
+        }
+
+        .rama-der {
+            bottom: 60px;
+            right: 40%;
+            width: 10px;
+            height: 60px;
+            border-radius: 0 50px 50px 0;
+            transform: rotate(30deg);
+            animation: crecerRamas 1.2s ease forwards 2.3s;
+        }
+
+        /* Corazón formado por flores */
+        .corazon-flores {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            width: 120px;
+            height: 110px;
+            opacity: 0;
+            animation: aparecerCorazon 2s ease forwards 3.5s;
+        }
+
+        .flor {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--color-flores);
+            border-radius: 50%;
+            opacity: 0;
+            animation: aparecerFlor 0.3s ease forwards;
+        }
+
+        /* Posicionar flores para formar el corazón */
+        .flor:nth-child(1) { top: 40%; left: 50%; animation-delay: 4s; }
+        .flor:nth-child(2) { top: 35%; left: 45%; animation-delay: 4.1s; }
+        .flor:nth-child(3) { top: 35%; left: 55%; animation-delay: 4.1s; }
+        .flor:nth-child(4) { top: 30%; left: 40%; animation-delay: 4.2s; }
+        .flor:nth-child(5) { top: 30%; left: 60%; animation-delay: 4.2s; }
+        .flor:nth-child(6) { top: 25%; left: 35%; animation-delay: 4.3s; }
+        .flor:nth-child(7) { top: 25%; left: 65%; animation-delay: 4.3s; }
+        .flor:nth-child(8) { top: 20%; left: 40%; animation-delay: 4.4s; }
+        .flor:nth-child(9) { top: 20%; left: 60%; animation-delay: 4.4s; }
+        .flor:nth-child(10) { top: 15%; left: 45%; animation-delay: 4.5s; }
+        .flor:nth-child(11) { top: 15%; left: 55%; animation-delay: 4.5s; }
+        .flor:nth-child(12) { top: 10%; left: 50%; animation-delay: 4.6s; }
+        .flor:nth-child(13) { top: 45%; left: 35%; animation-delay: 4.2s; }
+        .flor:nth-child(14) { top: 45%; left: 65%; animation-delay: 4.2s; }
+        .flor:nth-child(15) { top: 50%; left: 30%; animation-delay: 4.3s; }
+        .flor:nth-child(16) { top: 50%; left: 70%; animation-delay: 4.3s; }
+        .flor:nth-child(17) { top: 55%; left: 35%; animation-delay: 4.4s; }
+        .flor:nth-child(18) { top: 55%; left: 65%; animation-delay: 4.4s; }
+        .flor:nth-child(19) { top: 60%; left: 40%; animation-delay: 4.5s; }
+        .flor:nth-child(20) { top: 60%; left: 60%; animation-delay: 4.5s; }
+        .flor:nth-child(21) { top: 65%; left: 45%; animation-delay: 4.6s; }
+        .flor:nth-child(22) { top: 65%; left: 55%; animation-delay: 4.6s; }
+        .flor:nth-child(23) { top: 70%; left: 50%; animation-delay: 4.7s; }
 
         .contador-amor {
             width: 100%;
@@ -75,12 +183,39 @@
             text-align: center;
             border-top: 2px solid var(--color-contador);
             padding-top: 10px;
+            opacity: 0;
+            animation: aparecerTexto 1s ease forwards 5s;
+        }
+
+        /* Keyframes de las animaciones */
+        @keyframes aparecerSemilla {
+            to { opacity: 1; }
+        }
+
+        @keyframes crecerTronco {
+            to { transform: translateX(-50%) scaleY(1); }
+        }
+
+        @keyframes crecerRamas {
+            to { scale: 1; }
+        }
+
+        @keyframes aparecerCorazon {
+            to { transform: translateX(-50%) scale(1); opacity: 1; }
+        }
+
+        @keyframes aparecerFlor {
+            to { opacity: 1; }
+        }
+
+        @keyframes aparecerTexto {
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="contenedor-principal">
-        <div class="titulo-dev">Para la mejor niña de mi vida</div>
+        <div class="titulo-dev">Para mi niña hermosa</div>
         <div class="texto-dedicatorio">
             Flores Amarillas para el<br>
             amor de mi vida:<br><br>
@@ -92,14 +227,46 @@
             se llena de amor.<br><br>
             Mi amor por ti comenzó hace...
         </div>
-        <!-- Imagen de árbol en corazón con flores amarillas igual al TikTok -->
-        <img src="https://cdn-icons-png.flaticon.com/512/709/709399.png" alt="Árbol en forma de corazón con flores amarillas" class="imagen-arbol">
+
+        <!-- Contenedor de la animación del árbol -->
+        <div class="contenedor-animacion-arbol">
+            <div class="semilla"></div>
+            <div class="tronco"></div>
+            <div class="rama-izq"></div>
+            <div class="rama-der"></div>
+            <div class="corazon-flores">
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+                <div class="flor"></div>
+            </div>
+        </div>
+
         <div class="contador-amor" id="contador"></div>
     </div>
 
     <script>
-        // CAMBIA ESTA FECHA POR LA DE TU RELACIÓN (AAAA-MM-DD)
-        const fechaInicio = new Date('2018-05-18T00:00:00');
+        // CAMBIA ESTA FECHA POR LA DE TU RELACIÓN
+        const fechaInicio = new Date('2017-07-18T00:00:00');
 
         function actualizarContador() {
             const ahora = new Date();
