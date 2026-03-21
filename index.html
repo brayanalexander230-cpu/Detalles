@@ -3,91 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi amor 💛</title>
+    <title>Para mí niña hermosa 💛</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background-color: #FF0066;
-            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #ff0066;
+            padding: 20px;
             font-family: Arial, sans-serif;
+            margin: 0;
         }
 
         .tarjeta {
-            background-color: #F5F0E1;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: #f5f0e1;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
 
-        .titulo-superior {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            color: #333333;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .texto-izquierda {
-            position: absolute;
-            top: 100px;
-            left: 30px;
-            color: #333333;
-            font-size: 16px;
+        .texto {
+            font-size: 1.3rem;
+            color: #222;
             line-height: 1.8;
+            margin-bottom: 30px;
+            text-shadow: 0 0 1px rgba(0,0,0,0.2);
         }
 
-        .corazon-girasoles {
-            position: absolute;
-            top: 80px;
-            right: 30px;
-            width: 280px;
+        .arbol-animado {
+            width: 220px;
             height: 250px;
-        }
-
-        .corazon-forma {
-            width: 100%;
-            height: 100%;
-            clip-path: path('M140,30 C180,0 280,40 280,90 C280,150 220,250 140,250 C60,250 0,150 0,90 C0,40 80,0 140,30 Z');
-            background-color: #FFD700;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-content: space-around;
-            padding: 10px;
-        }
-
-        .girasol {
-            width: 15px;
-            height: 15px;
-            background-color: #FFCC00;
-            border-radius: 50%;
+            margin: 0 auto 30px auto;
             position: relative;
-        }
-
-        .girasol::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 6px;
-            height: 6px;
-            background-color: #8B4513;
-            border-radius: 50%;
         }
 
         .tronco {
@@ -95,103 +41,139 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 15px;
-            height: 50px;
-            background-color: #8B4513;
+            width: 18px;
+            height: 100px;
+            background: #8b4513;
             border-radius: 5px 5px 0 0;
         }
 
-        .texto-tiempo {
+        .ramas {
             position: absolute;
-            bottom: 60px;
-            left: 30px;
-            color: #333333;
-            font-size: 16px;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 180px;
+            /* Forma de corazón como guía para los girasoles */
+            clip-path: path('M100,30 C140,0 200,40 200,90 C200,150 140,180 100,180 C60,180 0,150 0,90 C0,40 60,0 100,30 Z');
         }
 
-        .contador {
+        .girasol {
             position: absolute;
-            bottom: 30px;
-            left: 30px;
-            color: #DAA520;
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 9px;
+            opacity: 0;
+            transform: scale(0);
+            animation: aparecer 0.5s forwards;
         }
 
-        .alex-dev {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #333333;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .pie-texto {
-            position: absolute;
-            top: 220px;
-            left: 30px;
-            color: #333333;
-            font-size: 16px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="tarjeta">
-        <div class="alex-dev">Para mi niña hermosa 💛</div>
-        <div class="titulo-superior">Flores Amarillas para el amor de mi vida:</div>
-        <div class="texto-izquierda">
-            Si pudiera elegir un<br>
-            lugar seguro,<br>
-            sería a tu lado.<br><br>
-            Cuanto más tiempo estoy<br>
-            contigo más te amo.<br><br>
-            — I Love You!
-        </div>
-        <div class="corazon-girasoles">
-            <div class="corazon-forma">
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-                <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-        <div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div><div class="girasol"></div>
-            </div>
-            <div class="tronco"></div>
-        </div>
-        <div class="texto-tiempo">Mi amor por ti comenzó hace...</div>
-        <div class="contador" id="contador">365 días 00 horas 00 minutos 00 segundos</div>
-        <div class="pie-texto">— I Love You!</div>
-    </div>
-
-    <script>
-        // FECHA DE INICIO - CAMBIA ESTA FECHA POR LA DE TU RELACIÓN
-        const fechaInicio = new Date('2017-02-10');
-        
-        function actualizarContador() {
-            const ahora = new Date();
-            const diferencia = ahora - fechaInicio;
-            
-            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-            
-            document.getElementById('contador').textContent = `${dias} días ${horas.toString().padStart(2, '0')} horas ${minutos.toString().padStart(2, '0')} minutos ${segundos.toString().padStart(2, '0')} segundos`;
-        }
-
-        // Actualizar cada segundo
-        setInterval(actualizarContador, 1000);
-        actualizarContador();
-    </script>
-</body>
-</html>
+        /* POSICIONES DE 120 GIRASOLES PARA QUE QUEDEN TUPIDOS */
+        .girasol:nth-child(1) {top:5%;left:50%;animation-delay:3s;}
+        .girasol:nth-child(2) {top:8%;left:45%;animation-delay:3.1s;}
+        .girasol:nth-child(3) {top:8%;left:55%;animation-delay:3.1s;}
+        .girasol:nth-child(4) {top:10%;left:40%;animation-delay:3.2s;}
+        .girasol:nth-child(5) {top:10%;left:60%;animation-delay:3.2s;}
+        .girasol:nth-child(6) {top:12%;left:35%;animation-delay:3.3s;}
+        .girasol:nth-child(7) {top:12%;left:65%;animation-delay:3.3s;}
+        .girasol:nth-child(8) {top:15%;left:30%;animation-delay:3.4s;}
+        .girasol:nth-child(9) {top:15%;left:70%;animation-delay:3.4s;}
+        .girasol:nth-child(10){top:18%;left:25%;animation-delay:3.5s;}
+        .girasol:nth-child(11){top:18%;left:75%;animation-delay:3.5s;}
+        .girasol:nth-child(12){top:20%;left:20%;animation-delay:3.6s;}
+        .girasol:nth-child(13){top:20%;left:80%;animation-delay:3.6s;}
+        .girasol:nth-child(14){top:22%;left:50%;animation-delay:3.7s;}
+        .girasol:nth-child(15){top:25%;left:45%;animation-delay:3.8s;}
+        .girasol:nth-child(16){top:25%;left:55%;animation-delay:3.8s;}
+        .girasol:nth-child(17){top:28%;left:40%;animation-delay:3.9s;}
+        .girasol:nth-child(18){top:28%;left:60%;animation-delay:3.9s;}
+        .girasol:nth-child(19){top:30%;left:35%;animation-delay:4s;}
+        .girasol:nth-child(20){top:30%;left:65%;animation-delay:4s;}
+        .girasol:nth-child(21){top:32%;left:30%;animation-delay:4.1s;}
+        .girasol:nth-child(22){top:32%;left:70%;animation-delay:4.1s;}
+        .girasol:nth-child(23){top:35%;left:25%;animation-delay:4.2s;}
+        .girasol:nth-child(24){top:35%;left:75%;animation-delay:4.2s;}
+        .girasol:nth-child(25){top:38%;left:50%;animation-delay:4.3s;}
+        .girasol:nth-child(26){top:40%;left:45%;animation-delay:4.4s;}
+        .girasol:nth-child(27){top:40%;left:55%;animation-delay:4.4s;}
+        .girasol:nth-child(28){top:42%;left:40%;animation-delay:4.5s;}
+        .girasol:nth-child(29){top:42%;left:60%;animation-delay:4.5s;}
+        .girasol:nth-child(30){top:45%;left:35%;animation-delay:4.6s;}
+        .girasol:nth-child(31){top:45%;left:65%;animation-delay:4.6s;}
+        .girasol:nth-child(32){top:48%;left:30%;animation-delay:4.7s;}
+        .girasol:nth-child(33){top:48%;left:70%;animation-delay:4.7s;}
+        .girasol:nth-child(34){top:50%;left:25%;animation-delay:4.8s;}
+        .girasol:nth-child(35){top:50%;left:75%;animation-delay:4.8s;}
+        .girasol:nth-child(36){top:52%;left:50%;animation-delay:4.9s;}
+        .girasol:nth-child(37){top:55%;left:45%;animation-delay:5s;}
+        .girasol:nth-child(38){top:55%;left:55%;animation-delay:5s;}
+        .girasol:nth-child(39){top:58%;left:40%;animation-delay:5.1s;}
+        .girasol:nth-child(40){top:58%;left:60%;animation-delay:5.1s;}
+        .girasol:nth-child(41){top:60%;left:35%;animation-delay:5.2s;}
+        .girasol:nth-child(42){top:60%;left:65%;animation-delay:5.2s;}
+        .girasol:nth-child(43){top:62%;left:30%;animation-delay:5.3s;}
+        .girasol:nth-child(44){top:62%;left:70%;animation-delay:5.3s;}
+        .girasol:nth-child(45){top:65%;left:50%;animation-delay:5.4s;}
+        .girasol:nth-child(46){top:68%;left:45%;animation-delay:5.5s;}
+        .girasol:nth-child(47){top:68%;left:55%;animation-delay:5.5s;}
+        .girasol:nth-child(48){top:70%;left:40%;animation-delay:5.6s;}
+        .girasol:nth-child(49){top:70%;left:60%;animation-delay:5.6s;}
+        .girasol:nth-child(50){top:72%;left:35%;animation-delay:5.7s;}
+        .girasol:nth-child(51){top:72%;left:65%;animation-delay:5.7s;}
+        .girasol:nth-child(52){top:75%;left:30%;animation-delay:5.8s;}
+        .girasol:nth-child(53){top:75%;left:70%;animation-delay:5.8s;}
+        .girasol:nth-child(54){top:78%;left:50%;animation-delay:5.9s;}
+        .girasol:nth-child(55){top:80%;left:45%;animation-delay:6s;}
+        .girasol:nth-child(56){top:80%;left:55%;animation-delay:6s;}
+        .girasol:nth-child(57){top:82%;left:40%;animation-delay:6.1s;}
+        .girasol:nth-child(58){top:82%;left:60%;animation-delay:6.1s;}
+        .girasol:nth-child(59){top:85%;left:35%;animation-delay:6.2s;}
+        .girasol:nth-child(60){top:85%;left:65%;animation-delay:6.2s;}
+        .girasol:nth-child(61){top:10%;left:50%;animation-delay:3.1s;}
+        .girasol:nth-child(62){top:15%;left:50%;animation-delay:3.4s;}
+        .girasol:nth-child(63){top:20%;left:50%;animation-delay:3.6s;}
+        .girasol:nth-child(64){top:25%;left:50%;animation-delay:3.8s;}
+        .girasol:nth-child(65){top:30%;left:50%;animation-delay:4s;}
+        .girasol:nth-child(66){top:35%;left:50%;animation-delay:4.2s;}
+        .girasol:nth-child(67){top:40%;left:50%;animation-delay:4.4s;}
+        .girasol:nth-child(68){top:45%;left:50%;animation-delay:4.6s;}
+        .girasol:nth-child(69){top:50%;left:50%;animation-delay:4.8s;}
+        .girasol:nth-child(70){top:55%;left:50%;animation-delay:5s;}
+        .girasol:nth-child(71){top:60%;left:50%;animation-delay:5.2s;}
+        .girasol:nth-child(72){top:65%;left:50%;animation-delay:5.4s;}
+        .girasol:nth-child(73){top:70%;left:50%;animation-delay:5.6s;}
+        .girasol:nth-child(74){top:75%;left:50%;animation-delay:5.8s;}
+        .girasol:nth-child(75){top:80%;left:50%;animation-delay:6s;}
+        .girasol:nth-child(76){top:12%;left:45%;animation-delay:3.3s;}
+        .girasol:nth-child(77){top:12%;left:55%;animation-delay:3.3s;}
+        .girasol:nth-child(78){top:18%;left:45%;animation-delay:3.5s;}
+        .girasol:nth-child(79){top:18%;left:55%;animation-delay:3.5s;}
+        .girasol:nth-child(80){top:22%;left:45%;animation-delay:3.7s;}
+        .girasol:nth-child(81){top:22%;left:55%;animation-delay:3.7s;}
+        .girasol:nth-child(82){top:28%;left:45%;animation-delay:3.9s;}
+        .girasol:nth-child(83){top:28%;left:55%;animation-delay:3.9s;}
+        .girasol:nth-child(84){top:32%;left:45%;animation-delay:4.1s;}
+        .girasol:nth-child(85){top:32%;left:55%;animation-delay:4.1s;}
+        .girasol:nth-child(86){top:38%;left:45%;animation-delay:4.3s;}
+        .girasol:nth-child(87){top:38%;left:55%;animation-delay:4.3s;}
+        .girasol:nth-child(88){top:42%;left:45%;animation-delay:4.5s;}
+        .girasol:nth-child(89){top:42%;left:55%;animation-delay:4.5s;}
+        .girasol:nth-child(90){top:48%;left:45%;animation-delay:4.7s;}
+        .girasol:nth-child(91){top:48%;left:55%;animation-delay:4.7s;}
+        .girasol:nth-child(92){top:52%;left:45%;animation-delay:4.9s;}
+        .girasol:nth-child(93){top:52%;left:55%;animation-delay:4.9s;}
+        .girasol:nth-child(94){top:58%;left:45%;animation-delay:5.1s;}
+        .girasol:nth-child(95){top:58%;left:55%;animation-delay:5.1s;}
+        .girasol:nth-child(96){top:62%;left:45%;animation-delay:5.3s;}
+        .girasol:nth-child(97){top:62%;left:55%;animation-delay:5.3s;}
+        .girasol:nth-child(98){top:68%;left:45%;animation-delay:5.5s;}
+        .girasol:nth-child(99){top:68%;left:55%;animation-delay:5.5s;}
+        .girasol:nth-child(100){top:72%;left:45%;animation-delay:5.7s;}
+        .girasol:nth-child(101){top:72%;left:55%;animation-delay:5.7s;}
+        .girasol:nth-child(102){top:78%;left:45%;animation-delay:5.9s;}
+        .girasol:nth-child(103){top:78%;left:55%;animation-delay:5.9s;}
+        .girasol:nth-child(104){top:82%;left:45%;animation-delay:6.1s;}
+        .girasol:nth-child(105){top:82%;left:55%;animation-delay:6.1s;}
+        .girasol:nth-child(106){top:85%;left:45%;animation-delay:6.2s;}
+        .girasol:nth-child(107){top:85%;left:55%;animation-delay:6.2s;}
+        .girasol:nth-child(108){top:15%;left:45%;animation-delay:3.4s;}
+        .girasol:nth-child(109){top:15%;left:55%;animation-delay:3.4s;}
+        .girasol:nth-child(110){top:2
