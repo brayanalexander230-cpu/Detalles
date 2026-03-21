@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi niña hermosa 💛</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #ff4da6, #ff0066);
+    font-family: Arial, sans-serif;
+}
+
+/* TARJETA */
+.card{
+    background:#e8dfd5;
+    width:90%;
+    max-width:900px;
+    border-radius:25px;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* TEXTO */
+.texto{
+    width:45%;
+    color:#333;
+    font-size:1.2rem;
+    line-height:1.6;
+}
+
+/* ÁRBOL */
+.tree-container{
+    position:relative;
+    width:50%;
+    height:400px;
+}
+
+/* TRONCO */
+.trunk{
+    width:15px;
+    height:0;
+    background:#8B4513;
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:10px;
+    animation:grow 1.5s forwards;
+}
+
+@keyframes grow{
+    to{ height:180px; }
+}
+
+/* FLORES */
+.flower{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:#FFD700;
+    border-radius:50%;
+    opacity:0;
+    transform:scale(0);
+    box-shadow:0 0 10px #FFD700;
+    animation:bloom 1s forwards;
+}
+
+@keyframes bloom{
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="texto">
+        <p><b>Flores amarillas para el amor de mi vida:</b></p>
+
+        <p>Si pudiera elegir un lugar seguro, sería a tu lado.</p>
+
+        <p>Cuanto más tiempo estoy contigo, más quiero quedarme 💛</p>
+
+        <br>
+        <p><b>Te quiero un chingo 💛</b></p>
+    </div>
+
+    <div class="tree-container">
+        <div class="trunk"></div>
+        <div id="garden"></div>
+    </div>
+
+</div>
+
+<script>
+const garden = document.getElementById("garden");
+const total = 350;
+
+for(let i=0;i<total;i++){
+
+    const f = document.createElement("div");
+    f.className="flower";
+
+    const t = Math.random()*2*Math.PI;
+    const r = Math.pow(Math.random(),0.7);
+
+    let x = r * 16 * Math.pow(Math.sin(t),3);
+    let y = r * -(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+
+    const scale = 6;
+
+    const left = 50 + x*scale;
+    const top = 55 + y*scale;
+
+    f.style.left = left + "%";
+    f.style.top = top + "%";
+
+    f.style.animationDelay = (1 + Math.random()*3) + "s";
+
+    const size = Math.random()*4 + 4;
+    f.style.width = size + "px";
+    f.style.height = size + "px";
+
+    garden.appendChild(f);
+}
+</script>
+
+</body>
+</html>
