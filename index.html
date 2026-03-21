@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flores Amarillas</title>
+    <title>Para mi Niña</title>
     <style>
+        /* --- ESTILOS GLOBAL --- */
         body {
             background-color: #000;
             display: flex;
@@ -16,96 +17,126 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             color: white;
+            text-align: center;
         }
 
+        /* CONTENEDOR DE LA ANIMACIÓN DEL ÁRBOL */
         .tree-container {
             position: relative;
-            width: 300px;
-            height: 400px;
+            width: 320px; /* Tamaño del área del árbol */
+            height: 320px;
+            margin-bottom: 25px;
             display: flex;
             justify-content: center;
             align-items: flex-end;
         }
 
-        /* Tronco creciendo */
+        /* 1. Tronco (estará por debajo) */
         .trunk {
             position: absolute;
-            width: 12px;
-            background: #3E2723;
-            border-radius: 6px;
-            bottom: 50px; /* Ajuste para que no tape el texto */
+            width: 10px;
+            background: #5d4037;
+            border-radius: 5px;
+            bottom: 0;
+            left: calc(50% - 5px);
             height: 0;
+            opacity: 0;
+            z-index: 5; /* Z-index bajo */
             animation: growTrunk 1.5s ease-out forwards;
-            z-index: 2;
         }
 
-        /* Contenedor de las flores */
+        /* 2. El Cluster de Flores (cientos de girasoles, estará por encima) */
         #heart-cluster {
             position: absolute;
             width: 100%;
             height: 100%;
-            bottom: 180px; /* Se posiciona justo donde termina el tronco */
+            top: 0;
             left: 0;
-            display: none;
+            transform: translateY(-90px); /* Ajuste para que el tronco llegue al centro inferior */
+            display: none; /* Se oculta hasta que el tronco crezca */
+            z-index: 10; /* Z-index mayor que el tronco */
         }
 
-        .flower {
+        /* ESTILO DE UNA FLOR INDIVIDUAL (TUPIDO) */
+        .flower-item {
             position: absolute;
-            width: 16px;
-            height: 16px;
-            background: #FFEB3B;
+            width: 15px; /* Tamaño del girasol */
+            height: 15px;
+            background: #ffeb3b; /* Amarillo vibrante */
             border-radius: 50%;
-            box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
-            opacity: 0;
-            animation: flowerPop 0.6s ease-out forwards;
+            box-shadow: inset 0 0 2px rgba(0,0,0,0.4);
+            opacity: 0; /* Empieza invisible */
+            animation: flowerPop 0.5s ease-out forwards;
         }
 
-        /* Centro del girasol */
-        .flower::after {
+        /* Centro marrón del girasol (como en image_10.png) */
+        .flower-item::after {
             content: '';
             position: absolute;
             top: 4px;
             left: 4px;
-            width: 8px;
-            height: 8px;
-            background: #3E2723;
+            width: 7px;
+            height: 7px;
+            background: #3e2723;
             border-radius: 50%;
         }
 
+        /* --- TARJETA DE TEXTO (Igual que image_11.png) --- */
+        .text-card {
+            background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro transparente */
+            border: 1px solid #ffd740; /* Borde amarillo brillante */
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            opacity: 0;
+            animation: showText 1.5s ease-out 5s forwards; /* Aparece al final */
+            box-shadow: 0 0 15px rgba(255, 215, 64, 0.2);
+        }
+
+        h1 {
+            color: #ffeb3b;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Corazón rosa (como en la imagen) */
+        .heart {
+            color: #ff4081; /* Rosa intenso */
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        /* --- KEYFRAMES (LAS ANIMACIONES) --- */
         @keyframes growTrunk {
-            to { height: 150px; }
+            0% { height: 0; opacity: 0; }
+            100% { height: 120px; opacity: 1; } /* Altura del tronco */
         }
 
         @keyframes flowerPop {
             0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.2); opacity: 1; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        .text-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid #ffd740;
-            border-radius: 15px;
-            padding: 20px;
-            width: 85%;
-            max-width: 400px;
-            opacity: 0;
-            animation: showText 1s ease-out 4s forwards;
-            margin-top: 20px;
-        }
-
         @keyframes showText {
-            to { opacity: 1; transform: translateY(-10px); }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-
-        h1 { color: #FFEB3B; font-size: 1.3rem; margin-bottom: 5px; }
-        p { font-size: 0.9rem; margin: 5px 0; }
-        .heart-icon { color: #ff4081; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="tree-container">
         <div class="trunk"></div>
+        
         <div id="heart-cluster"></div>
     </div>
 
@@ -113,43 +144,58 @@
         <h1>Flores Amarillas para ti</h1>
         <p>Si pudiera elegir un lugar seguro,</p>
         <p>sería siempre a tu lado.</p>
+        <div style="height: 10px;"></div>
         <p>Porque te mereces lo más lindo del mundo.</p>
-        <p class="heart-icon">❤ Te Amo ❤</p>
+        <p class="heart">❤ Te Amo ❤</p>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cluster = document.getElementById('heart-cluster');
-            const totalFlowers = 250; // ¡Muchos girasoles para que sea tupido!
-            
-            // Fórmula del corazón: x = 16sin^3(t), y = 13cos(t) - 5cos(2t) - 2cos(3t) - cos(4t)
+            const totalFlowers = 250; // ¡Añadiremos 250 girasoles!
+            const baseDelay = 1.5; // Tiempo de crecimiento del tronco
+
+            // Fórmula matemática para un corazón perfecto (Paramétrica)
+            // t va de 0 a 2*PI
+            const getHeartPoint = (t) => {
+                const x = 16 * Math.pow(Math.sin(t), 3);
+                const y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
+                return { x, y };
+            };
+
+            // Generar y posicionar cientos de flores
             for (let i = 0; i < totalFlowers; i++) {
-                const t = Math.random() * 2 * Math.PI;
-                const r = Math.sqrt(Math.random()); // Distribución interna para rellenar el corazón
-                
-                const x = r * 16 * Math.pow(Math.sin(t), 3);
-                const y = r * (13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                // Parámetro 't' para cada flor (de 0 a 2*PI)
+                const t = (i / totalFlowers) * 2 * Math.PI;
+                const point = getHeartPoint(t);
 
                 const flower = document.createElement('div');
-                flower.className = 'flower';
+                flower.classList.add('flower-item');
+
+                // Posicionar en el centro y escalar los puntos
+                const scale = 9; // Ajusta el tamaño del corazón
+                const offsetX = 50; // Centro horizontal (%)
+                const offsetY = 45; // Centro vertical (%)
                 
-                // Centrado y escalado
-                const scale = 7; 
-                flower.style.left = `calc(50% + ${x * scale}px)`;
-                flower.style.bottom = `${y * scale}px`;
-                
-                // Animación en cascada (aparecen de abajo hacia arriba)
-                const delay = 1.5 + (Math.random() * 2);
-                flower.style.animationDelay = `${delay}s`;
+                // point.y es negativo, así que -point.y invierte el eje Y para que suba
+                flower.style.left = (point.x * scale + offsetX) + '%';
+                flower.style.top = (-point.y * scale + offsetY) + '%';
+
+                // Añadir retraso para la animación secuencial
+                // Las flores de abajo aparecen primero
+                // point.y va de -17 (abajo) a 13 (arriba)
+                const yDelay = (-point.y + 17) / 30; // Normalizar delay
+                flower.style.animationDelay = (baseDelay + yDelay * 1.5) + 's';
 
                 cluster.appendChild(flower);
             }
 
-            // Mostrar flores tras crecer el tronco
+            // Mostrar el cluster después de que el tronco empiece a crecer
             setTimeout(() => {
                 cluster.style.display = 'block';
-            }, 1000);
+            }, 1000); // 1 segundo de retraso
         });
     </script>
+
 </body>
 </html>
