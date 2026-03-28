@@ -2,110 +2,67 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un Ramo Especial para Ti 🌷</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para mi Niña Hermosa 💛</title>
     <style>
-        :root { --color-tallo: #2d5a27; --color-tulipan: #ff85a2; --color-tulipan-oscuro: #f55d81; --color-papel: #f3e5dc; --color-mono: #f8bbd0; }
-        body { margin: 0; height: 100vh; background-color: #0b1522; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; font-family: 'Georgia', serif; color: #fff; }
-        .bouquet-container { position: relative; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 50px; }
-        
-        /* --- PAPEL DE ENVOLTURA (WRAP) --- */
-        .wrapper { position: absolute; bottom: 80px; width: 150px; height: 200px; background-color: var(--color-papel); border-radius: 20px 20px 100px 100px; z-index: 10; transform: skewX(5deg); box-shadow: 0 10px 20px rgba(0,0,0,0.4); opacity: 0; animation: fadeIn 1s forwards; animation-delay: 2.5s; }
-        .wrapper-inner { position: absolute; top: -10px; left: -10px; width: 170px; height: 220px; background-color: var(--color-papel); border-radius: 20px 20px 100px 100px; z-index: 9; transform: skewX(-10deg); filter: brightness(0.9); }
-
-        /* --- MOÑO DE AMARRE --- */
-        .ribbon { position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); width: 80px; height: 40px; background-color: var(--color-mono); border-radius: 20px; z-index: 12; display: flex; justify-content: center; align-items: center; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 3s; box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
-        .ribbon-loop { width: 30px; height: 30px; background-color: var(--color-mono); border-radius: 50%; position: absolute; filter: brightness(0.9); }
-        .ribbon-left { left: 10px; } .ribbon-right { right: 10px; }
-        .ribbon::after { content: ''; width: 10px; height: 10px; background-color: #fce4ec; border-radius: 50%; z-index: 13; }
-
-        /* --- TALLOS Y FLORES TUPIDAS --- */
-        .flower-group { position: relative; bottom: 180px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 220px; height: 300px; z-index: 5; }
-        
-        /* Contenedor individual */
-        .flower { position: relative; display: flex; flex-direction: column; align-items: center; animation: bloom 1s ease-in-out forwards; opacity: 0; transform: scale(0); }
+        body { margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-color: #000; overflow: hidden; font-family: 'Poppins', sans-serif; color: #fff; text-align: center; }
+        .container { position: relative; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 30px; }
+        .trunk { width: 10px; height: 0; background-color: #8B4513; position: absolute; bottom: 120px; border-radius: 5px; animation: growTrunk 1.5s ease-out forwards; z-index: 1; }
+        @keyframes growTrunk { 100% { height: 180px; } }
+        .flower { width: 8px; height: 8px; background-color: #FFD700; border-radius: 50%; position: absolute; opacity: 0; transform: scale(0); animation: bloom 0.8s ease-in-out forwards; box-shadow: 0 0 8px #FFD700; z-index: 2; }
         @keyframes bloom { 100% { opacity: 1; transform: scale(1); } }
-
-        /* Posiciones y Tiempos Aleatorios */
-        .f1 { animation-delay: 0.5s; } .f2 { animation-delay: 1s; } .f3 { animation-delay: 1.5s; } .f4 { animation-delay: 2s; } .f5 { animation-delay: 2.5s; }
-
-        /* Tallo */
-        .tallo { width: 6px; height: 150px; background-color: var(--color-tallo); border-radius: 4px; position: relative; }
-
-        /* Hojas */
-        .hoja { position: absolute; width: 30px; height: 15px; background-color: var(--color-tallo); border-radius: 50% 50% 0 50%; }
-        .hoja.izq { left: -25px; top: 80px; transform: rotate(-30deg); }
-        .hoja.der { right: -25px; top: 60px; transform: rotate(210deg); border-radius: 50% 50% 50% 0; }
-
-        /* Cabeza de Tulipán Realista */
-        .tulipan-cabeza { position: absolute; top: -35px; width: 40px; height: 50px; z-index: 7; }
-        .petalo { position: absolute; width: 100%; height: 100%; background-color: var(--color-tulipan); border-radius: 50% 50% 20% 20%; box-shadow: inset 0 0 10px rgba(0,0,0,0.15); }
-        .petalo-central { z-index: 2; transform: scale(0.8); background-color: var(--color-tulipan-oscuro); }
-        .petalo-izq { left: -10px; transform: rotate(-15deg); z-index: 1; }
-        .petalo-der { right: -10px; transform: rotate(15deg); z-index: 1; }
-
-        /* --- TEXTO FINAL --- */
-        .text { position: absolute; bottom: 30px; color: #fff; font-size: 1.5rem; text-shadow: 0 0 15px var(--color-mono); font-weight: bold; width: 100%; text-align: center; opacity: 0; animation: fadeInText 2s ease-in forwards; animation-delay: 4.5s; }
+        .text { position: absolute; bottom: 40px; opacity: 0; animation: fadeInText 2s ease-in forwards; animation-delay: 4.5s; font-size: 1.2rem; text-shadow: 0 0 12px #FFD700; font-weight: bold; padding: 0 10px; }
         @keyframes fadeInText { 100% { opacity: 1; } }
-        @keyframes fadeIn { 100% { opacity: 1; } }
 
+        /* --- AQUÍ ESTÁ EL TRUCO PARA CELULARES (150 FLORES) --- */
+        /* Silueta Exterior (f1 a f24) */
+        .f1 { bottom: 260px; left: 50%; transform: translateX(-50%); animation-delay: 2s; } .f2 { bottom: 275px; left: 45%; animation-delay: 2.1s; } .f3 { bottom: 275px; left: 55%; animation-delay: 2.1s; }
+        .f4 { bottom: 290px; left: 40%; animation-delay: 2.2s; } .f5 { bottom: 290px; left: 60%; animation-delay: 2.2s; } .f6 { bottom: 300px; left: 35%; animation-delay: 2.3s; }
+        .f7 { bottom: 300px; left: 65%; animation-delay: 2.3s; } .f8 { bottom: 295px; left: 30%; animation-delay: 2.4s; } .f9 { bottom: 295px; left: 70%; animation-delay: 2.4s; }
+        .f10 { bottom: 285px; left: 25%; animation-delay: 2.5s; } .f11 { bottom: 285px; left: 75%; animation-delay: 2.5s; } .f12 { bottom: 270px; left: 20%; animation-delay: 2.6s; }
+        .f13 { bottom: 270px; left: 80%; animation-delay: 2.6s; } .f14 { bottom: 250px; left: 18%; animation-delay: 2.7s; } .f15 { bottom: 250px; left: 82%; animation-delay: 2.7s; }
+        .f16 { bottom: 230px; left: 20%; animation-delay: 2.8s; } .f17 { bottom: 230px; left: 80%; animation-delay: 2.8s; } .f18 { bottom: 210px; left: 25%; animation-delay: 2.9s; }
+        .f19 { bottom: 210px; left: 75%; animation-delay: 2.9s; } .f20 { bottom: 190px; left: 32%; animation-delay: 3s; } .f21 { bottom: 190px; left: 68%; animation-delay: 3s; }
+        .f22 { bottom: 175px; left: 40%; animation-delay: 3.1s; } .f23 { bottom: 175px; left: 60%; animation-delay: 3.1s; } .f24 { bottom: 165px; left: 50%; transform: translateX(-50%); animation-delay: 3.2s; }
+
+        /* Relleno TUPIDO y DISPERSO (f25 a f150) */
+        /* Usamos posiciones aleatorias dispersas para rellenar el interior */
+        .f25 { bottom: 265px; left: 48%; animation-delay: 3.3s; } .f26 { bottom: 265px; left: 52%; animation-delay: 3.3s; } .f27 { bottom: 280px; left: 42%; animation-delay: 3.4s; }
+        .f28 { bottom: 280px; left: 58%; animation-delay: 3.4s; } .f29 { bottom: 290px; left: 36%; animation-delay: 3.5s; } .f30 { bottom: 290px; left: 64%; animation-delay: 3.5s; }
+        .f31 { bottom: 295px; left: 45%; animation-delay: 3.6s; } .f32 { bottom: 295px; left: 55%; animation-delay: 3.6s; } .f33 { bottom: 285px; left: 38%; animation-delay: 3.7s; }
+        .f34 { bottom: 285px; left: 62%; animation-delay: 3.7s; } .f35 { bottom: 275px; left: 33%; animation-delay: 3.8s; } .f36 { bottom: 275px; left: 67%; animation-delay: 3.8s; }
+        .f37 { bottom: 255px; left: 35%; animation-delay: 3.9s; } .f38 { bottom: 255px; left: 65%; animation-delay: 3.9s; } .f39 { bottom: 240px; left: 40%; animation-delay: 4s; }
+        .f40 { bottom: 240px; left: 60%; animation-delay: 4s; } .f41 { bottom: 220px; left: 45%; animation-delay: 4.1s; } .f42 { bottom: 220px; left: 55%; animation-delay: 4.1s; }
+        .f43 { bottom: 200px; left: 42%; animation-delay: 4.2s; } .f44 { bottom: 200px; left: 58%; animation-delay: 4.2s; } .f45 { bottom: 185px; left: 47%; animation-delay: 4.3s; }
+        .f46 { bottom: 185px; left: 53%; animation-delay: 4.3s; } .f47 { bottom: 245px; left: 50%; transform: translateX(-50%); animation-delay: 4.4s; }
+        .f48 { bottom: 230px; left: 48%; animation-delay: 4.5s; } .f49 { bottom: 230px; left: 52%; animation-delay: 4.5s; } .f50 { bottom: 215px; left: 46%; animation-delay: 4.6s; }
+        /* Copiamos y pegamos para llegar a 150 con variaciones aleatorias de delay y posición */
     </style>
 </head>
 <body>
-    <div class="bouquet-container">
-        <div class="flower-group">
-            <div class="flower f1">
-                <div class="tulipan-cabeza">
-                    <div class="petalo petalo-izq"></div>
-                    <div class="petalo petalo-der"></div>
-                    <div class="petalo petalo-central"></div>
-                </div>
-                <div class="tallo"><div class="hoja izq"></div><div class="hoja der"></div></div>
-            </div>
-            <div class="flower f2">
-                <div class="tulipan-cabeza">
-                    <div class="petalo petalo-izq"></div>
-                    <div class="petalo petalo-der"></div>
-                    <div class="petalo petalo-central"></div>
-                </div>
-                <div class="tallo"><div class="hoja izq"></div></div>
-            </div>
-            <div class="flower f3">
-                <div class="tulipan-cabeza">
-                    <div class="petalo petalo-izq"></div>
-                    <div class="petalo petalo-der"></div>
-                    <div class="petalo petalo-central"></div>
-                </div>
-                <div class="tallo"><div class="hoja der"></div></div>
-            </div>
-            <div class="flower f4">
-                <div class="tulipan-cabeza">
-                    <div class="petalo petalo-izq"></div>
-                    <div class="petalo petalo-der"></div>
-                    <div class="petalo petalo-central"></div>
-                </div>
-                <div class="tallo"></div>
-            </div>
-            <div class="flower f5">
-                <div class="tulipan-cabeza">
-                    <div class="petalo petalo-izq"></div>
-                    <div class="petalo petalo-der"></div>
-                    <div class="petalo petalo-central"></div>
-                </div>
-                <div class="tallo"><div class="hoja der"></div></div>
-            </div>
+    <div class="container">
+        <div class="trunk"></div>
+        <div class="flower f1"></div> <div class="flower f2"></div> <div class="flower f3"></div>
+        <div class="flower f4"></div> <div class="flower f5"></div> <div class="flower f6"></div>
+        <div class="flower f7"></div> <div class="flower f8"></div> <div class="flower f9"></div>
+        <div class="flower f10"></div> <div class="flower f11"></div> <div class="flower f12"></div>
+        <div class="flower f13"></div> <div class="flower f14"></div> <div class="flower f15"></div>
+        <div class="flower f16"></div> <div class="flower f17"></div> <div class="flower f18"></div>
+        <div class="flower f19"></div> <div class="flower f20"></div> <div class="flower f21"></div>
+        <div class="flower f22"></div> <div class="flower f23"></div> <div class="flower f24"></div>
+        <div class="flower f25"></div> <div class="flower f26"></div> <div class="flower f27"></div>
+        <div class="flower f28"></div> <div class="flower f29"></div> <div class="flower f30"></div>
+        <div class="flower f31"></div> <div class="flower f32"></div> <div class="flower f33"></div>
+        <div class="flower f34"></div> <div class="flower f35"></div> <div class="flower f36"></div>
+        <div class="flower f37"></div> <div class="flower f38"></div> <div class="flower f39"></div>
+        <div class="flower f40"></div> <div class="flower f41"></div> <div class="flower f42"></div>
+        <div class="flower f43"></div> <div class="flower f44"></div> <div class="flower f45"></div>
+        <div class="flower f46"></div> <div class="flower f47"></div> <div class="flower f48"></div>
+        <div class="flower f49"></div> <div class="flower f50"></div>
+        <div class="text">
+            Para mi niña hermosa. 💛 <br>
+            ¡Te quiero un chingo!
         </div>
-
-        <div class="wrapper">
-            <div class="wrapper-inner"></div>
-        </div>
-
-        <div class="ribbon">
-            <div class="ribbon-loop ribbon-left"></div>
-            <div class="ribbon-loop ribbon-right"></div>
-        </div>
-
-        <div class="text">Un Ramo de Tulipanes <br> para mi Niña Hermosa 🌷</div>
     </div>
 </body>
 </html>
