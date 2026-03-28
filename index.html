@@ -3,78 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulipanes para ti 🌷</title>
+    <title>Un Ramo Especial para Ti 🌷</title>
     <style>
-        :root { --color-tallo: #2d5a27; --color-tulipan: #ff85a2; --color-tulipan-oscuro: #f55d81; }
-        body { margin: 0; height: 100vh; background-color: #0b1522; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; font-family: 'Arial', sans-serif; }
-        .flower-container { position: relative; bottom: 50px; display: flex; gap: 40px; }
+        :root { --color-tallo: #2d5a27; --color-tulipan: #ff85a2; --color-tulipan-oscuro: #f55d81; --color-papel: #f3e5dc; --color-mono: #f8bbd0; }
+        body { margin: 0; height: 100vh; background-color: #0b1522; display: flex; justify-content: center; align-items: flex-end; overflow: hidden; font-family: 'Georgia', serif; color: #fff; }
+        .bouquet-container { position: relative; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 50px; }
         
-        /* Contenedor individual de cada flor */
-        .flower { position: relative; display: flex; flex-direction: column; align-items: center; }
+        /* --- PAPEL DE ENVOLTURA (WRAP) --- */
+        .wrapper { position: absolute; bottom: 80px; width: 150px; height: 200px; background-color: var(--color-papel); border-radius: 20px 20px 100px 100px; z-index: 10; transform: skewX(5deg); box-shadow: 0 10px 20px rgba(0,0,0,0.4); opacity: 0; animation: fadeIn 1s forwards; animation-delay: 2.5s; }
+        .wrapper-inner { position: absolute; top: -10px; left: -10px; width: 170px; height: 220px; background-color: var(--color-papel); border-radius: 20px 20px 100px 100px; z-index: 9; transform: skewX(-10deg); filter: brightness(0.9); }
 
-        /* Animación del Tallo */
-        .tallo { width: 8px; height: 0; background-color: var(--color-tallo); border-radius: 4px; animation: crecerTallo 3s ease-out forwards; position: relative; }
-        @keyframes crecerTallo { 0% { height: 0; } 100% { height: 250px; } }
+        /* --- MOÑO DE AMARRE --- */
+        .ribbon { position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); width: 80px; height: 40px; background-color: var(--color-mono); border-radius: 20px; z-index: 12; display: flex; justify-content: center; align-items: center; opacity: 0; animation: fadeIn 1s forwards; animation-delay: 3s; box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
+        .ribbon-loop { width: 30px; height: 30px; background-color: var(--color-mono); border-radius: 50%; position: absolute; filter: brightness(0.9); }
+        .ribbon-left { left: 10px; } .ribbon-right { right: 10px; }
+        .ribbon::after { content: ''; width: 10px; height: 10px; background-color: #fce4ec; border-radius: 50%; z-index: 13; }
 
-        /* Hojas animadas */
-        .hoja { position: absolute; width: 40px; height: 20px; background-color: var(--color-tallo); border-radius: 50% 50% 0 50%; opacity: 0; transform: scale(0); animation: aparecerHoja 1s ease-out forwards; }
-        .hoja.izq { left: -35px; top: 150px; transform: rotate(-30deg); animation-delay: 1.5s; }
-        .hoja.der { right: -35px; top: 100px; transform: rotate(210deg); border-radius: 50% 50% 50% 0; animation-delay: 2s; }
-        @keyframes aparecerHoja { 100% { opacity: 1; transform: scale(1); } }
-
-        /* Capullo del Tulipán */
-        .tulipan-cabeza { position: absolute; top: -40px; width: 50px; height: 60px; opacity: 0; animation: abrirFlor 2s ease-in-out forwards; animation-delay: 2.8s; }
+        /* --- TALLOS Y FLORES TUPIDAS --- */
+        .flower-group { position: relative; bottom: 180px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 220px; height: 300px; z-index: 5; }
         
-        .petalo { position: absolute; width: 100%; height: 100%; background-color: var(--color-tulipan); border-radius: 50% 50% 20% 20%; box-shadow: inset 0 0 15px rgba(0,0,0,0.1); }
+        /* Contenedor individual */
+        .flower { position: relative; display: flex; flex-direction: column; align-items: center; animation: bloom 1s ease-in-out forwards; opacity: 0; transform: scale(0); }
+        @keyframes bloom { 100% { opacity: 1; transform: scale(1); } }
+
+        /* Posiciones y Tiempos Aleatorios */
+        .f1 { animation-delay: 0.5s; } .f2 { animation-delay: 1s; } .f3 { animation-delay: 1.5s; } .f4 { animation-delay: 2s; } .f5 { animation-delay: 2.5s; }
+
+        /* Tallo */
+        .tallo { width: 6px; height: 150px; background-color: var(--color-tallo); border-radius: 4px; position: relative; }
+
+        /* Hojas */
+        .hoja { position: absolute; width: 30px; height: 15px; background-color: var(--color-tallo); border-radius: 50% 50% 0 50%; }
+        .hoja.izq { left: -25px; top: 80px; transform: rotate(-30deg); }
+        .hoja.der { right: -25px; top: 60px; transform: rotate(210deg); border-radius: 50% 50% 50% 0; }
+
+        /* Cabeza de Tulipán Realista */
+        .tulipan-cabeza { position: absolute; top: -35px; width: 40px; height: 50px; z-index: 7; }
+        .petalo { position: absolute; width: 100%; height: 100%; background-color: var(--color-tulipan); border-radius: 50% 50% 20% 20%; box-shadow: inset 0 0 10px rgba(0,0,0,0.15); }
         .petalo-central { z-index: 2; transform: scale(0.8); background-color: var(--color-tulipan-oscuro); }
-        .petalo-izq { left: -15px; transform: rotate(-20deg); z-index: 1; }
-        .petalo-der { right: -15px; transform: rotate(20deg); z-index: 1; }
+        .petalo-izq { left: -10px; transform: rotate(-15deg); z-index: 1; }
+        .petalo-der { right: -10px; transform: rotate(15deg); z-index: 1; }
 
-        @keyframes abrirFlor {
-            0% { transform: translateY(20px) scale(0); opacity: 0; }
-            100% { transform: translateY(0) scale(1); opacity: 1; }
-        }
-
-        .texto { position: absolute; top: -350px; width: 300px; left: 50%; transform: translateX(-50%); color: white; opacity: 0; animation: fadeIn 2s forwards; animation-delay: 5s; text-align: center; text-shadow: 0 0 10px var(--color-tulipan); font-size: 1.5rem; font-weight: bold; }
+        /* --- TEXTO FINAL --- */
+        .text { position: absolute; bottom: 30px; color: #fff; font-size: 1.5rem; text-shadow: 0 0 15px var(--color-mono); font-weight: bold; width: 100%; text-align: center; opacity: 0; animation: fadeInText 2s ease-in forwards; animation-delay: 4.5s; }
+        @keyframes fadeInText { 100% { opacity: 1; } }
         @keyframes fadeIn { 100% { opacity: 1; } }
+
     </style>
 </head>
 <body>
-    <div class="flower-container">
-        <div class="flower">
-            <div class="tulipan-cabeza">
-                <div class="petalo petalo-izq"></div>
-                <div class="petalo petalo-der"></div>
-                <div class="petalo petalo-central"></div>
+    <div class="bouquet-container">
+        <div class="flower-group">
+            <div class="flower f1">
+                <div class="tulipan-cabeza">
+                    <div class="petalo petalo-izq"></div>
+                    <div class="petalo petalo-der"></div>
+                    <div class="petalo petalo-central"></div>
+                </div>
+                <div class="tallo"><div class="hoja izq"></div><div class="hoja der"></div></div>
             </div>
-            <div class="tallo">
-                <div class="hoja izq"></div>
-                <div class="hoja der"></div>
+            <div class="flower f2">
+                <div class="tulipan-cabeza">
+                    <div class="petalo petalo-izq"></div>
+                    <div class="petalo petalo-der"></div>
+                    <div class="petalo petalo-central"></div>
+                </div>
+                <div class="tallo"><div class="hoja izq"></div></div>
+            </div>
+            <div class="flower f3">
+                <div class="tulipan-cabeza">
+                    <div class="petalo petalo-izq"></div>
+                    <div class="petalo petalo-der"></div>
+                    <div class="petalo petalo-central"></div>
+                </div>
+                <div class="tallo"><div class="hoja der"></div></div>
+            </div>
+            <div class="flower f4">
+                <div class="tulipan-cabeza">
+                    <div class="petalo petalo-izq"></div>
+                    <div class="petalo petalo-der"></div>
+                    <div class="petalo petalo-central"></div>
+                </div>
+                <div class="tallo"></div>
+            </div>
+            <div class="flower f5">
+                <div class="tulipan-cabeza">
+                    <div class="petalo petalo-izq"></div>
+                    <div class="petalo petalo-der"></div>
+                    <div class="petalo petalo-central"></div>
+                </div>
+                <div class="tallo"><div class="hoja der"></div></div>
             </div>
         </div>
-        <div class="flower">
-            <div class="tulipan-cabeza" style="animation-delay: 3.2s;">
-                <div class="petalo petalo-izq"></div>
-                <div class="petalo petalo-der"></div>
-                <div class="petalo petalo-central"></div>
-            </div>
-            <div class="tallo" style="animation-delay: 0.5s;">
-                <div class="hoja izq" style="animation-delay: 2.2s;"></div>
-                <div class="hoja der" style="animation-delay: 2.7s;"></div>
-            </div>
-            <div class="texto">Para mi niña hermosa 🌷</div>
+
+        <div class="wrapper">
+            <div class="wrapper-inner"></div>
         </div>
-        <div class="flower">
-            <div class="tulipan-cabeza" style="animation-delay: 3.5s;">
-                <div class="petalo petalo-izq"></div>
-                <div class="petalo petalo-der"></div>
-                <div class="petalo petalo-central"></div>
-            </div>
-            <div class="tallo" style="animation-delay: 0.8s;">
-                <div class="hoja izq" style="animation-delay: 2.5s;"></div>
-                <div class="hoja der" style="animation-delay: 3s;"></div>
-            </div>
+
+        <div class="ribbon">
+            <div class="ribbon-loop ribbon-left"></div>
+            <div class="ribbon-loop ribbon-right"></div>
         </div>
+
+        <div class="text">Un Ramo de Tulipanes <br> para mi Niña Hermosa 🌷</div>
     </div>
 </body>
 </html>
